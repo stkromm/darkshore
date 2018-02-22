@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{d6fa115d-082b-48bc-98c1-287197e92076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\math">
+      <UniqueIdentifier>{77973406-cb93-4286-82b1-f97df39f143f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\physics">
+      <UniqueIdentifier>{8e4e0cbc-67c7-4161-95fe-d101266936d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\graphics">
+      <UniqueIdentifier>{e218e812-ea9e-4726-9d0a-309e51e9bce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\platform">
+      <UniqueIdentifier>{ffe0fdb7-c9ee-40ff-b401-d7c15a1cc9d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{aa55474e-a35b-438e-b102-5825ab1ea858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Unit">
+      <UniqueIdentifier>{a62065bb-8d65-4644-ae22-f65580647649}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="basic.shader">
+      <Filter>Ressourcendateien</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\game.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\object.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\transform.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\types.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\math\mat4x4.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\math\quarternion.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\math\vec2.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\math\vec3.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\math\vec4.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics\collision.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics\physics.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics\rigid_body.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\graphics.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\index_buffer.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\renderable.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\renderer.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\scene.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\shader.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\vertex_array.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\vertex_buffer.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\platform\window.h">
+      <Filter>Source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\json.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\math\vine_math.h">
+      <Filter>Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="platform\platform.h">
+      <Filter>Source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\texture.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\image.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="tiled_texture.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\transform.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\math\math.cpp">
+      <Filter>Source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\physics\rigid_body.cpp">
+      <Filter>Source\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\graphics.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\index_buffer.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\shader.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\vertex_array.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\vertex_buffer.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\platform\window.cpp">
+      <Filter>Source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\stb_image.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\image.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\texture.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="tiled_texture.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="sprite.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
