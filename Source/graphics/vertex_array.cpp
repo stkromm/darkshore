@@ -36,6 +36,7 @@ graphics::VertexArray::VertexArray()
 
 graphics::VertexArray::~VertexArray()
 {
+	unbind();
 	GLCall(glDeleteVertexArrays(1, &id));
 };
 

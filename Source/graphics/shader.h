@@ -2,20 +2,28 @@
 
 #include <string>
 
+#include "platform/asset.h"
+
 #include "graphics/graphics.h"
 
-#include "math\mat4x4.h"
+#include "math/mat4x4.h"
 
 namespace graphics {
-	class Shader {
+	class Shader : public Asset {
 	private:
 		unsigned int id;
 	public:
+		static AssetType get_resource_type()
+		{
+			return AssetType::SHADER;
+		}
+
 		enum class Type
 		{
 			NONE = -1, VERTEX = 0, FRAGMENT = 1, GEOMETRY = 2, TESSELATION_CONTROL = 3, TESSELATION_EVAL = 4
 		};
 
+		Shader(std::string file_path) : Shader(file_path.c_str()) {};
 		Shader(const char* file_path);
 		~Shader();
 

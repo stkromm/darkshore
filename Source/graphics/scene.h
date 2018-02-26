@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "graphics/renderer.h"
 #include "graphics/renderable.h"
 
@@ -7,79 +9,57 @@
 
 namespace graphics {
 
-	class Quad : public Renderable {
-		std::vector<float> vertices_array =
-		{
-			-0.5f, -0.5f, 0.f,
-			0.5f, -0.5f, 0.f,
-			0.5f,  0.5f, 0.f,
-			-0.5f,  0.5f, 0.f
-		};
-
-		unsigned int indices[6] = {
-			0,1,2,2,3,0
-		};
-
-		const Shader* shader;
-		const VertexBuffer* vertex_buffer;
-		const VertexArray* vertex_array;
-		const IndexBuffer* index_buffer;
-	public:
-		Quad()
-		{
-			vertex_array = new VertexArray();
-			vertex_buffer = new VertexBuffer(vertices_array);
-			index_buffer = new IndexBuffer(indices, 6);
-
-			VertexBufferLayout vb_layout;
-			vb_layout.push<float>(3);
-			vertex_array->add_buffer(*vertex_buffer, vb_layout);
-			shader = new Shader("basic.shader");
-		}
-
-		~Quad()
-		{
-			delete shader;
-			delete vertex_buffer;
-			delete vertex_array;
-			delete index_buffer;
-
-		}
-
-		void draw(Renderer& renderer) const override
-		{
-			renderer.draw(*vertex_array, *index_buffer, *shader);
-		}
-	};
-
 	struct Camera {
+		std::shared_ptr<Transform> transform;
+
+		Camera()
+		{
+			transform = std::make_shared<Transform>();
+			transform->scale(1.25f);
+		}
+		~Camera()
+		{
+			std::cout << "Delete camera" << std::endl;
+		}
+
 		math::Mat4x4 get_projection() const {
 			const platform::Screen screen = platform::WindowManager::get_window().get_screen();
-			return math::Mat4x4(1).orthographic(- screen.width / 2.f, screen.width / 2.f, -screen.height / 2.f, screen.height / 2.f, -1, 1);
+			float aspect = (float)screen.height / (float)screen.width;
+			float width = 1920;
+			float height = 1920 * aspect;
+			return transform->get_world_to_local() * math::Mat4x4(1).orthographic(-width / 2.f, width / 2.f, -height / 2.f, height / 2.f, -1, 1);
 		}
 	};
+
+
 	class Scene
 	{
 	public:
-		std::vector<Renderable*> renderables;
-		Renderer* renderer;
-		Camera camera;
+		std::vector<std::shared_ptr<Renderable>> renderables;
+		std::shared_ptr<Renderer> renderer;
+		std::shared_ptr<Camera> camera;
+
 		Scene()
 		{
-			renderer = new Renderer();
+			renderer = std::make_shared<Renderer>();
+			camera = std::make_shared<Camera>();
 		}
 
 		~Scene()
 		{
-			delete renderer;
+			std::cout << "Delete scene" << std::endl;
 		}
 
-		const Camera& get_camera() const {
+		void set_camera(std::shared_ptr<Camera> camera)
+		{
+			this->camera = camera;
+		}
+
+		const std::shared_ptr<Camera> get_camera() const {
 			return camera;
 		}
 
-		void add_renderable(Renderable* renderable) {
-			renderable->set_scene(this);
+		void add_renderable(std::shared_ptr<Renderable> renderable) {
 			renderables.push_back(renderable);
 		}
 
@@ -87,10 +67,17 @@ namespace graphics {
 		{
 			std::cout << "Interpolation " << interpolation << std::endl;
 			renderer->prepare();
+			std::cout << "Draw #Renderables:" << renderables.size() << std::endl;
 			for (const auto renderable : renderables)
 			{
 				renderable->draw(*renderer);
 			}
 		}
+	};
+	namespace SceneManager
+	{
+		Scene* get_scene();
+		bool init();
+		void shutdown();
 	};
 }

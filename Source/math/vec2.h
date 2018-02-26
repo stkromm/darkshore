@@ -22,7 +22,7 @@ namespace math {
 
 		constexpr Vec2 operator*(const float scale) const { return  Vec2(x*scale, y*scale); }
 
-		constexpr float operator*(const Vec2& other) const { return  x*other.x + y*other.y; }
+		constexpr float operator*(const Vec2& other) const { return  x * other.x + y * other.y; }
 
 		constexpr Vec2 operator+(const Vec2& other) const { return add(*this, other); }
 		constexpr void operator+=(const Vec2& other) { x += other.x; y += other.y; }
@@ -33,4 +33,8 @@ namespace math {
 	};
 	constexpr Vec2 add(const Vec2& a, const Vec2& b) { return Vec2(a.x + b.x, a.y + b.y); }
 	constexpr float dot(const Vec2& a, const Vec2& b) { return a.x * b.x + a.y * b.y; }
+
+	constexpr bool is_nearly_zero(Vec2 vec) {
+		return is_nearly_zero(vec.x) && is_nearly_zero(vec.y);
+	}
 }

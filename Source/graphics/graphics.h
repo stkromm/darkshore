@@ -16,6 +16,7 @@ namespace graphics
 
 #else
 #define GLCall(x) x
+#define ASSERT(x) 
 #endif
 
 	void GLClearError();

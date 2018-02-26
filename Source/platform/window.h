@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <functional>
 
 #include "platform/platform.h"
 #include "math/vec2.h"
@@ -11,7 +12,7 @@ namespace platform {
 	constexpr uint32_t BORDERLESS_WINDOWED = 1;
 	constexpr uint32_t WINDOWED = 2;
 
-	using KeyCallback = void(*)(const size_t, const  size_t, const  size_t, const  size_t);
+	using KeyCallback = void(const size_t, const  size_t, const  size_t, const  size_t);
 	using CursorPositionCallback = void(*)(const double, const double);
 	using MouseButtonCallback = void(*)(const size_t, const size_t, const size_t);
 
@@ -24,7 +25,7 @@ namespace platform {
 	};
 	class Window {
 	public:
-		std::vector<KeyCallback> keyCallbacks;
+		std::vector<std::function<KeyCallback>> keyCallbacks;
 		std::vector<CursorPositionCallback> cursorPositionCallbacks;
 		std::vector<MouseButtonCallback> mouseButtonCallbacks;
 	private:
@@ -39,15 +40,16 @@ namespace platform {
 
 		const std::shared_ptr<Cursor> get_cursor();
 
-		const Screen& get_screen();
+		const Screen get_screen();
 
+		void poll_input();
 		void update();
 		void close();
 
 		void swap_buffers() const;
 		bool should_close() const;
 
-		void add_key_callback(KeyCallback keyCallback) {
+		void add_key_callback(std::function<KeyCallback> keyCallback) {
 			keyCallbacks.push_back(keyCallback);
 		}
 

@@ -26,11 +26,12 @@
     <Filter Include="Tests\Unit">
       <UniqueIdentifier>{a62065bb-8d65-4644-ae22-f65580647649}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="basic.shader">
-      <Filter>Ressourcendateien</Filter>
-    </None>
+    <Filter Include="Source\audio">
+      <UniqueIdentifier>{69e15998-b0f0-456f-af8a-6559a9daaf98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\scripting">
+      <UniqueIdentifier>{83640ed1-5c6b-4d43-893b-832355983baf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\game.h">
@@ -102,20 +103,41 @@
     <ClInclude Include="Source\math\vine_math.h">
       <Filter>Source\math</Filter>
     </ClInclude>
-    <ClInclude Include="platform\platform.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
     <ClInclude Include="Source\graphics\texture.h">
       <Filter>Source\graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\image.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="tiled_texture.h">
+    <ClInclude Include="Source\platform\platform.h">
+      <Filter>Source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sprite.h">
       <Filter>Source\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="sprite.h">
+    <ClInclude Include="Source\tiled_texture.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\tile_map.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\audio\music.h">
+      <Filter>Source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\scripting\script.h">
+      <Filter>Source\scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\render_manager.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\player.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\platform\file_handle.h">
+      <Filter>Source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\platform\asset.h">
+      <Filter>Source\platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +146,6 @@
     </ClCompile>
     <ClCompile Include="Source\transform.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\math\math.cpp">
-      <Filter>Source\math</Filter>
     </ClCompile>
     <ClCompile Include="Source\physics\rigid_body.cpp">
       <Filter>Source\physics</Filter>
@@ -158,11 +177,32 @@
     <ClCompile Include="Source\graphics\texture.cpp">
       <Filter>Source\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="tiled_texture.cpp">
+    <ClCompile Include="Source\sprite.cpp">
       <Filter>Source\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="sprite.cpp">
+    <ClCompile Include="Source\math\vine_math.cpp">
+      <Filter>Source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\audio\music.cpp">
+      <Filter>Source\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\scripting\script.cpp">
+      <Filter>Source\scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\renderer.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\scene.cpp">
+      <Filter>Source\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\game.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\platform\file_handle.cpp">
+      <Filter>Source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\platform\asset.cpp">
+      <Filter>Source\platform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

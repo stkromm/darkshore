@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <unordered_map>
 
 namespace graphics {
 	struct ShaderSource {
@@ -48,7 +49,6 @@ namespace graphics {
 
 	static ShaderSource parse_shader(const std::string file_path) {
 		std::ifstream stream(file_path);
-
 		std::string line;
 		std::stringstream shader_stream[2];
 
@@ -118,12 +118,14 @@ namespace graphics {
 		return program_id;
 	}
 
-	Shader::Shader(const char* file_path) {
-		const ShaderSource shader_source = parse_shader("basic.shader");
+	Shader::Shader(const char* shader_name) {
+		const ShaderSource shader_source = parse_shader(get_res_folder_path(AssetType::SHADER, shader_name));
+		std::cout << "Shader created" << std::endl;
 		id = create_shader(shader_source.vertex_source_code, shader_source.fragment_source_code);
 	}
 
 	Shader::~Shader() {
+		unbind();
 		GLCall(glDeleteProgram(id));
 	}
 
@@ -138,11 +140,8 @@ namespace graphics {
 
 }
 
-#include <unordered_map>
-
 using namespace graphics;
 
-std::unordered_map<std::string, int> location_look_up;
 
 
 void Shader::set_uniform_1i(const std::string name, int value) 
@@ -218,6 +217,7 @@ void Shader::set_uniform_vec3(const std::string name, math::Vec3 vec)
 	GLCall(glUniform3fv(get_uniform_location(name), 1, d));
 }
 
+std::unordered_map<std::string, int> location_look_up;
 int Shader::get_uniform_location(const std::string name) const {
 	auto lookup = location_look_up.find(name);
 	if (lookup != location_look_up.end()) {

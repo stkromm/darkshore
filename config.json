@@ -1,10 +1,11 @@
 {
-"window": {
-	"width": 1024,
-	"height": 720,
-	"title": "New Game",
-	"icon": "icon.png",
-	"cursor": "cursor.png",
-	"mode": 2
-}
+	"start-level": "map.tmx",
+	"window": {
+		"width": 1024,
+		"height": 720,
+		"title": "New Game",
+		"icon": "icon.png",
+		"cursor": "cursor.png",
+		"mode": 2
+	}
 }

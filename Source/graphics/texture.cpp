@@ -5,6 +5,7 @@
 namespace graphics {
 	Texture::Texture(std::string file_path) : file_path(file_path)
 	{
+		std::cout << "Load texture: " << file_path << std::endl;
 		RGBAImage image = RGBAImage(file_path);
 		GLCall(glGenTextures(1, &id));
 		bind();
@@ -22,6 +23,7 @@ namespace graphics {
 
 	Texture::~Texture()
 	{
+		unbind();
 		GLCall(glDeleteTextures(1,&id));
 	}
 

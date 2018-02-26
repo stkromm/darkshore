@@ -9,6 +9,7 @@
 			float x;
 			float y;
 			float z;
+			Vec3(float x, float y, float z) : x(x),y(y),z(z) {}
 			Vec3(const Vec3& copy) : x(copy.x), y(copy.y), z(copy.z) {};
 		};
 

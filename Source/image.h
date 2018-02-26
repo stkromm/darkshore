@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "types.h"
+#include "platform/asset.h"
 
 struct RGBAColor {
 private:

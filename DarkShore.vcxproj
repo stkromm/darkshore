@@ -75,12 +75,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Workspaces\VineEngine\Source;D:\Workspaces\VineEngine\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;D:\Workspaces\VineEngine\Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;DEBUG</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Workspaces\DarkShore\Source;D:\Workspaces\DarkShore\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;SFML_STATIC;%(PreprocessorDefinitions);GLEW_STATIC;DEBUG</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Workspaces\VineEngine\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua53.lib;winmm.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;ogg.lib;vorbis.lib;libtmxlite-s-d.lib;glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Workspaces\DarkShore\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -88,12 +89,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Workspaces\VineEngine\Source;D:\Workspaces\VineEngine\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;D:\Workspaces\VineEngine\Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Workspaces\DarkShore\Source;D:\Workspaces\DarkShore\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;DEBUG</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Workspaces\VineEngine\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Workspaces\DarkShore\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -103,14 +104,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Workspaces\VineEngine\Source;D:\Workspaces\VineEngine\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;D:\Workspaces\VineEngine\Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Workspaces\DarkShore\Source;D:\Workspaces\DarkShore\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Workspaces\VineEngine\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Workspaces\DarkShore\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -120,29 +121,28 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Workspaces\VineEngine\Source;D:\Workspaces\VineEngine\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;D:\Workspaces\VineEngine\Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Workspaces\DarkShore\Source;D:\Workspaces\DarkShore\Include;D:\Workspaces\VineEngine\GLFW;D:\Workspaces\VineEngine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Workspaces\VineEngine\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Workspaces\DarkShore\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="basic.shader" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="platform\platform.h" />
+    <ClInclude Include="Source\audio\music.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\graphics\graphics.h" />
     <ClInclude Include="Source\graphics\index_buffer.h" />
     <ClInclude Include="Source\graphics\renderable.h" />
     <ClInclude Include="Source\graphics\renderer.h" />
+    <ClInclude Include="Source\graphics\render_manager.h" />
     <ClInclude Include="Source\graphics\scene.h" />
     <ClInclude Include="Source\graphics\shader.h" />
     <ClInclude Include="Source\graphics\texture.h" />
+    <ClInclude Include="Source\graphics\tile_map.h" />
     <ClInclude Include="Source\graphics\vertex_array.h" />
     <ClInclude Include="Source\graphics\vertex_buffer.h" />
     <ClInclude Include="Source\image.h" />
@@ -157,28 +157,39 @@
     <ClInclude Include="Source\physics\collision.h" />
     <ClInclude Include="Source\physics\physics.h" />
     <ClInclude Include="Source\physics\rigid_body.h" />
+    <ClInclude Include="Source\platform\asset.h" />
+    <ClInclude Include="Source\platform\file_handle.h" />
+    <ClInclude Include="Source\platform\platform.h" />
     <ClInclude Include="Source\platform\window.h" />
+    <ClInclude Include="Source\player.h" />
+    <ClInclude Include="Source\scripting\script.h" />
+    <ClInclude Include="Source\sprite.h" />
+    <ClInclude Include="Source\tiled_texture.h" />
     <ClInclude Include="Source\transform.h" />
     <ClInclude Include="Source\types.h" />
-    <ClInclude Include="sprite.h" />
-    <ClInclude Include="tiled_texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Include\stb_image.cpp" />
+    <ClCompile Include="Source\audio\music.cpp" />
+    <ClCompile Include="Source\graphics\game.cpp" />
     <ClCompile Include="Source\graphics\graphics.cpp" />
     <ClCompile Include="Source\graphics\index_buffer.cpp" />
+    <ClCompile Include="Source\graphics\renderer.cpp" />
+    <ClCompile Include="Source\graphics\scene.cpp" />
     <ClCompile Include="Source\graphics\shader.cpp" />
     <ClCompile Include="Source\graphics\texture.cpp" />
     <ClCompile Include="Source\graphics\vertex_array.cpp" />
     <ClCompile Include="Source\graphics\vertex_buffer.cpp" />
     <ClCompile Include="Source\image.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\math\math.cpp" />
+    <ClCompile Include="Source\math\vine_math.cpp" />
     <ClCompile Include="Source\physics\rigid_body.cpp" />
+    <ClCompile Include="Source\platform\asset.cpp" />
+    <ClCompile Include="Source\platform\file_handle.cpp" />
     <ClCompile Include="Source\platform\window.cpp" />
+    <ClCompile Include="Source\scripting\script.cpp" />
+    <ClCompile Include="Source\sprite.cpp" />
     <ClCompile Include="Source\transform.cpp" />
-    <ClCompile Include="sprite.cpp" />
-    <ClCompile Include="tiled_texture.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

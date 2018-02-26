@@ -92,8 +92,14 @@ bool WindowManager::init() {
 	}
 	else {
 		global_window = new Window();
+
 		return true;
 	}
+}
+
+void on_resize(GLFWwindow* w, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }
 
 void WindowManager::shutdown() {
@@ -108,10 +114,14 @@ void Window::update() {
 	glfwPollEvents();
 }
 
+void Window::poll_input() {
+	glfwPollEvents();
+}
+
 void glfwKeyCallback(GLFWwindow* w, const int key, const int action, const int c, const int d) {
 	Window* window = static_cast<Window*>(glfwGetWindowUserPointer(w));
 	if (!window) return;
-	for (auto cb : window->keyCallbacks) {
+	for (auto& cb : window->keyCallbacks) {
 		cb(key, action, c, d);
 	}
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
@@ -152,14 +162,13 @@ const char* Window::get_clipboard_content() const {
 	return glfwGetClipboardString(window);
 }
 
-const Screen& Window::get_screen() {
+const Screen Window::get_screen() {
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
-	
-	return 
-		{width, height}
-	;
+
+	return { width, height };
 }
+
 void Window::recreate() {
 	if (window) {
 		glfwDestroyWindow(window);
@@ -179,7 +188,7 @@ void Window::recreate() {
 	glfwSetMouseButtonCallback(window, glfwMouseButtonCallback);
 	glfwSetCursor(window, cursor);
 	glfwSetWindowIcon(window, 1, icons);
-
+	glfwSetWindowSizeCallback(window, on_resize);
 }
 
 void Window::swap_buffers() const {

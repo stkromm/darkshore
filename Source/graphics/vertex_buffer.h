@@ -68,5 +68,6 @@ namespace graphics {
 		~VertexBuffer();
 
 		void bind() const;
+		void unbind() const;
 	};
 }

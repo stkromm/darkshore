@@ -25,4 +25,8 @@ namespace math {
 	constexpr float to_radians(float degrees) { return (float)(degrees * (PI * (1 / 180.0f))); }
 	constexpr float to_degrees(float radians) { return (float)(radians * (180.0f * (1 / PI))); }
 
+	constexpr bool is_nearly_zero(float val)
+	{
+		return val > 0.00000001f;
+	}
 }

@@ -7,6 +7,7 @@ graphics::IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count)
 }
 
 graphics::IndexBuffer::~IndexBuffer() {
+	unbind();
 	GLCall(glDeleteBuffers(1, &id));
 }
 

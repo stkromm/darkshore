@@ -13,10 +13,16 @@ graphics::VertexBuffer::VertexBuffer(std::vector<float> data) : VertexBuffer(dat
 
 graphics::VertexBuffer::~VertexBuffer()
 {
+	unbind();
 	GLCall(glDeleteBuffers(1, &id));
 }
 
 void graphics::VertexBuffer::bind() const
 {
 	GLCall(glBindBuffer(GL_ARRAY_BUFFER, id));
+}
+
+void graphics::VertexBuffer::unbind() const
+{
+	GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "math/vec2.h"
 #include "math/vec3.h"
 #include "math/vec4.h"
 #include "types.h"
@@ -145,6 +146,34 @@ namespace math {
 			return Mat4x4(data);
 		}
 
+		void set_rotation(float rotation)
+		{
+			float cos_phi = cosf(rotation);
+			float sin_phi = sinf(rotation);
+			elements[0] = cos_phi;
+			elements[4] = -sin_phi;
+			elements[1] = sin_phi;
+			elements[5] = cos_phi;
+		}
+
+		void set_translation(float x, float y, float z)
+		{
+			elements[3 * 4] = x;
+			elements[3 * 4 + 1] = y;
+			elements[3 * 4 + 2] = z;
+		}
+
+		void scale(float x, float y, float z)
+		{
+			elements[0] *= x;
+			elements[5] *= y;
+			elements[10] *= z;
+		}
+		void set_translation(math::Vec3 translation)
+		{
+			set_translation(translation.x, translation.y, translation.z);
+		}
+
 		Mat4x4 orthographic(const float left, const float right, const  float bottom, const float top, const float near, const float far) const
 		{
 			Mat4x4 result(1.0f);
@@ -206,7 +235,7 @@ namespace math {
 			return result;
 		}
 
-		float* data() 
+		float* data()
 		{
 			return elements;
 		}

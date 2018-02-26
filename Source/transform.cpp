@@ -1,57 +1,76 @@
 #include "transform.h"
 
-math::Mat4x4 Transform::get_local_to_world() const {
-	if (dirty) {
-		math::Mat4x4 local_to_world(1);
-		local_to_world.data()[12] = position.x;
-		local_to_world.data()[13] = position.y;
-		float cos_phi = cosf(rotation);
-		float sin_phi = sinf(rotation);
-		local_to_world.data()[0] = cos_phi;
-		local_to_world.data()[4] = -sin_phi;
-		local_to_world.data()[1] = sin_phi;
-		local_to_world.data()[5] = cos_phi;
-
-		cache_local_to_world = local_to_world;
-		dirty = false;
+math::Mat4x4 Transform::get_local_to_world() const
+{
+	if (dirty_local_to_world)
+	{
+		local_to_world.set_translation(position);
+		local_to_world.set_rotation(rotation);
+		local_to_world.scale(scale_factor.x, scale_factor.y, 1);
+		dirty_local_to_world = false;
 	}
-	if (parent) {
-		return cache_local_to_world * parent->get_local_to_world();
+	if (parent)
+	{
+		return local_to_world * parent->get_local_to_world();
 	}
-	else {
-		return cache_local_to_world;
+	else
+	{
+		return local_to_world;
 	}
 }
 
-math::Mat4x4 Transform::get_world_to_local() const {
-	if (dirty) {
-		math::Mat4x4 world_to_local(1);
-		world_to_local.data()[3 * 4] = -position.x;
-		world_to_local.data()[3 * 4 + 1] = -position.y;
-		float cos_phi = cosf(-rotation);
-		float sin_phi = sinf(-rotation);
-		world_to_local.data()[0] = cos_phi;
-		world_to_local.data()[4] = -sin_phi;
-		world_to_local.data()[1] = sin_phi;
-		world_to_local.data()[5] = cos_phi;
-
-		cache_world_to_local = world_to_local;
-		dirty = false;
+math::Mat4x4 Transform::get_world_to_local() const
+{
+	if (dirty_world_to_local)
+	{
+		world_to_local.set_translation(-position.x, -position.y, -position.z);
+		world_to_local.set_rotation(-rotation);
+		world_to_local.scale(1 / scale_factor.x, 1 / scale_factor.y, 1);
+		dirty_world_to_local = false;
 	}
-	if (parent) {
-		return parent->get_world_to_local() * cache_world_to_local;
+	if (parent)
+	{
+		return parent->get_world_to_local() * world_to_local;
 	}
-	else {
-		return cache_world_to_local;
+	else
+	{
+		return world_to_local;
 	}
 }
 
-void Transform::translate(math::Vec2 translation) {
-	dirty = true;
-	this->position += translation;
+void Transform::translate(const math::Vec2 translation)
+{
+	dirty_local_to_world = true;
+	dirty_world_to_local = true;
+	this->position.x += translation.x;
+	this->position.y += translation.y;
 }
 
-void Transform::rotate(float angle) {
+void Transform::set_position(const math::Vec2 position)
+{
+	this->position.x = position.x;
+	this->position.y = position.y;
+	dirty_local_to_world = true;
+}
+
+void Transform::rotate(const float angle)
+{
 	rotation += angle;
-	dirty = true;
+	dirty_local_to_world = true;
+	dirty_world_to_local = true;
+}
+
+void Transform::scale(const float scale_factor)
+{
+	this->scale_factor = this->scale_factor * scale_factor;
+	dirty_local_to_world = true;
+	dirty_world_to_local = true;
+}
+
+void Transform::scale(const float scale_x, const float scale_y)
+{
+	scale_factor.x = scale_factor.x * scale_x;
+	scale_factor.y = scale_factor.y * scale_y;
+	dirty_local_to_world = true;
+	dirty_world_to_local = true;
 }

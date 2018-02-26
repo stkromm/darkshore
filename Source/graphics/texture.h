@@ -3,12 +3,13 @@
 #include <string>
 #include <memory>
 
-#include "graphics\graphics.h"
+#include "graphics/graphics.h"
+#include "platform/asset.h"
 #include "image.h"
 
 namespace graphics
 {
-	class Texture
+	class Texture : public Asset
 	{
 	private:
 		unsigned int id;
@@ -16,6 +17,11 @@ namespace graphics
 
 		unsigned int width, height;
 	public:
+		static AssetType get_resource_type()
+		{
+			return AssetType::IMAGE;
+		}
+
 		Texture(const std::string file_path);
 		~Texture();
 
