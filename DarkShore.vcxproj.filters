@@ -20,12 +20,6 @@
     <Filter Include="Source\platform">
       <UniqueIdentifier>{ffe0fdb7-c9ee-40ff-b401-d7c15a1cc9d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tests">
-      <UniqueIdentifier>{aa55474e-a35b-438e-b102-5825ab1ea858}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Tests\Unit">
-      <UniqueIdentifier>{a62065bb-8d65-4644-ae22-f65580647649}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\audio">
       <UniqueIdentifier>{69e15998-b0f0-456f-af8a-6559a9daaf98}</UniqueIdentifier>
     </Filter>

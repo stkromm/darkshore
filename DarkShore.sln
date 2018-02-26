@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DarkShore", "DarkShore.vcxproj", "{6496F53A-10B4-48B1-BB2D-55F6F94A6E11}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tmxlite", "Dependencies\tmxlite\tmxlite\tmxlite.vcxproj", "{0BC0C535-FEBB-4A83-8197-AF74FA26E100}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tmxlite", "Dependencies\tmxlite\tmxlite.vcxproj", "{0BC0C535-FEBB-4A83-8197-AF74FA26E100}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
