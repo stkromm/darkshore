@@ -36,7 +36,7 @@ public:
 	template<class C>
 	std::shared_ptr<C> get_component() const
 	{
-		std::shared_ptr<C> component = std::static_pointer_cast<C>(components.find(C::get_type())->second);
+		std::shared_ptr<C> component = std::reinterpret_pointer_cast<C>(components.find(C::get_type())->second);
 		return component;
 	}
 

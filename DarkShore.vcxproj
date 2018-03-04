@@ -139,6 +139,7 @@
     <ClInclude Include="Source\audio\music.h" />
     <ClInclude Include="Source\camera_component.h" />
     <ClInclude Include="Source\component.h" />
+    <ClInclude Include="Source\config.hpp" />
     <ClInclude Include="Source\entity.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\graphics\graphics.h" />

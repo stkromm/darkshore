@@ -169,6 +169,9 @@
     <ClInclude Include="Source\animation_manager.h">
       <Filter>Source\animation</Filter>
     </ClInclude>
+    <ClInclude Include="Source\config.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">

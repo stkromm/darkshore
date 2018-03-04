@@ -41,7 +41,7 @@ public:
 	template<class T>
 	std::shared_ptr<T> find_by_tag(std::string tag) const
 	{
-		std::shared_ptr<T> obj = std::static_pointer_cast<T>(tagged_objects.find(tag)->second);
+		std::shared_ptr<T> obj = std::reinterpret_pointer_cast<T>(tagged_objects.find(tag)->second);
 		return obj;
 	}
 

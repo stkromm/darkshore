@@ -89,8 +89,8 @@ namespace physics {
 		
 		void add_collider(CollisionBody collider)
 		{
-			collision_bodies.push_back(collider);
 			hull.merge(collider.hull);
+			collision_bodies.push_back(std::move(collider));
 		}
 
 		void remove_collider(CollisionBody collider)
