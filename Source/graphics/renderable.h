@@ -10,7 +10,7 @@ namespace graphics {
 	
 	public:
 
-		virtual void draw(Renderer& renderer) const {
+		virtual void draw(const float interpolation, Renderer& renderer) const {
 
 		}
 	};

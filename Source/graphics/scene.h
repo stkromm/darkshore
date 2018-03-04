@@ -11,12 +11,14 @@ namespace graphics {
 
 	struct Camera {
 		std::shared_ptr<Transform> transform;
+		float zoom = 1.25f;
 
 		Camera()
 		{
 			transform = std::make_shared<Transform>();
-			transform->scale(1.25f);
+			transform->scale(zoom);
 		}
+
 		~Camera()
 		{
 			std::cout << "Delete camera" << std::endl;
@@ -65,12 +67,13 @@ namespace graphics {
 
 		void render(const float interpolation)
 		{
-			std::cout << "Interpolation " << interpolation << std::endl;
+			if (!get_camera()) return;
+			//std::cout << "Interpolation " << interpolation << std::endl;
 			renderer->prepare();
-			std::cout << "Draw #Renderables:" << renderables.size() << std::endl;
+			//std::cout << "Draw #Renderables:" << renderables.size() << std::endl;
 			for (const auto renderable : renderables)
 			{
-				renderable->draw(*renderer);
+				renderable->draw(interpolation, *renderer);
 			}
 		}
 	};

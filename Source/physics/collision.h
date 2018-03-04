@@ -2,7 +2,7 @@
 
 #include "math\vec2.h"
 #include "math\vec3.h"
-#include "rigid_body.h"
+#include "intersection.h"
 
 namespace physics {
 	struct Contact {

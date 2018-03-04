@@ -189,7 +189,7 @@ namespace graphics {
 		{
 			std::cout << "Delete tilemap" << std::endl;
 		} 
-		void draw(Renderer& renderer) const override
+		void draw(const float interpolation, Renderer& renderer) const override
 		{
 			for (auto& layer : layers) {
 				shader->bind();

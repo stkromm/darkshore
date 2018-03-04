@@ -27,6 +27,16 @@ namespace math {
 
 	constexpr bool is_nearly_zero(float val)
 	{
-		return val > 0.00000001f;
+		return val < 0.000001f && val > -0.000001f;
+	}
+
+	constexpr float lerp(float a, float b, float lerp)
+	{
+		return a + (b - a) * lerp;
+	}
+
+	constexpr float abs(float val)
+	{
+		return val > 0.f ? val : -val;
 	}
 }

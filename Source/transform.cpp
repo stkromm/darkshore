@@ -19,6 +19,41 @@ math::Mat4x4 Transform::get_local_to_world() const
 	}
 }
 
+void Transform::update()
+{
+	if (dirty_local_to_world)
+	{
+		local_to_world.set_translation(position);
+		local_to_world.set_rotation(rotation);
+		local_to_world.scale(scale_factor.x, scale_factor.y, 1);
+		dirty_local_to_world = false;
+	}
+	if (dirty_world_to_local)
+	{
+		world_to_local.set_translation(-position.x, -position.y, -position.z);
+		world_to_local.set_rotation(-rotation);
+		world_to_local.scale(1 / scale_factor.x, 1 / scale_factor.y, 1);
+		dirty_world_to_local = false;
+	}
+}
+
+math::Mat4x4  Transform::get_local_to_world(float interpolate) const
+{
+	previous_local_to_world = local_to_world;
+	math::Mat4x4 calc = get_local_to_world();
+	if (interpolate > 0 && interpolate < 1)
+	{
+		if (parent)
+			return previous_local_to_world.lerp(local_to_world, interpolate) * parent->get_local_to_world(interpolate);
+		else
+			return previous_local_to_world.lerp(local_to_world, interpolate);
+	}
+	else
+	{
+		return calc;
+	}
+}
+
 math::Mat4x4 Transform::get_world_to_local() const
 {
 	if (dirty_world_to_local)
@@ -51,6 +86,7 @@ void Transform::set_position(const math::Vec2 position)
 	this->position.x = position.x;
 	this->position.y = position.y;
 	dirty_local_to_world = true;
+	dirty_world_to_local = true;
 }
 
 void Transform::rotate(const float angle)

@@ -235,6 +235,15 @@ namespace math {
 			return result;
 		}
 
+		Mat4x4 lerp(Mat4x4 other, float lerp) {
+			Mat4x4 result(1);
+			result.elements[3 * 4] = math::lerp(elements[3 * 4], other.elements[3 * 4], lerp);
+			result.elements[3 * 4 + 1] = math::lerp(elements[3 * 4 + 1], other.elements[3 * 4 + 1], lerp);
+			result.elements[3 * 4 + 2] = math::lerp(elements[3 * 4 + 2], other.elements[3 * 4 + 2], lerp);
+
+			return result;
+		}
+
 		float* data()
 		{
 			return elements;

@@ -5,6 +5,7 @@
 namespace math {
 	struct Vec2;
 
+	constexpr Vec2 abs(const Vec2 vec);
 	constexpr Vec2 add(const Vec2& a, const Vec2& b);
 	constexpr float dot(const Vec2& a, const Vec2& b);
 
@@ -34,6 +35,10 @@ namespace math {
 	constexpr Vec2 add(const Vec2& a, const Vec2& b) { return Vec2(a.x + b.x, a.y + b.y); }
 	constexpr float dot(const Vec2& a, const Vec2& b) { return a.x * b.x + a.y * b.y; }
 
+	constexpr Vec2 abs(const Vec2 vec)
+	{
+		return Vec2{ abs(vec.x), abs(vec.y) };
+	}
 	constexpr bool is_nearly_zero(Vec2 vec) {
 		return is_nearly_zero(vec.x) && is_nearly_zero(vec.y);
 	}

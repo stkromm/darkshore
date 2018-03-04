@@ -23,7 +23,7 @@ public:
 	////////////////////////////////////////////////////////////
 	signed long long read(void* data, signed long long size) override
 	{
-		resource_handle.get_file_raw(data, size);
+		resource_handle.get_file_raw(data, (size_t)size);
 	}
 
 	////////////////////////////////////////////////////////////

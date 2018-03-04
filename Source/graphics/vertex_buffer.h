@@ -67,6 +67,7 @@ namespace graphics {
 		VertexBuffer(std::vector<float> data);
 		~VertexBuffer();
 
+		void update(const void* data, unsigned int size);
 		void bind() const;
 		void unbind() const;
 	};

@@ -17,6 +17,12 @@ graphics::VertexBuffer::~VertexBuffer()
 	GLCall(glDeleteBuffers(1, &id));
 }
 
+void graphics::VertexBuffer::update(const void* data, unsigned int size)
+{
+	bind();
+	GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
+}
+
 void graphics::VertexBuffer::bind() const
 {
 	GLCall(glBindBuffer(GL_ARRAY_BUFFER, id));

@@ -181,6 +181,7 @@ void Window::recreate() {
 	}
 
 	glfwMakeContextCurrent(window);
+	glfwSwapInterval(1);
 	glfwSetWindowPos(window, 0, 0);
 	glfwSetWindowUserPointer(window, this);
 	glfwSetKeyCallback(window, glfwKeyCallback);

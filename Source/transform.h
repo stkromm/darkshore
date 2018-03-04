@@ -12,6 +12,9 @@ private:
 	mutable bool dirty_local_to_world = true;
 	mutable bool dirty_world_to_local = true;
 
+
+	mutable math::Mat4x4 previous_local_to_world;
+
 	mutable math::Mat4x4 local_to_world;
 	mutable math::Mat4x4 world_to_local;
 	std::shared_ptr<Transform> parent;
@@ -28,7 +31,8 @@ public:
 		parent(nullptr),
 		position({ 0,0,0 }),
 		rotation(0),
-		scale_factor({ 1,1 })
+		scale_factor({ 1,1 }),
+		previous_local_to_world(math::Mat4x4(1))
 	{
 	}
 	~Transform()
@@ -36,6 +40,7 @@ public:
 		std::cout << "Delete transform" << std::endl;
 	}
 	math::Mat4x4 get_local_to_world() const;
+	math::Mat4x4 get_local_to_world(float interpolate) const;
 	math::Mat4x4 get_world_to_local() const;
 
 	void translate(const math::Vec2 translation);
@@ -64,14 +69,12 @@ public:
 		return scale_factor;
 	}
 
-	void set_interpolation_velocity(math::Vec2 velocity) 
-	{
-	}
+	void update();
 
 	std::string to_string() const
 	{
 		std::stringstream ss;
-		ss << "Transform(position:" << "" << ",rotation:" << rotation << ",scale:";
+		ss << "Transform(position:" << position.x << "," << position.y << "" << ",rotation:" << rotation << ",scale:";
 		return ss.str();
 	}
 };

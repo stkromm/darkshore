@@ -48,6 +48,10 @@ namespace graphics {
 		{
 			std::cout << "Delete sprite" << std::endl;
 		}
+		std::shared_ptr<Texture> get_texture()
+		{
+			return texture;
+		}
 		Sprite(std::shared_ptr<Transform> transform, math::Vec2 offset, math::Vec2 size, graphics::TexturePatch& patch, unsigned int color = 0x000000FF) :
 			transform(transform), texture(patch.texture), patch(patch)
 		{
@@ -94,7 +98,22 @@ namespace graphics {
 			}
 		}
 
-		void draw(Renderer& renderer) const override
+		void change_patch(TexturePatch& patch)
+		{
+			vertices[0].tc_x = patch.x1;
+			vertices[0].tc_y = patch.y1;
+			vertices[1].tc_x = patch.x2;
+			vertices[1].tc_y = patch.y1;
+			vertices[2].tc_x = patch.x2;
+			vertices[2].tc_y = patch.y2;
+			vertices[3].tc_x = patch.x1;
+			vertices[3].tc_y = patch.y2;
+
+			vertex_array->bind();
+			vertex_buffer->update(vertices, sizeof(Vertex) * 4);
+		}
+
+		void draw(const float interpolation, Renderer& renderer) const override
 		{
 			shader->bind();
 			shader->set_uniform_mat4x4("pr_matrix", graphics::SceneManager::get_scene()->get_camera()->get_projection());

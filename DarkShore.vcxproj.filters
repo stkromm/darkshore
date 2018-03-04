@@ -26,6 +26,9 @@
     <Filter Include="Source\scripting">
       <UniqueIdentifier>{83640ed1-5c6b-4d43-893b-832355983baf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\animation">
+      <UniqueIdentifier>{b2ca671c-0499-4aa4-b84d-6c4a72cee6f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\game.h">
@@ -133,6 +136,39 @@
     <ClInclude Include="Source\platform\asset.h">
       <Filter>Source\platform</Filter>
     </ClInclude>
+    <ClInclude Include="Source\sprite_component.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\component.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\entity.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\rigid_body_component.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics\intersection.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics\collision_body.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\movement_controller_component.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\camera_component.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\animation\animation_state_machine.h">
+      <Filter>Source\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\sprite_animation_component.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\animation_manager.h">
+      <Filter>Source\animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -197,6 +233,12 @@
     </ClCompile>
     <ClCompile Include="Source\platform\asset.cpp">
       <Filter>Source\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\component.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\entity.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

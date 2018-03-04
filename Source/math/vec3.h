@@ -11,6 +11,9 @@
 			float z;
 			Vec3(float x, float y, float z) : x(x),y(y),z(z) {}
 			Vec3(const Vec3& copy) : x(copy.x), y(copy.y), z(copy.z) {};
+			Vec3 operator+(const Vec3& other) const {
+				return Vec3(x + other.x, y + other.y, z + other.z);
+			}
 		};
 
 		struct ConstVec3 {
