@@ -1,8 +1,7 @@
 #pragma once
 
 #include "component.h"
-#include "animation/animation_state_machine.h"
-#include "animation_manager.h"
+#include "animation/animation_manager.h"
 
 class SpriteAnimationComponent : public Component
 {

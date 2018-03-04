@@ -10,7 +10,7 @@
 #include "platform/window.h"
 #include "platform/asset.h"
 #include "physics/physics.h"
-#include "animation_manager.h"
+#include "animation/animation_manager.h"
 
 #include "game.h"
 #include "player.h"

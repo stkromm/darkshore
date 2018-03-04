@@ -7,6 +7,7 @@
 #include "movement_controller_component.h"
 #include "camera_component.h"
 #include "sprite_animation_component.h"
+#include "sprite_animation_clip.h"
 #include "game.h"
 
 class Pawn : public Entity
@@ -58,7 +59,7 @@ public:
 		std::vector<Frame> frames = {
 			{ tiled_texture[0][0], 200 },{ tiled_texture[1][0], 200 },{ tiled_texture[2][0], 200 },{ tiled_texture[1][0], 200 }
 		};
-		std::shared_ptr<AnimationClip> clip = std::make_shared<AnimationClip>(
+		std::shared_ptr<AnimationClip> clip = std::make_shared<SpriteAnimationClip>(
 			sprite, frames);
 		std::shared_ptr<AnimationStateMachine> animation_state_machine = std::make_shared<AnimationStateMachine>();
 		animation_state_machine->add_state({ "idle", clip});
@@ -106,12 +107,12 @@ public:
 		std::vector<Frame> frames = {
 			{ tiled_texture[0][0], 200 },{ tiled_texture[1][0], 200 },{ tiled_texture[2][0], 200 },{ tiled_texture[1][0], 200 }
 		};
-		std::shared_ptr<AnimationClip> clip = std::make_shared<AnimationClip>(
+		std::shared_ptr<AnimationClip> clip = std::make_shared<SpriteAnimationClip>(
 			sprite, frames);
 		std::vector<Frame> frames2 = {
 			{ tiled_texture[0][1], 200 },{ tiled_texture[1][1], 200 },{ tiled_texture[2][1], 200 },{ tiled_texture[1][1], 200 }
 		};
-		std::shared_ptr<AnimationClip> clip2 = std::make_shared<AnimationClip>(
+		std::shared_ptr<AnimationClip> clip2 = std::make_shared<SpriteAnimationClip>(
 			sprite, frames2);
 		std::shared_ptr<AnimationStateMachine> animation_state_machine = std::make_shared<AnimationStateMachine>();
 		animation_state_machine->add_state({ "idle", clip, "idle2" });

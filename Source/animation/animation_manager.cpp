@@ -1,12 +1,6 @@
-#pragma once
+#include "animation_manager.h"
 
-#include <string>
-#include <omp.h>
-
-#include "animation/animation_state_machine.h"
-
-namespace AnimationManager
-{
+namespace AnimationManager {
 	static std::vector<std::shared_ptr<AnimationStateMachine>> animations = {};
 
 	bool init() {

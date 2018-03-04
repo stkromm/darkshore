@@ -134,8 +134,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\animation\animation_clip.h" />
+    <ClInclude Include="Source\animation\animation_manager.h" />
     <ClInclude Include="Source\animation\animation_state_machine.h" />
-    <ClInclude Include="Source\animation_manager.h" />
     <ClInclude Include="Source\audio\music.h" />
     <ClInclude Include="Source\camera_component.h" />
     <ClInclude Include="Source\component.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Source\rigid_body_component.h" />
     <ClInclude Include="Source\scripting\script.h" />
     <ClInclude Include="Source\sprite.h" />
+    <ClInclude Include="Source\sprite_animation_clip.h" />
     <ClInclude Include="Source\sprite_animation_component.h" />
     <ClInclude Include="Source\sprite_component.h" />
     <ClInclude Include="Source\tiled_texture.h" />
@@ -184,6 +186,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Include\stb_image.cpp" />
+    <ClCompile Include="Source\animation\animation_manager.cpp" />
+    <ClCompile Include="Source\animation\animation_state_machine.cpp" />
     <ClCompile Include="Source\audio\music.cpp" />
     <ClCompile Include="Source\component.cpp" />
     <ClCompile Include="Source\entity.cpp" />
