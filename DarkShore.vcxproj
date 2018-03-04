@@ -163,6 +163,7 @@
     <ClInclude Include="Source\math\vec4.h" />
     <ClInclude Include="Source\math\vine_math.h" />
     <ClInclude Include="Source\movement_controller_component.h" />
+    <ClInclude Include="Source\music\input_stream.h" />
     <ClInclude Include="Source\object.h" />
     <ClInclude Include="Source\physics\collision.h" />
     <ClInclude Include="Source\physics\collision_body.h" />
@@ -186,8 +187,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Include\stb_image.cpp" />
-    <ClCompile Include="Source\animation\animation_manager.cpp" />
-    <ClCompile Include="Source\animation\animation_state_machine.cpp" />
+    <ClCompile Include="Source\animation\src\animation_manager.cpp" />
+    <ClCompile Include="Source\animation\src\animation_state_machine.cpp" />
     <ClCompile Include="Source\audio\music.cpp" />
     <ClCompile Include="Source\component.cpp" />
     <ClCompile Include="Source\entity.cpp" />

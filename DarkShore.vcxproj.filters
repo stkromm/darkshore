@@ -29,6 +29,9 @@
     <Filter Include="Source\animation">
       <UniqueIdentifier>{b2ca671c-0499-4aa4-b84d-6c4a72cee6f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\animation\private">
+      <UniqueIdentifier>{418fb9b2-4151-46c7-9909-16982cedaa47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\game.h">
@@ -160,23 +163,26 @@
     <ClInclude Include="Source\camera_component.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\animation\animation_state_machine.h">
-      <Filter>Source\animation</Filter>
-    </ClInclude>
     <ClInclude Include="Source\sprite_animation_component.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Source\config.hpp">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\animation\animation_clip.h">
-      <Filter>Source\animation</Filter>
-    </ClInclude>
     <ClInclude Include="Source\sprite_animation_clip.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Source\animation\animation_clip.h">
+      <Filter>Source\animation</Filter>
+    </ClInclude>
     <ClInclude Include="Source\animation\animation_manager.h">
       <Filter>Source\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\animation\animation_state_machine.h">
+      <Filter>Source\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\music\input_stream.h">
+      <Filter>Source\audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -249,11 +255,11 @@
     <ClCompile Include="Source\entity.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\animation\animation_state_machine.cpp">
-      <Filter>Source\animation</Filter>
+    <ClCompile Include="Source\animation\src\animation_manager.cpp">
+      <Filter>Source\animation\private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\animation\animation_manager.cpp">
-      <Filter>Source\animation</Filter>
+    <ClCompile Include="Source\animation\src\animation_state_machine.cpp">
+      <Filter>Source\animation\private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

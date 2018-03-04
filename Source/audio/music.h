@@ -1,8 +1,6 @@
 #pragma once
 
-#include <string>
-#include "platform/asset.h"
-#include "SFML/Audio.hpp"
+#include "music/input_stream.h"
 
 namespace audio
 {

@@ -9,7 +9,7 @@ class SpriteAnimationComponent : public Component
 public:
 	SpriteAnimationComponent(std::shared_ptr<AnimationStateMachine> animation) : animation(animation)
 	{
-		AnimationManager::add_animation(std::move(animation));
+		AnimationManager::add_animation(animation);
 	}
 
 	static std::shared_ptr<ComponentType> get_type()

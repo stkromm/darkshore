@@ -24,4 +24,9 @@ namespace AnimationManager {
 	{
 		animations.push_back(animation);
 	}
+
+	void remove_animation(std::shared_ptr<AnimationStateMachine> animation)
+	{
+		//
+	}
 }

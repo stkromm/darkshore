@@ -75,6 +75,6 @@ public:
 	{
 		std::stringstream ss;
 		ss << "Transform(position:" << position.x << "," << position.y << "" << ",rotation:" << rotation << ",scale:";
-		return ss.str();
+		return std::move(ss.str());
 	}
 };

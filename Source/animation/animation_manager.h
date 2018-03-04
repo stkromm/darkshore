@@ -11,4 +11,5 @@ namespace AnimationManager
 	void shutdown();
 
 	void add_animation(std::shared_ptr<AnimationStateMachine> animation);
+	void remove_animation(std::shared_ptr<AnimationStateMachine> animation);
 }
