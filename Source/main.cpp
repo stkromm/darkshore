@@ -7,13 +7,14 @@
 
 #include "scripting/script.h"
 #include "graphics/render_manager.h"
-#include "platform/window.h"
+#include "platform/window_manager.h"
 #include "platform/asset.h"
 #include "physics/physics.h"
 #include "animation/animation_manager.h"
 
-#include "game.h"
-#include "player.h"
+#include "core/game.h"
+#include "gameplay/player.h"
+#include "tilemap/level_loader.h"
 
 int main(const int argc, char** argv) {
 	std::cout << "Vine Engine started" << std::endl;
@@ -44,7 +45,7 @@ int main(const int argc, char** argv) {
 	{
 		return -1;
 	}
-	if (!physics::PhysicSimulation::init())
+	if (!physics::init())
 	{
 		return -1;
 	}
@@ -56,7 +57,7 @@ int main(const int argc, char** argv) {
 	Game* game = new Game();
 	std::cout << "Load level" << std::endl;
 	std::string map_path = settings["start-level"];
-	game->load_level(map_path);
+	load_level(game, map_path);
 
 	game->add_object<Player>();
 	for(int i = 0; i < 10; ++i)
@@ -76,8 +77,9 @@ int main(const int argc, char** argv) {
 		while (loops < game->MAX_FRAME_SKIP &&
 			std::chrono::high_resolution_clock::now() > game->frame_fixed_end)
 		{
+			physics::tick(game->TICK_DELTA_MILLIS * 0.001f *0.5f);
 			game->simulate_step();
-			physics::PhysicSimulation::tick(game->TICK_DELTA_MILLIS * 0.001f);
+			physics::tick(game->TICK_DELTA_MILLIS * 0.001f *0.5f);
 			escaped_time += game->TICK_DELTA_MILLIS;
 			loops++;
 		}
@@ -90,7 +92,7 @@ int main(const int argc, char** argv) {
 	delete game;
 
 	AnimationManager::shutdown();
-	physics::PhysicSimulation::shutdown();
+	physics::shutdown();
 	scripting::ScriptManager::shutdown();
 	graphics::SceneManager::shutdown();
 	graphics::RenderManager::shutdown();

@@ -11,7 +11,7 @@ uniform mat4 vw_matrix;
 out vec2 tex_coord;
 out vec4 tint;
 
-void main() 
+void main()
 {
 	//gl_Position = pr_matrix * position;
 	gl_Position = pr_matrix * vw_matrix * position;
@@ -29,12 +29,13 @@ in vec4 tint;
 
 uniform sampler2D tex;
 
-void main() 
+void main()
 {
 	//color = vec4(0, 1, 0, 1);
 	//color = texture(tex, tex_coord);
 
 	color = texture(tex, tex_coord);
+	//color += tint;
 	if (color.a == 0)
 	{
 		discard;

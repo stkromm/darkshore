@@ -2,27 +2,16 @@
 
 #include <string>
 
-#include "platform/asset.h"
+#include "core/types.h"
+#include "platform/resource_handle.h"
 
 struct RGBAColor {
 private:
-	unsigned int rgba;
+	uint32_t rgba;
 public:
-	constexpr RGBAColor(unsigned int color) : rgba(color) {}
+	constexpr RGBAColor(uint32_t color) : rgba(color) {}
 	constexpr int color() {
 		return rgba;
-	}
-	constexpr byte red() {
-		return (byte)(rgba >> 24 & 0xFF);
-	}
-	constexpr byte green() {
-		return (byte)(rgba >> 16 & 0xFF);
-	}
-	constexpr byte blue() {
-		return (byte)(rgba >> 8 & 0xFF);
-	}
-	constexpr byte alpha() {
-		return (byte)(rgba & 0xFF);
 	}
 };
 
@@ -55,6 +44,6 @@ public:
 	}
 
 	RGBAColor operator[](size_t index) const {
-		return { *((unsigned int*)pixels + index) };
+		return { *((uint32_t*)pixels + index) };
 	}
 };

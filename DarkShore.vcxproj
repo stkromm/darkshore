@@ -18,6 +18,107 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Include\stb_image.cpp" />
+    <ClCompile Include="Source\animation\private\animation_manager.cpp" />
+    <ClCompile Include="Source\animation\private\animation_state.cpp" />
+    <ClCompile Include="Source\animation\private\animation_state_machine.cpp" />
+    <ClCompile Include="Source\audio\private\music.cpp" />
+    <ClCompile Include="Source\core\component.cpp" />
+    <ClCompile Include="Source\core\entity.cpp" />
+    <ClCompile Include="Source\core\game.cpp" />
+    <ClCompile Include="Source\core\math\vine_math.cpp" />
+    <ClCompile Include="Source\core\transform.cpp" />
+    <ClCompile Include="Source\graphics\private\graphics.cpp" />
+    <ClCompile Include="Source\graphics\private\index_buffer.cpp" />
+    <ClCompile Include="Source\graphics\private\renderer.cpp" />
+    <ClCompile Include="Source\graphics\private\scene.cpp" />
+    <ClCompile Include="Source\graphics\private\shader.cpp" />
+    <ClCompile Include="Source\graphics\private\sprite.cpp" />
+    <ClCompile Include="Source\graphics\private\texture.cpp" />
+    <ClCompile Include="Source\graphics\private\vertex_array.cpp" />
+    <ClCompile Include="Source\graphics\private\vertex_buffer.cpp" />
+    <ClCompile Include="Source\image.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\physics\private\aabb_hull.cpp" />
+    <ClCompile Include="Source\physics\private\intersection.cpp" />
+    <ClCompile Include="Source\physics\private\physics_simulation.cpp" />
+    <ClCompile Include="Source\physics\private\rigid_body.cpp" />
+    <ClCompile Include="Source\platform\private\asset_manager.cpp" />
+    <ClCompile Include="Source\platform\private\resource_handle.cpp" />
+    <ClCompile Include="Source\platform\private\window.cpp" />
+    <ClCompile Include="Source\platform\private\window_manager.cpp" />
+    <ClCompile Include="Source\scripting\private\script.cpp" />
+    <ClCompile Include="Source\scripting\private\script_manager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\stb_image.h" />
+    <ClInclude Include="Source\animation\animation_state.h" />
+    <ClInclude Include="Source\animation\animation_clip.h" />
+    <ClInclude Include="Source\animation\animation_manager.h" />
+    <ClInclude Include="Source\animation\animation_state_machine.h" />
+    <ClInclude Include="Source\audio\music.h" />
+    <ClInclude Include="Source\audio\private\input_stream.h" />
+    <ClInclude Include="Source\core\component.h" />
+    <ClInclude Include="Source\core\component_type.h" />
+    <ClInclude Include="Source\core\config.hpp" />
+    <ClInclude Include="Source\core\entity.h" />
+    <ClInclude Include="Source\core\game.h" />
+    <ClInclude Include="Source\core\math\mat4x4.h" />
+    <ClInclude Include="Source\core\math\vec2.h" />
+    <ClInclude Include="Source\core\math\vec3.h" />
+    <ClInclude Include="Source\core\math\vine_math.h" />
+    <ClInclude Include="Source\core\object.h" />
+    <ClInclude Include="Source\core\transform.h" />
+    <ClInclude Include="Source\core\types.h" />
+    <ClInclude Include="Source\gameplay\camera_component.h" />
+    <ClInclude Include="Source\gameplay\movement_controller_component.h" />
+    <ClInclude Include="Source\gameplay\player.h" />
+    <ClInclude Include="Source\gameplay\rigid_body_component.h" />
+    <ClInclude Include="Source\gameplay\sprite_animation_clip.h" />
+    <ClInclude Include="Source\gameplay\sprite_animation_component.h" />
+    <ClInclude Include="Source\gameplay\sprite_component.h" />
+    <ClInclude Include="Source\graphics\graphics.h" />
+    <ClInclude Include="Source\graphics\index_buffer.h" />
+    <ClInclude Include="Source\graphics\renderable.h" />
+    <ClInclude Include="Source\graphics\renderer.h" />
+    <ClInclude Include="Source\graphics\render_manager.h" />
+    <ClInclude Include="Source\graphics\scene.h" />
+    <ClInclude Include="Source\graphics\shader.h" />
+    <ClInclude Include="Source\graphics\sprite.h" />
+    <ClInclude Include="Source\graphics\sprite_vertex.h" />
+    <ClInclude Include="Source\graphics\texture.h" />
+    <ClInclude Include="Source\graphics\tiled_texture.h" />
+    <ClInclude Include="Source\graphics\vertex_array.h" />
+    <ClInclude Include="Source\graphics\vertex_buffer.h" />
+    <ClInclude Include="Source\graphics\vertex_buffer_layout.h" />
+    <ClInclude Include="Source\image.h" />
+    <ClInclude Include="Source\json.h" />
+    <ClInclude Include="Source\physics\aabb_hull.h" />
+    <ClInclude Include="Source\physics\collision_body.h" />
+    <ClInclude Include="Source\physics\intersection.h" />
+    <ClInclude Include="Source\physics\physics.h" />
+    <ClInclude Include="Source\physics\private\contact.h" />
+    <ClInclude Include="Source\physics\rigid_body.h" />
+    <ClInclude Include="Source\platform\asset.h" />
+    <ClInclude Include="Source\platform\asset_manager.h" />
+    <ClInclude Include="Source\platform\asset_types.h" />
+    <ClInclude Include="Source\platform\cursor.h" />
+    <ClInclude Include="Source\platform\resource_handle.h" />
+    <ClInclude Include="Source\platform\platform.h" />
+    <ClInclude Include="Source\platform\window.h" />
+    <ClInclude Include="Source\platform\window_manager.h" />
+    <ClInclude Include="Source\scripting\private\script_manager_state.h" />
+    <ClInclude Include="Source\scripting\script.h" />
+    <ClInclude Include="Source\scripting\script_manager.h" />
+    <ClInclude Include="Source\tilemap\level_loader.h" />
+    <ClInclude Include="Source\tilemap\terrain.h" />
+    <ClInclude Include="Source\tilemap\tile.h" />
+    <ClInclude Include="Source\tilemap\tile_animation_clip.h" />
+    <ClInclude Include="Source\tilemap\tile_map_grid_layer.h" />
+    <ClInclude Include="Source\tilemap\tile_map_sprite_layer.h" />
+    <ClInclude Include="Source\tilemap\tile_map.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6496F53A-10B4-48B1-BB2D-55F6F94A6E11}</ProjectGuid>
@@ -76,7 +177,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Source;$(SolutionDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;SFML_STATIC;DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;SFML_STATIC;DEVELOPMENT;DEBUG</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
@@ -84,6 +185,14 @@
       <AdditionalDependencies>lua53.lib;winmm.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;ogg.lib;vorbis.lib;libtmxlite-s-d.lib;glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -106,7 +215,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Source;$(SolutionDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;SFML_STATIC;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;SFML_STATIC;DEVELOPMENT;</PreprocessorDefinitions>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
@@ -115,6 +224,14 @@
       <AdditionalDependencies>lua53.lib;winmm.lib;sfml-audio-s.lib;sfml-system-s.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;ogg.lib;vorbis.lib;libtmxlite-s.lib;glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -133,85 +250,6 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Source\animation\animation_clip.h" />
-    <ClInclude Include="Source\animation\animation_manager.h" />
-    <ClInclude Include="Source\animation\animation_state_machine.h" />
-    <ClInclude Include="Source\audio\music.h" />
-    <ClInclude Include="Source\camera_component.h" />
-    <ClInclude Include="Source\component.h" />
-    <ClInclude Include="Source\config.hpp" />
-    <ClInclude Include="Source\entity.h" />
-    <ClInclude Include="Source\game.h" />
-    <ClInclude Include="Source\graphics\graphics.h" />
-    <ClInclude Include="Source\graphics\index_buffer.h" />
-    <ClInclude Include="Source\graphics\renderable.h" />
-    <ClInclude Include="Source\graphics\renderer.h" />
-    <ClInclude Include="Source\graphics\render_manager.h" />
-    <ClInclude Include="Source\graphics\scene.h" />
-    <ClInclude Include="Source\graphics\shader.h" />
-    <ClInclude Include="Source\graphics\texture.h" />
-    <ClInclude Include="Source\graphics\tile_map.h" />
-    <ClInclude Include="Source\graphics\vertex_array.h" />
-    <ClInclude Include="Source\graphics\vertex_buffer.h" />
-    <ClInclude Include="Source\image.h" />
-    <ClInclude Include="Source\json.h" />
-    <ClInclude Include="Source\math\mat4x4.h" />
-    <ClInclude Include="Source\math\quarternion.h" />
-    <ClInclude Include="Source\math\vec2.h" />
-    <ClInclude Include="Source\math\vec3.h" />
-    <ClInclude Include="Source\math\vec4.h" />
-    <ClInclude Include="Source\math\vine_math.h" />
-    <ClInclude Include="Source\movement_controller_component.h" />
-    <ClInclude Include="Source\music\input_stream.h" />
-    <ClInclude Include="Source\object.h" />
-    <ClInclude Include="Source\physics\collision.h" />
-    <ClInclude Include="Source\physics\collision_body.h" />
-    <ClInclude Include="Source\physics\intersection.h" />
-    <ClInclude Include="Source\physics\physics.h" />
-    <ClInclude Include="Source\physics\rigid_body.h" />
-    <ClInclude Include="Source\platform\asset.h" />
-    <ClInclude Include="Source\platform\file_handle.h" />
-    <ClInclude Include="Source\platform\platform.h" />
-    <ClInclude Include="Source\platform\window.h" />
-    <ClInclude Include="Source\player.h" />
-    <ClInclude Include="Source\rigid_body_component.h" />
-    <ClInclude Include="Source\scripting\script.h" />
-    <ClInclude Include="Source\sprite.h" />
-    <ClInclude Include="Source\sprite_animation_clip.h" />
-    <ClInclude Include="Source\sprite_animation_component.h" />
-    <ClInclude Include="Source\sprite_component.h" />
-    <ClInclude Include="Source\tiled_texture.h" />
-    <ClInclude Include="Source\transform.h" />
-    <ClInclude Include="Source\types.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Include\stb_image.cpp" />
-    <ClCompile Include="Source\animation\src\animation_manager.cpp" />
-    <ClCompile Include="Source\animation\src\animation_state_machine.cpp" />
-    <ClCompile Include="Source\audio\music.cpp" />
-    <ClCompile Include="Source\component.cpp" />
-    <ClCompile Include="Source\entity.cpp" />
-    <ClCompile Include="Source\graphics\game.cpp" />
-    <ClCompile Include="Source\graphics\graphics.cpp" />
-    <ClCompile Include="Source\graphics\index_buffer.cpp" />
-    <ClCompile Include="Source\graphics\renderer.cpp" />
-    <ClCompile Include="Source\graphics\scene.cpp" />
-    <ClCompile Include="Source\graphics\shader.cpp" />
-    <ClCompile Include="Source\graphics\texture.cpp" />
-    <ClCompile Include="Source\graphics\vertex_array.cpp" />
-    <ClCompile Include="Source\graphics\vertex_buffer.cpp" />
-    <ClCompile Include="Source\image.cpp" />
-    <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\math\vine_math.cpp" />
-    <ClCompile Include="Source\physics\rigid_body.cpp" />
-    <ClCompile Include="Source\platform\asset.cpp" />
-    <ClCompile Include="Source\platform\file_handle.cpp" />
-    <ClCompile Include="Source\platform\window.cpp" />
-    <ClCompile Include="Source\scripting\script.cpp" />
-    <ClCompile Include="Source\sprite.cpp" />
-    <ClCompile Include="Source\transform.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

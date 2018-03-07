@@ -1,6 +1,10 @@
+// Visual Studio
 Debug
 .vs
 x86
 x64
 Release
 *.vcxproj.user
+
+// nodesjs
+node_modules
