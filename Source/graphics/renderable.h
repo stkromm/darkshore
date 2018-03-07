@@ -1,7 +1,7 @@
 #pragma once
 
-#include "math/mat4x4.h"
-#include "transform.h"
+#include "core/math/mat4x4.h"
+#include "core/transform.h"
 
 namespace graphics {
 	class Renderer;

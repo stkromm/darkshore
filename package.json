@@ -1,0 +1,20 @@
+{
+  "name": "darkshore_tools",
+  "version": "1.0.0",
+  "description": "tools for build and deployment of darkshore",
+  "scripts": {
+    "index_resources": "Build/index_resources.js",
+    "prepare_build": "Build/prepare_build.js",
+    "generate_templates": "Build/generate_templates.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://skromm@bitbucket.org/skromm/darkshore.git"
+  },
+  "author": "Steffen Kromm",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://bitbucket.org/skromm/darkshore#readme",
+  "dependencies": {
+    "fire-ts": "0.0.7"
+  }
+}

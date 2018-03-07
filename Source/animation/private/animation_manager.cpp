@@ -1,4 +1,4 @@
-#include "animation_manager.h"
+#include "animation/animation_manager.h"
 
 namespace AnimationManager {
 	static std::vector<std::shared_ptr<AnimationStateMachine>> animations = {};
@@ -9,7 +9,7 @@ namespace AnimationManager {
 
 	void update(float delta)
 	{
-		for (int i = 0; i < animations.size(); ++i)
+		for (int i = 0; i < (int)animations.size(); ++i)
 		{
 			animations[i]->tick(delta);
 		}

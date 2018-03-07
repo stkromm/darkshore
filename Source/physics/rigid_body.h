@@ -2,55 +2,13 @@
 
 #include <vector>
 
-#include "transform.h"
-#include "math/vec2.h"
+#include "core/transform.h"
+#include "core/math/vec2.h"
+
+#include "physics/aabb_hull.h"
+#include "physics/collision_body.h"
 
 namespace physics {
-	struct AABBHull
-	{
-		/**
-		Offset relative offset to transform position
-		*/
-		math::Vec2 offset;
-		/**
-		Size of the aabb hull
-		*/
-		math::Vec2 extends;
-
-		std::string to_string() const
-		{
-			std::stringstream ss;
-			ss << "AABBHull(Offset:" << offset.x << "," << offset.y << ";Extends:" << extends.x << "," << extends.y << ")";
-			return ss.str();
-		}
-
-		void merge(AABBHull& hull)
-		{
-			if (offset.x > hull.offset.x)
-			{
-				offset.x = hull.offset.x;
-			}
-			if (offset.x + extends.x < hull.offset.x + hull.extends.x)
-			{
-				extends.x = hull.offset.x + hull.extends.x - offset.x;
-			}
-
-			if (offset.y > hull.offset.y)
-			{
-				offset.y = hull.offset.y;
-			}
-			if (offset.y + extends.y < hull.offset.y + hull.extends.y)
-			{
-				extends.y = hull.offset.y + hull.extends.y - offset.y;
-			}
-		}
-	};
-
-	class CollisionBody {
-	public:
-		AABBHull hull;
-	};
-
 	class RigidBody
 	{
 	private:
@@ -58,9 +16,9 @@ namespace physics {
 		std::shared_ptr<Transform> transform;
 		std::vector<CollisionBody> collision_bodies;
 
-		bool ignore_mass = false;
+		bool ignore_mass = true;
 		bool asleep = true;
-		float inversed_mass = 1.f;
+		float inversed_mass = 0.f;
 		float linear_damping = 0.f;
 
 		math::Vec2 translation = { 0,0 };
@@ -86,25 +44,29 @@ namespace physics {
 		{
 			return collision_bodies;
 		}
-		
-		void add_collider(CollisionBody collider)
-		{
-			hull.merge(collider.hull);
-			collision_bodies.push_back(std::move(collider));
-		}
 
-		void remove_collider(CollisionBody collider)
-		{
-			hull = { { 0,0 },{ 0,0 } };
-			for (auto& c : collision_bodies)
-			{
-				hull.merge(c.hull);
-			}
-		}
+		void add_collider(CollisionBody collider);
+
+		void remove_collider(CollisionBody collider);
 
 		AABBHull get_hull() const
 		{
 			return hull;
+		}
+
+		float get_inversed_mass() const
+		{
+			return inversed_mass;
+		}
+
+		bool is_kinematic() const
+		{
+			return false;
+		}
+
+		math::Vec2 get_velocity() const
+		{
+			return velocity;
 		}
 
 		void set_linea_damping(float damping)
@@ -112,19 +74,26 @@ namespace physics {
 			linear_damping = damping;
 		}
 
-		bool is_asleep() const 
+		bool is_asleep() const
 		{
 			return asleep;
 		}
 
-		void set_mass(float mass) 
+		void set_mass(float mass)
 		{
 			inversed_mass = 1 / mass;
 		}
 
-		Transform& get_transform() const 
+		void set_inverse_mass(float inversed_mass)
+		{
+			this->inversed_mass = inversed_mass;
+		}
+
+		Transform& get_transform() const
 		{
 			return *transform;
 		}
+
+		void set_velocity(math::Vec2 collider_velocity);
 	};
 }

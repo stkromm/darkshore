@@ -5,7 +5,7 @@
 #include "graphics/renderer.h"
 #include "graphics/renderable.h"
 
-#include "platform/window.h"
+#include "platform/window_manager.h"
 
 namespace graphics {
 

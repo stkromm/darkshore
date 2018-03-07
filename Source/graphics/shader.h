@@ -6,12 +6,12 @@
 
 #include "graphics/graphics.h"
 
-#include "math/mat4x4.h"
+#include "core/math/mat4x4.h"
 
 namespace graphics {
 	class Shader : public Asset {
 	private:
-		unsigned int id;
+		uint32_t id;
 	public:
 		static AssetType get_resource_type()
 		{
@@ -31,19 +31,19 @@ namespace graphics {
 		void unbind() const;
 
 		void set_uniform_1i(const std::string name, int value);
-		void set_uniform_1ui(const std::string name, unsigned int value);
+		void set_uniform_1ui(const std::string name, uint32_t value);
 		void set_uniform_1f(const std::string name, float value);
 
 		void set_uniform_2i(const std::string name, int i0, int i1);
-		void set_uniform_2ui(const std::string name, unsigned int i0, unsigned int i1);
+		void set_uniform_2ui(const std::string name, uint32_t i0, uint32_t i1);
 		void set_uniform_2f(const std::string name, float f0, float f1);
 
 		void set_uniform_3i(const std::string name, int i0, int i1, int i2);
-		void set_uniform_3ui(const std::string name, unsigned int i0, unsigned int i1, unsigned int i2);
+		void set_uniform_3ui(const std::string name, uint32_t i0, uint32_t i1, uint32_t i2);
 		void set_uniform_3f(const std::string name, float f0, float f1, float f2);
 
 		void set_uniform_4i(const std::string name, int i0, int i1, int i2, int i3);
-		void set_uniform_4ui(const std::string name, unsigned int i0, unsigned int i1, unsigned int i2, unsigned int i3);
+		void set_uniform_4ui(const std::string name, uint32_t i0, uint32_t i1, uint32_t i2, uint32_t i3);
 		void set_uniform_4f(const std::string name, float f0, float f1, float f2, float f3);
 
 		void set_uniform_mat4x4(const std::string name, math::Mat4x4 mat);

@@ -5,7 +5,9 @@
 #include <functional>
 
 #include "platform/platform.h"
-#include "math/vec2.h"
+#include "core/types.h"
+#include "core/math/vec2.h"
+#include "platform/cursor.h"
 
 namespace platform {
 	constexpr uint32_t FULLSCREEN = 0;
@@ -13,32 +15,30 @@ namespace platform {
 	constexpr uint32_t WINDOWED = 2;
 
 	using KeyCallback = void(const size_t, const  size_t, const  size_t, const  size_t);
-	using CursorPositionCallback = void(*)(const double, const double);
-	using MouseButtonCallback = void(*)(const size_t, const size_t, const size_t);
+	using CursorPositionCallback = void(const double, const double);
+	using MouseButtonCallback = void(const size_t, const size_t, const size_t);
 
-	struct Cursor {
-		math::Vec2 position;
-	};
 	struct Screen {
-		 int width;
-		 int height;
+		int32_t width;
+		int32_t height;
 	};
 	class Window {
 	public:
 		std::vector<std::function<KeyCallback>> keyCallbacks;
-		std::vector<CursorPositionCallback> cursorPositionCallbacks;
-		std::vector<MouseButtonCallback> mouseButtonCallbacks;
+		std::vector<std::function<CursorPositionCallback>> cursorPositionCallbacks;
+		std::vector<std::function<MouseButtonCallback>> mouseButtonCallbacks;
 	private:
-		int32_t width, height;
-		math::Vec2 position;
-
-		String title;
+		int32_t width = 1024;
+		int32_t height = 720;
+	
+		math::Vec2 position = { 0,0 };
+		String title = "";
 		bool closed = false;
 	public:
 		Window();
 		~Window();
 
-		const std::shared_ptr<Cursor> get_cursor();
+		const Cursor get_cursor();
 
 		const Screen get_screen();
 
@@ -49,17 +49,11 @@ namespace platform {
 		void swap_buffers() const;
 		bool should_close() const;
 
-		void add_key_callback(std::function<KeyCallback> keyCallback) {
-			keyCallbacks.push_back(keyCallback);
-		}
+		void add_key_callback(std::function<KeyCallback> keyCallback);
 
-		void add_mouse_button_callback(MouseButtonCallback mouseButtonCallback) {
-			mouseButtonCallbacks.push_back(mouseButtonCallback);
-		}
+		void add_mouse_button_callback(std::function<MouseButtonCallback> mouseButtonCallback);
 
-		void add_cursor_position_callback(CursorPositionCallback cursorPositionCallback) {
-			cursorPositionCallbacks.push_back(cursorPositionCallback);
-		}
+		void add_cursor_position_callback(std::function<CursorPositionCallback> cursorPositionCallback);
 
 		void set_clipboard_content(const char * content) const;
 		const char* get_clipboard_content() const;
@@ -71,11 +65,5 @@ namespace platform {
 		void go_fullscreen();
 	private:
 		void recreate();
-	};
-	namespace WindowManager {
-		bool init();
-		void shutdown();
-		Window& get_window();
-
 	};
 };

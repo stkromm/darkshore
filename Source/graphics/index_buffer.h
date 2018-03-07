@@ -7,15 +7,15 @@
 namespace graphics {
 	class IndexBuffer {
 	private:
-		size_t id;
-		size_t count;
+		uint32_t id;
+		uint32_t count;
 
 	public:
-		IndexBuffer(const unsigned int* data, unsigned int count);
-		IndexBuffer(std::vector<unsigned int> data) : IndexBuffer(data.data(), data.size()) {};
+		IndexBuffer(const uint32_t* data, uint32_t count);
+		IndexBuffer(std::vector<uint32_t> data) : IndexBuffer(data.data(), data.size()) {};
 		~IndexBuffer();
 
-		unsigned int get_count() const {
+		uint32_t get_count() const {
 			return count;
 		}
 

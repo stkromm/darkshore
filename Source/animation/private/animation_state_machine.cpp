@@ -1,8 +1,8 @@
-#include "animation_state_machine.h"
+#include "animation/animation_state_machine.h"
 
 void AnimationStateMachine::add_state(AnimationState state)
 {
-	states[state.name] = std::make_unique<AnimationState>(std::move(state));
+	states[state.get_name()] = std::make_unique<AnimationState>(std::move(state));
 }
 
 AnimationState* AnimationStateMachine::get_state()
@@ -25,10 +25,10 @@ void AnimationStateMachine::tick(const float delta_millis)
 {
 	AnimationState* current_state = get_state();
 
-	const float remaining_time = current_state->clip->remaining_clip_time - delta_millis;
+	const float remaining_time = current_state->get_clip()->remaining_clip_time - delta_millis;
 	if (remaining_time <= 0.f)
 	{
-		auto& transition_state = states.find(current_state->transition_state);
+		auto& transition_state = states.find(current_state->get_transition_state());
 		if (transition_state != states.end())
 		{
 			current_state_name = transition_state->first;

@@ -1,20 +1,7 @@
 #pragma once
 
-#include <string>
+#include "scripting/script_manager.h"
 
-extern "C" {
-# include "Lua/lua.h"
-# include "Lua/lauxlib.h"
-# include "Lua/lualib.h"
-}
-#include "LuaBridge/LuaBridge.h"
-
-namespace scripting {
-	namespace ScriptManager {
-		bool init();
-		void shutdown();
-	}
-}
 class Script
 {
 public:

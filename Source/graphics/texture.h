@@ -12,10 +12,10 @@ namespace graphics
 	class Texture : public Asset
 	{
 	private:
-		unsigned int id;
+		uint32_t id;
 		const std::string file_path;
 
-		unsigned int width, height;
+		uint32_t width, height;
 	public:
 		static AssetType get_resource_type()
 		{
@@ -25,7 +25,7 @@ namespace graphics
 		Texture(const std::string file_path);
 		~Texture();
 
-		void bind(const unsigned int slot = 0) const;
+		void bind(const uint32_t slot = 0) const;
 		void unbind() const;
 
 		bool operator==(const Texture& texture) const
@@ -33,12 +33,12 @@ namespace graphics
 			return texture.id == id;
 		}
 
-		unsigned int get_width() const
+		uint32_t get_width() const
 		{
 			return width;
 		}
 
-		unsigned int get_height() const
+		uint32_t get_height() const
 		{
 			return height;
 		}

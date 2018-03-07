@@ -1,6 +1,6 @@
 #pragma once
 
-#include "music/input_stream.h"
+#include "audio/private/input_stream.h"
 
 namespace audio
 {
