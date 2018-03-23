@@ -3,29 +3,30 @@
 #include <string>
 #include <memory>
 
-#include "graphics/graphics.h"
 #include "platform/asset.h"
-#include "image.h"
+#include "platform/asset_types.h"
+#include "core/types.h"
 
 namespace graphics
 {
 	class Texture : public Asset
 	{
 	private:
-		uint32_t id;
+		uint32_t id = 0;
 		const std::string file_path;
 
 		uint32_t width, height;
 	public:
 		static AssetType get_resource_type()
 		{
-			return AssetType::IMAGE;
+			return IMAGE;
 		}
 
-		Texture(const std::string file_path);
+		explicit Texture(const std::string& file_path);
+		explicit Texture(const uint32_t width, const uint32_t height, byte* data);
 		~Texture();
 
-		void bind(const uint32_t slot = 0) const;
+		void bind(uint32_t slot = 0) const;
 		void unbind() const;
 
 		bool operator==(const Texture& texture) const
@@ -42,6 +43,8 @@ namespace graphics
 		{
 			return height;
 		}
+
+		void update_data(byte* data);
 	};
 
 	struct TexturePatch
@@ -52,6 +55,4 @@ namespace graphics
 		float x2;
 		float y2;
 	};
-
 }
-

@@ -1,12 +1,13 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 #include <vector>
 
-#include "tilemap/tile.h"
 #include "animation/animation_clip.h"
+#include "tilemap/tile_map_sprite_layer.h"
 
-struct Frame
+struct TileFrame
 {
 	uint32_t tile_index;
 	float duration;
@@ -15,20 +16,24 @@ struct Frame
 class TileAnimationClip : public AnimationClip
 {
 private:
-	int frame_id = 0;
-	std::shared_ptr<Tile> tile_map_layer;
-protected:
-	std::vector<Frame> frames;
-public:
+	uint32_t frame_id = 0;
+	uint32_t tile_id = 0;
+	std::shared_ptr<graphics::TileMapSpriteLayer> tile_map_layer;
 
-	TileAnimationClip(std::shared_ptr<Tile> tile_map_layer, std::vector<Frame>& frames) : frames(frames), tile_map_layer(tile_map_layer)
+protected:
+	std::vector<TileFrame> frames;
+
+public:
+	TileAnimationClip(const uint32_t tile_id, std::shared_ptr<graphics::TileMapSpriteLayer> tile_map_layer, std::vector<TileFrame>& frames) : tile_id(tile_id),
+		tile_map_layer(
+			std::move(tile_map_layer)), frames(frames)
 	{
 		duration = 0;
 		for (auto& frame : frames)
 		{
 			duration += frame.duration;
 		}
-		reset();
+		TileAnimationClip::reset();
 	}
 
 	void reset() override
@@ -38,22 +43,23 @@ public:
 		on_frame_update(frame_id);
 	}
 
-	virtual void on_frame_update(uint32_t frame_id)
+	virtual void on_frame_update(const uint32_t frame_id)
 	{
-		if (frame_id != 0) {
-			//tile_map_layer->update_tiles(frames[frame_id - 1].tile_index, frames[frame_id].tile_index)
+		if (frame_id != 0)
+		{
+			tile_map_layer->update_tile_state(tile_id, frames[frame_id - 1].tile_index);
 		}
 	}
 
-	void update(float delta_millis) override
+	void update(const float delta_millis) override
 	{
 		remaining_clip_time -= delta_millis;
 		float frame_end_time = 0;
-		float escaped_time = duration - remaining_clip_time;
+		const float escaped_time = duration - remaining_clip_time;
 
 		for (uint32_t i = 0; i < frames.size(); ++i)
 		{
-			Frame& frame = frames[i];
+			TileFrame& frame = frames[i];
 			frame_end_time += frame.duration;
 			if (frame_end_time > escaped_time)
 			{

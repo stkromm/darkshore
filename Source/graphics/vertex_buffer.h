@@ -3,17 +3,18 @@
 
 #include "graphics/graphics.h"
 
-namespace graphics {
-
-	class VertexBuffer {
+namespace graphics
+{
+	class VertexBuffer
+	{
 	private:
-		uint32_t id;
+		uint32_t id = 0;
 	public:
 		VertexBuffer(const void* data, uint32_t size);
-		VertexBuffer(std::vector<float> data);
+		explicit VertexBuffer(std::vector<float> data);
 		~VertexBuffer();
 
-		void update(const void* data, uint32_t size);
+		void update(const void* data, uint32_t size) const;
 
 		void bind() const;
 		void unbind() const;

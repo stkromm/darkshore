@@ -1,11 +1,10 @@
 #pragma once
 
-#include "scripting/script_manager.h"
+#include <string>
 
 class Script
 {
 public:
-	Script(std::string file_path);
+	explicit Script(const std::string& file_path);
 	~Script();
 };
-

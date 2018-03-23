@@ -1,17 +1,19 @@
 #include "animation/animation_manager.h"
 
-namespace AnimationManager {
+namespace AnimationManager
+{
 	static std::vector<std::shared_ptr<AnimationStateMachine>> animations = {};
 
-	bool init() {
+	bool init()
+	{
 		return true;
 	}
 
-	void update(float delta)
+	void update(const float delta)
 	{
-		for (int i = 0; i < (int)animations.size(); ++i)
+		for (auto& animation : animations)
 		{
-			animations[i]->tick(delta);
+			animation->tick(delta);
 		}
 	}
 
@@ -20,12 +22,12 @@ namespace AnimationManager {
 		animations.clear();
 	}
 
-	void add_animation(std::shared_ptr<AnimationStateMachine> animation)
+	void add_animation(const std::shared_ptr<AnimationStateMachine> animation)
 	{
 		animations.push_back(animation);
 	}
 
-	void remove_animation(std::shared_ptr<AnimationStateMachine> animation)
+	void remove_animation(const std::shared_ptr<AnimationStateMachine>& animation)
 	{
 		//
 	}

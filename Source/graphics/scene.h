@@ -5,11 +5,14 @@
 #include "graphics/renderer.h"
 #include "graphics/renderable.h"
 
+#include "core/math/mat4x4.h"
+#include "core/transform.h"
 #include "platform/window_manager.h"
 
-namespace graphics {
-
-	struct Camera {
+namespace graphics
+{
+	struct Camera
+	{
 		std::shared_ptr<Transform> transform;
 		float zoom = 1.25f;
 
@@ -24,12 +27,16 @@ namespace graphics {
 			std::cout << "Delete camera" << std::endl;
 		}
 
-		math::Mat4x4 get_projection() const {
+		math::Mat4x4 get_projection() const
+		{
 			const platform::Screen screen = platform::WindowManager::get_window().get_screen();
-			float aspect = (float)screen.height / (float)screen.width;
-			float width = 1920;
-			float height = 1920 * aspect;
-			return transform->get_world_to_local() * math::Mat4x4(1).orthographic(-width / 2.f, width / 2.f, -height / 2.f, height / 2.f, -1, 1);
+			const float aspect = float(screen.height) / screen.width;
+			const float width = 1920;
+			const float height = 1920 * aspect;
+			const math::Mat4x4 world_to_local = transform->get_world_to_local();
+			//world_to_local.data()[3 * 4] = world_to_local.data()[3 * 4] > -1920 / 2 + 196 ? -1920 / 2 + 196: world_to_local.data()[3 * 4];
+			//world_to_local.data()[3 * 4 + 1] = world_to_local.data()[3 * 4 + 1] > -1920 * aspect / 2 + 64 ? -1920 * aspect / 2 + 64: world_to_local.data()[3 * 4 + 1];
+			return world_to_local * math::Mat4x4(1).orthographic(-width / 2.f, width / 2.f, -height / 2.f, height / 2.f, -1, 1);
 		}
 	};
 
@@ -52,31 +59,21 @@ namespace graphics {
 			std::cout << "Delete scene" << std::endl;
 		}
 
-		void set_camera(std::shared_ptr<Camera> camera)
+		void set_camera(const std::shared_ptr<Camera> camera)
 		{
 			this->camera = camera;
 		}
 
-		const std::shared_ptr<Camera> get_camera() const {
+		std::shared_ptr<Camera> get_camera() const
+		{
 			return camera;
 		}
 
-		void add_renderable(std::shared_ptr<Renderable> renderable) {
-			renderables.push_back(renderable);
-		}
+		void add_renderable(std::shared_ptr<Renderable> renderable);
 
-		void render(const float interpolation)
-		{
-			if (!get_camera()) return;
-			//std::cout << "Interpolation " << interpolation << std::endl;
-			renderer->prepare();
-			//std::cout << "Draw #Renderables:" << renderables.size() << std::endl;
-			for (const auto renderable : renderables)
-			{
-				renderable->draw(interpolation, *renderer);
-			}
-		}
+		void render(float interpolation);
 	};
+
 	namespace SceneManager
 	{
 		Scene* get_scene();

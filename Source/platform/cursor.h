@@ -2,6 +2,7 @@
 
 #include "core/math/vec2.h"
 
-struct Cursor {
+struct Cursor
+{
 	math::Vec2 position;
 };

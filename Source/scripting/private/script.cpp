@@ -3,7 +3,7 @@
 
 using namespace scripting;
 
-Script::Script(std::string file_path)
+Script::Script(const std::string& file_path)
 {
 	luaL_dofile(lua_state, file_path.c_str());
 	luaL_openlibs(lua_state);
@@ -14,6 +14,4 @@ Script::Script(std::string file_path)
 	//int answer = n.cast<int>();
 }
 
-Script::~Script()
-{
-}
+Script::~Script() = default;

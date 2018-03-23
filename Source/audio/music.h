@@ -4,5 +4,5 @@
 
 namespace audio
 {
-	void play_background_music(std::string path);
+	void play_background_music(const std::string& path);
 }

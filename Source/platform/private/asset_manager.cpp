@@ -3,7 +3,7 @@
 #include <iostream>
 
 std::unordered_map<AssetType, std::unordered_map<std::string, std::shared_ptr<Asset>>> AssetManager::loaded_assets
-= {};
+	= {};
 
 bool AssetManager::init()
 {
@@ -14,7 +14,7 @@ void AssetManager::clean()
 {
 	for (auto& asset_map : loaded_assets)
 	{
-		if (asset_map.second.size() != 0)
+		if (!asset_map.second.empty())
 			for (auto& asset_ref : asset_map.second)
 			{
 				if (!asset_ref.second.unique())
@@ -22,6 +22,5 @@ void AssetManager::clean()
 					std::cout << asset_ref.first << std::endl;
 				}
 			}
-
 	}
 }

@@ -5,24 +5,25 @@
 using namespace platform;
 static Window* global_window;
 
-bool WindowManager::init() {
+bool WindowManager::init()
+{
 	std::cout << glfwGetVersionString() << std::endl;
-	if (!glfwInit()) {
-
+	if (!glfwInit())
+	{
 		std::cout << "GLFW init failed" << std::endl;
 		return false;
 	}
-	else {
-		global_window = new Window();
+	global_window = new Window();
 
-		return true;
-	}
+	return true;
 }
 
-Window& WindowManager::get_window() {
+Window& WindowManager::get_window()
+{
 	return *global_window;
 }
 
-void WindowManager::shutdown() {
+void WindowManager::shutdown()
+{
 	glfwTerminate();
 }

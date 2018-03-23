@@ -2,5 +2,10 @@
 
 enum AssetType
 {
-	IMAGE, SOUND, MAP, SHADER, SCRIPT, FONT
+	IMAGE,
+	SOUND,
+	MAP,
+	SHADER,
+	SCRIPT,
+	FONT
 };

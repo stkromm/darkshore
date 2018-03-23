@@ -14,11 +14,11 @@ private:
 public:
 	AnimationState(std::string name, std::shared_ptr<AnimationClip> clip, std::string transition_state = "");
 
-	void update_clip(const float delta_millis);
+	void update_clip(float delta_millis) const;
 
-	void reset();
+	void reset() const;
 
-	const std::shared_ptr<AnimationClip>& get_clip() const 
+	const std::shared_ptr<AnimationClip>& get_clip() const
 	{
 		return clip;
 	}

@@ -2,13 +2,12 @@
 
 #include <iostream>
 
-#include "graphics/graphics.h"
 #include "graphics/vertex_array.h"
 #include "graphics/index_buffer.h"
 #include "graphics/shader.h"
 
-namespace graphics {
-
+namespace graphics
+{
 	class Renderer
 	{
 	public:
@@ -16,8 +15,8 @@ namespace graphics {
 		{
 			std::cout << "Delete renderer" << std::endl;
 		}
-		void draw(const VertexArray& vertex_array, const IndexBuffer& index_buffer, const Shader& shader);
-		void prepare();
+
+		void draw(const VertexArray& vertex_array, const IndexBuffer& index_buffer, const Shader& shader) const;
+		void prepare() const;
 	};
 };
-

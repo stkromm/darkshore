@@ -1,10 +1,11 @@
 #pragma once
 #include "graphics/graphics.h"
 
-namespace graphics {
+namespace graphics
+{
 	namespace RenderManager
 	{
-		bool init()
+		inline bool init()
 		{
 			if (glewInit() != GLEW_OK)
 			{
@@ -20,9 +21,8 @@ namespace graphics {
 			return true;
 		}
 
-		void shutdown()
+		inline void shutdown()
 		{
-
 		}
 	};
 };

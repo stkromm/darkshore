@@ -4,23 +4,39 @@
 
 class Game;
 
-class GameObject {
+class GameObject
+{
 protected:
 	std::string tag = "";
-	Game* game;
+	Game* game = nullptr;
 public:
+	virtual ~GameObject() = default;
 	bool is_destroyed = false;
-	virtual void on_spawn() {}
-	virtual void tick() {}
-	virtual void self_tick() {}
-	virtual void on_destroy() {}
 
-	bool operator==(GameObject obj) {
+	virtual void on_spawn()
+	{
+	}
+
+	virtual void tick()
+	{
+	}
+
+	virtual void self_tick()
+	{
+	}
+
+	virtual void on_destroy()
+	{
+	}
+
+	bool operator==(const GameObject& obj) const
+	{
 		// TODO Implement
 		return true;
 	}
 
-	void destroy() {
+	void destroy()
+	{
 		is_destroyed = true;
 	}
 

@@ -15,7 +15,7 @@ public:
 
 	static void clean();
 
-	template<class T>
+	template <class T>
 	static std::shared_ptr<T> load_asset(std::string name)
 	{
 		auto asset_ref = loaded_assets[T::get_resource_type()].find(name);
@@ -23,11 +23,8 @@ public:
 		{
 			return std::static_pointer_cast<T>(asset_ref->second);
 		}
-		else
-		{
-			std::shared_ptr<T> loaded = std::make_shared<T>(name);
-			loaded_assets[T::get_resource_type()][name] = loaded;
-			return loaded;
-		}
+		std::shared_ptr<T> loaded = std::make_shared<T>(name);
+		loaded_assets[T::get_resource_type()][name] = loaded;
+		return loaded;
 	}
 };

@@ -1,6 +1,8 @@
 #pragma once
 
+// ReSharper disable once CppUnusedIncludeDirective
 #include <iostream>
+// ReSharper disable once CppUnusedIncludeDirective
 #include "GL/glew.h"
 
 namespace graphics

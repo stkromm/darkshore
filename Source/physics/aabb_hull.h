@@ -4,7 +4,8 @@
 
 #include "core/math/vec2.h"
 
-namespace physics {
+namespace physics
+{
 	struct AABBHull
 	{
 		/**

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "graphics\vertex_buffer.h"
-#include "graphics\vertex_buffer_layout.h"
+#include "graphics/vertex_buffer.h"
+#include "graphics/vertex_buffer_layout.h"
 
 namespace graphics
 {
 	class VertexArray
 	{
 	private:
-		uint32_t id;
+		uint32_t id = 0;
 	public:
 		VertexArray();
 		~VertexArray();

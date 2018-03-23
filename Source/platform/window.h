@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include <memory>
 #include <functional>
 
 #include "platform/platform.h"
@@ -9,20 +8,24 @@
 #include "core/math/vec2.h"
 #include "platform/cursor.h"
 
-namespace platform {
+namespace platform
+{
 	constexpr uint32_t FULLSCREEN = 0;
 	constexpr uint32_t BORDERLESS_WINDOWED = 1;
 	constexpr uint32_t WINDOWED = 2;
 
-	using KeyCallback = void(const size_t, const  size_t, const  size_t, const  size_t);
-	using CursorPositionCallback = void(const double, const double);
-	using MouseButtonCallback = void(const size_t, const size_t, const size_t);
+	using KeyCallback = void(size_t, size_t, size_t, size_t);
+	using CursorPositionCallback = void(double, double);
+	using MouseButtonCallback = void(size_t, size_t, size_t);
 
-	struct Screen {
+	struct Screen
+	{
 		int32_t width;
 		int32_t height;
 	};
-	class Window {
+
+	class Window
+	{
 	public:
 		std::vector<std::function<KeyCallback>> keyCallbacks;
 		std::vector<std::function<CursorPositionCallback>> cursorPositionCallbacks;
@@ -30,20 +33,20 @@ namespace platform {
 	private:
 		int32_t width = 1024;
 		int32_t height = 720;
-	
-		math::Vec2 position = { 0,0 };
+
+		math::Vec2 position = {0, 0};
 		String title = "";
 		bool closed = false;
 	public:
 		Window();
 		~Window();
 
-		const Cursor get_cursor();
+		Cursor get_cursor() const;
 
-		const Screen get_screen();
+		Screen get_screen() const;
 
-		void poll_input();
-		void update();
+		void poll_input() const;
+		void update() const;
 		void close();
 
 		void swap_buffers() const;
@@ -55,10 +58,10 @@ namespace platform {
 
 		void add_cursor_position_callback(std::function<CursorPositionCallback> cursorPositionCallback);
 
-		void set_clipboard_content(const char * content) const;
+		void set_clipboard_content(const char* content) const;
 		const char* get_clipboard_content() const;
 
-		void resize(const uint32_t width, const uint32_t height);
+		void resize(uint32_t width, uint32_t height) const;
 
 		void go_windowed();
 		void go_borderless();

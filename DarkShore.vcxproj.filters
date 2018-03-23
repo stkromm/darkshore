@@ -151,6 +151,9 @@
     <ClCompile Include="Source\physics\private\intersection.cpp">
       <Filter>Source\physics\private</Filter>
     </ClCompile>
+    <ClCompile Include="Source\graphics\private\Font.cpp">
+      <Filter>Source\graphics\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio\private\input_stream.h">
@@ -193,9 +196,6 @@
       <Filter>Source\scripting</Filter>
     </ClInclude>
     <ClInclude Include="Source\core\component.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\config.hpp">
       <Filter>Source\core</Filter>
     </ClInclude>
     <ClInclude Include="Source\core\entity.h">
@@ -288,9 +288,6 @@
     <ClInclude Include="Source\core\math\vine_math.h">
       <Filter>Source\core\math</Filter>
     </ClInclude>
-    <ClInclude Include="Include\stb_image.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="Source\scripting\script_manager.h">
       <Filter>Source\scripting</Filter>
     </ClInclude>
@@ -330,25 +327,19 @@
     <ClInclude Include="Source\tilemap\tile_map.h">
       <Filter>Source\tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="Source\tilemap\tile.h">
-      <Filter>Source\tilemap</Filter>
-    </ClInclude>
     <ClInclude Include="Source\animation\animation_state.h">
       <Filter>Source\animation</Filter>
     </ClInclude>
     <ClInclude Include="Source\tilemap\tile_animation_clip.h">
       <Filter>Source\tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="Source\tilemap\terrain.h">
-      <Filter>Source\tilemap</Filter>
-    </ClInclude>
     <ClInclude Include="Source\tilemap\tile_map_sprite_layer.h">
       <Filter>Source\tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="Source\tilemap\tile_map_grid_layer.h">
-      <Filter>Source\tilemap</Filter>
-    </ClInclude>
     <ClInclude Include="Source\graphics\vertex_buffer_layout.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\Font.h">
       <Filter>Source\graphics</Filter>
     </ClInclude>
   </ItemGroup>

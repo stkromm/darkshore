@@ -1,7 +1,7 @@
 #include "platform/window.h"
 
 #include <fstream>
-#include <iostream>
+#include <memory>
 
 #include "json.h"
 
@@ -26,7 +26,8 @@ resolution_x: int
 resolution_y: int
 mode: int
 */
-Window::Window() {
+Window::Window()
+{
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
@@ -63,93 +64,119 @@ Window::Window() {
 
 	if (settings["window"]["mode"].is_number_integer())
 	{
-		switch ((int)settings["window"]["mode"]) {
+		switch (int(settings["window"]["mode"]))
+		{
 		case FULLSCREEN:
 			go_fullscreen();
 		case BORDERLESS_WINDOWED:
 			go_borderless();
 		case WINDOWED:
 			go_windowed();
+		default:
+			break;
 		}
 	}
-	else {
+	else
+	{
 		go_windowed();
 	}
 }
 
-Window::~Window() {
+Window::~Window()
+{
 	glfwDestroyWindow(window);
 }
 
-void on_resize(GLFWwindow* w, int width, int height)
+Cursor Window::get_cursor() const
+{
+	return {{0, 0}};
+}
+
+void on_resize(GLFWwindow* w, const int width, const int height)
 {
 	glViewport(0, 0, width, height);
 }
 
-void Window::update() {
+void Window::update() const
+{
 	glfwPollEvents();
 }
 
-void Window::poll_input() {
+void Window::poll_input() const
+{
 	glfwPollEvents();
 }
 
-void glfwKeyCallback(GLFWwindow* w, const int key, const int action, const int c, const int d) {
-	Window* window = static_cast<Window*>(glfwGetWindowUserPointer(w));
+void glfwKeyCallback(GLFWwindow* w, const int key, const int action, const int c, const int d)
+{
+	auto window = static_cast<Window*>(glfwGetWindowUserPointer(w));
 	if (!window) return;
-	for (auto& cb : window->keyCallbacks) {
+	for (auto& cb : window->keyCallbacks)
+	{
 		cb(key, action, c, d);
 	}
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	{
 		window->close();
 	}
 }
 
-void glfwCursorPositionCallback(GLFWwindow* w, const double x, const double y) {
+void glfwCursorPositionCallback(GLFWwindow* w, const double x, const double y)
+{
 	const Window* window = static_cast<Window*>(glfwGetWindowUserPointer(w));
 	if (!window) return;
-	for (const auto cb : window->cursorPositionCallbacks) {
+	for (const auto& cb : window->cursorPositionCallbacks)
+	{
 		cb(x, y);
 	}
 }
 
-void glfwMouseButtonCallback(GLFWwindow* w, const int a, const int b, const int c) {
+void glfwMouseButtonCallback(GLFWwindow* w, const int a, const int b, const int c)
+{
 	const Window* window = static_cast<Window*>(glfwGetWindowUserPointer(w));
 	if (!window) return;
-	for (const auto cb : window->mouseButtonCallbacks) {
+	for (const auto& cb : window->mouseButtonCallbacks)
+	{
 		cb(a, b, c);
 	}
 }
 
-void Window::close() {
+void Window::close()
+{
 	closed = true;
 	glfwDestroyWindow(window);
 }
 
-void Window::resize(const uint32_t width, const uint32_t height) {
+void Window::resize(const uint32_t width, const uint32_t height) const
+{
 	glfwSetWindowSize(window, width, height);
 }
 
-void Window::set_clipboard_content(const char * content) const {
+void Window::set_clipboard_content(const char* content) const
+{
 	glfwSetClipboardString(window, content);
 }
 
-const char* Window::get_clipboard_content() const {
+const char* Window::get_clipboard_content() const
+{
 	return glfwGetClipboardString(window);
 }
 
-const Screen Window::get_screen() {
+Screen Window::get_screen() const
+{
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
 
-	return { width, height };
+	return {width, height};
 }
 
-void Window::recreate() {
-	if (window) {
+void Window::recreate()
+{
+	if (window)
+	{
 		glfwDestroyWindow(window);
 	}
-	window = glfwCreateWindow(width, height, title.c_str(), 0, window);
+	window = glfwCreateWindow(width, height, title.c_str(), nullptr, window);
 	if (!window)
 	{
 		glfwTerminate();
@@ -168,21 +195,24 @@ void Window::recreate() {
 	glfwSetWindowSizeCallback(window, on_resize);
 }
 
-void Window::swap_buffers() const {
+void Window::swap_buffers() const
+{
 	glfwSwapBuffers(window);
 }
 
-void Window::go_windowed() {
+void Window::go_windowed()
+{
 	glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
 	recreate();
 }
 
-void Window::go_borderless() {
-
-	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-	if (mode) {
+void Window::go_borderless()
+{
+	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	if (mode)
+	{
 		width = mode->width;
 		height = mode->height;
 	}
@@ -194,8 +224,9 @@ void Window::go_borderless() {
 
 void Window::go_fullscreen()
 {
-	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-	if (mode) {
+	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	if (mode)
+	{
 		width = mode->width;
 		height = mode->height;
 	}
@@ -205,18 +236,22 @@ void Window::go_fullscreen()
 	recreate();
 }
 
-bool Window::should_close() const {
+bool Window::should_close() const
+{
 	return closed || glfwWindowShouldClose(window);
 }
 
-void Window::add_key_callback(std::function<KeyCallback> keyCallback) {
+void Window::add_key_callback(const std::function<KeyCallback> keyCallback)
+{
 	keyCallbacks.push_back(keyCallback);
 }
 
-void Window::add_mouse_button_callback(std::function<MouseButtonCallback> mouseButtonCallback) {
+void Window::add_mouse_button_callback(const std::function<MouseButtonCallback> mouseButtonCallback)
+{
 	mouseButtonCallbacks.push_back(mouseButtonCallback);
 }
 
-void Window::add_cursor_position_callback(std::function<CursorPositionCallback> cursorPositionCallback) {
+void Window::add_cursor_position_callback(const std::function<CursorPositionCallback> cursorPositionCallback)
+{
 	cursorPositionCallbacks.push_back(cursorPositionCallback);
 }

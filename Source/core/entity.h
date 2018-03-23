@@ -5,6 +5,8 @@
 #include "core/object.h"
 #include "core/transform.h"
 #include "core/component.h"
+#include "core/component_type.h"
+
 
 class Entity : public GameObject
 {
@@ -18,8 +20,8 @@ public:
 
 	void self_tick() override;
 
-	template<class C, class... _Types>
-	void add_component(_Types &&... Args)
+	template <class C, class... _Types>
+	void add_component(_Types&&... Args)
 	{
 		std::shared_ptr<C> component = std::make_shared<C>(std::forward<_Types>(Args)...);
 		remove_component(C::get_type());
@@ -27,7 +29,7 @@ public:
 		component->attach(this);
 	}
 
-	template<class C>
+	template <class C>
 	std::shared_ptr<C> get_component() const
 	{
 		std::shared_ptr<C> component = std::reinterpret_pointer_cast<C>(components.find(C::get_type())->second);
@@ -36,4 +38,3 @@ public:
 
 	void remove_component(std::shared_ptr<ComponentType> component);
 };
-

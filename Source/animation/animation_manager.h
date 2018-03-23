@@ -6,10 +6,10 @@ namespace AnimationManager
 {
 	bool init();
 
-	void update(const float delta);
+	void update(float delta);
 
 	void shutdown();
 
 	void add_animation(std::shared_ptr<AnimationStateMachine> animation);
-	void remove_animation(std::shared_ptr<AnimationStateMachine> animation);
+	void remove_animation(const std::shared_ptr<AnimationStateMachine>& animation);
 }

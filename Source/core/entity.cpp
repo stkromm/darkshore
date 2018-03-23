@@ -1,9 +1,11 @@
 #include "core/entity.h"
 
-Entity::Entity() {
+Entity::Entity()
+{
 	transform = std::make_shared<Transform>();
 }
-Entity::~Entity() {}
+
+Entity::~Entity() = default;
 
 void Entity::self_tick()
 {
@@ -11,7 +13,7 @@ void Entity::self_tick()
 	transform->update();
 }
 
-void Entity::remove_component(std::shared_ptr<ComponentType> component)
+void Entity::remove_component(const std::shared_ptr<ComponentType> component)
 {
 	if (component)
 	{

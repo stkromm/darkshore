@@ -1,15 +1,17 @@
 #include "transform.h"
 
+#include <iostream>
+
 Transform::Transform() :
-	local_to_world(math::Mat4x4(1)),
-	world_to_local(math::Mat4x4(1)),
 	dirty_local_to_world(false),
 	dirty_world_to_local(false),
+	previous_local_to_world(math::Mat4x4(1)),
+	local_to_world(math::Mat4x4(1)),
+	world_to_local(math::Mat4x4(1)),
 	parent(nullptr),
-	position({ 0,0,0 }),
+	position({0, 0, 0}),
 	rotation(0),
-	scale_factor({ 1,1 }),
-	previous_local_to_world(math::Mat4x4(1))
+	scale_factor({1, 1})
 {
 }
 
@@ -31,13 +33,10 @@ math::Mat4x4 Transform::get_local_to_world() const
 	{
 		return local_to_world * parent->get_local_to_world();
 	}
-	else
-	{
-		return local_to_world;
-	}
+	return local_to_world;
 }
 
-void Transform::update()
+void Transform::update() const
 {
 	if (dirty_local_to_world)
 	{
@@ -55,21 +54,17 @@ void Transform::update()
 	}
 }
 
-math::Mat4x4 Transform::get_local_to_world(float interpolate) const
+math::Mat4x4 Transform::get_local_to_world(const float interpolate) const
 {
 	previous_local_to_world = local_to_world;
-	math::Mat4x4 calc = get_local_to_world();
+	const math::Mat4x4 calc = get_local_to_world();
 	if (interpolate > 0 && interpolate < 1)
 	{
 		if (parent)
 			return previous_local_to_world.lerp(local_to_world, interpolate) * parent->get_local_to_world(interpolate);
-		else
-			return previous_local_to_world.lerp(local_to_world, interpolate);
+		return previous_local_to_world.lerp(local_to_world, interpolate);
 	}
-	else
-	{
-		return calc;
-	}
+	return calc;
 }
 
 math::Mat4x4 Transform::get_world_to_local() const
@@ -85,10 +80,7 @@ math::Mat4x4 Transform::get_world_to_local() const
 	{
 		return parent->get_world_to_local() * world_to_local;
 	}
-	else
-	{
-		return world_to_local;
-	}
+	return world_to_local;
 }
 
 void Transform::translate(const math::Vec2 translation)
@@ -133,5 +125,5 @@ std::string Transform::to_string() const
 {
 	std::stringstream ss;
 	ss << "Transform(position:" << position.x << "," << position.y << "" << ",rotation:" << rotation << ",scale:";
-	return std::move(ss.str());
+	return ss.str();
 }

@@ -1,17 +1,16 @@
 #pragma once
 
-#include "core/math/mat4x4.h"
-#include "core/transform.h"
-
-namespace graphics {
+namespace graphics
+{
 	class Renderer;
 
-	class Renderable {
-	
+	class Renderable
+	{
 	public:
+		virtual ~Renderable() = default;
 
-		virtual void draw(const float interpolation, Renderer& renderer) const {
-
+		virtual void draw(const float interpolation, Renderer& renderer) const
+		{
 		}
 	};
 }

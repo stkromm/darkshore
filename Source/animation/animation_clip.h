@@ -3,10 +3,10 @@
 class AnimationClip
 {
 public:
-	float remaining_clip_time;
-	float duration;
+	virtual ~AnimationClip() = default;
+	float remaining_clip_time = 0.f;
+	float duration = 0.f;
 
 	virtual void reset() = 0;
-
 	virtual void update(float delta_millis) = 0;
 };

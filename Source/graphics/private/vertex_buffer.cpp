@@ -1,6 +1,6 @@
-#include "graphics\vertex_buffer.h"
+#include "graphics/vertex_buffer.h"
 
-graphics::VertexBuffer::VertexBuffer(const void* data, uint32_t size)
+graphics::VertexBuffer::VertexBuffer(const void* data, const uint32_t size)
 {
 	GLCall(glGenBuffers(1, &id));
 	bind();
@@ -17,7 +17,7 @@ graphics::VertexBuffer::~VertexBuffer()
 	GLCall(glDeleteBuffers(1, &id));
 }
 
-void graphics::VertexBuffer::update(const void* data, uint32_t size)
+void graphics::VertexBuffer::update(const void* data, const uint32_t size) const
 {
 	bind();
 	GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));

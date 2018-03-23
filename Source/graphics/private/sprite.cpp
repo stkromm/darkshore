@@ -1,5 +1,7 @@
+#include <utility>
 #include "graphics/sprite.h"
 #include "graphics/sprite_vertex.h"
+#include "platform/asset_manager.h"
 
 using namespace graphics;
 
@@ -9,8 +11,9 @@ Sprite::~Sprite()
 	std::cout << "Delete sprite" << std::endl;
 }
 
-Sprite::Sprite(std::shared_ptr<Transform> transform, math::Vec2 offset, math::Vec2 size, graphics::TexturePatch& patch, uint32_t color) :
-	transform(transform), texture(patch.texture), patch(patch)
+Sprite::Sprite(std::shared_ptr<Transform> transform, const math::Vec2 offset, const math::Vec2 size,
+               TexturePatch& patch, const uint32_t color) :
+	transform(std::move(transform)), texture(patch.texture)
 {
 	vertices[0] =
 	{
@@ -68,7 +71,7 @@ void Sprite::change_patch(TexturePatch& patch)
 void Sprite::draw(const float interpolation, Renderer& renderer) const
 {
 	shader->bind();
-	shader->set_uniform_mat4x4("pr_matrix", graphics::SceneManager::get_scene()->get_camera()->get_projection());
+	shader->set_uniform_mat4x4("pr_matrix", SceneManager::get_scene()->get_camera()->get_projection());
 	shader->set_uniform_mat4x4("vw_matrix", transform->get_local_to_world());
 	texture->bind();
 	shader->set_uniform_1i("tex", 0);

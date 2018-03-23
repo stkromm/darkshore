@@ -1,12 +1,11 @@
 #include "component.h"
 
-Component::Component()
+Component::Component(): owner(nullptr)
 {
 }
 
 Component::~Component()
-{
-}
+= default;
 
 
 void Component::attach(Entity* entity)

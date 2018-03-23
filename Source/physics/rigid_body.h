@@ -8,11 +8,12 @@
 #include "physics/aabb_hull.h"
 #include "physics/collision_body.h"
 
-namespace physics {
+namespace physics
+{
 	class RigidBody
 	{
 	private:
-		AABBHull hull = { {-48,-64},{ 96, 128 } };
+		AABBHull hull = {{-48, -64}, {96, 128}};
 		std::shared_ptr<Transform> transform;
 		std::vector<CollisionBody> collision_bodies;
 
@@ -21,24 +22,24 @@ namespace physics {
 		float inversed_mass = 0.f;
 		float linear_damping = 0.f;
 
-		math::Vec2 translation = { 0,0 };
-		math::Vec2 velocity = { 0,0 };
-		math::Vec2 acceleration = { 0,0 };
+		math::Vec2 translation = {0, 0};
+		math::Vec2 velocity = {0, 0};
+		math::Vec2 acceleration = {0, 0};
 
-		math::Vec2 linear_impuls = { 0,0 };
-		math::Vec2 linear_impuls_acc = { 0,0 };
+		math::Vec2 linear_impuls = {0, 0};
+		math::Vec2 linear_impuls_acc = {0, 0};
 
-		math::Vec2 linear_force = { 0,0 };
-		math::Vec2 linear_force_acc = { 0,0 };
+		math::Vec2 linear_force = {0, 0};
+		math::Vec2 linear_force_acc = {0, 0};
 
 	public:
-		RigidBody(std::shared_ptr<Transform> transform, std::vector<CollisionBody> bodies = {});
+		explicit RigidBody(std::shared_ptr<Transform> transform, std::vector<CollisionBody> bodies = {});
 		~RigidBody();
 
 		void add_force(math::Vec2 force);
 		void add_impuls(math::Vec2 impuls);
 		void move(math::Vec2 move);
-		void integrate(const float millis);
+		void integrate(float delta);
 
 		std::vector<CollisionBody> get_collision_bodies() const
 		{
@@ -69,7 +70,7 @@ namespace physics {
 			return velocity;
 		}
 
-		void set_linea_damping(float damping)
+		void set_linea_damping(const float damping)
 		{
 			linear_damping = damping;
 		}
@@ -79,12 +80,12 @@ namespace physics {
 			return asleep;
 		}
 
-		void set_mass(float mass)
+		void set_mass(const float mass)
 		{
 			inversed_mass = 1 / mass;
 		}
 
-		void set_inverse_mass(float inversed_mass)
+		void set_inverse_mass(const float inversed_mass)
 		{
 			this->inversed_mass = inversed_mass;
 		}

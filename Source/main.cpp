@@ -5,10 +5,10 @@
 
 #include "json.h"
 
-#include "scripting/script.h"
+#include "scripting/script_manager.h"
 #include "graphics/render_manager.h"
 #include "platform/window_manager.h"
-#include "platform/asset.h"
+#include "platform/asset_manager.h"
 #include "physics/physics.h"
 #include "animation/animation_manager.h"
 
@@ -16,7 +16,8 @@
 #include "gameplay/player.h"
 #include "tilemap/level_loader.h"
 
-int main(const int argc, char** argv) {
+int main(const int argc, char** argv)
+{
 	std::cout << "Vine Engine started" << std::endl;
 
 	std::ifstream config_file("config.json");
@@ -54,32 +55,32 @@ int main(const int argc, char** argv) {
 		return -1;
 	}
 
-	Game* game = new Game();
+	auto game = new Game();
 	std::cout << "Load level" << std::endl;
-	std::string map_path = settings["start-level"];
+	const std::string map_path = settings["start-level"];
 	load_level(game, map_path);
-
+	
 	game->add_object<Player>();
-	for(int i = 0; i < 10; ++i)
-	game->add_object<NPC>(i%15 * 100.f, i%20 * 100.f);
+	for (int i = 0; i < 10; ++i)
+		game->add_object<NPC>(i % 15 * 100.f, i % 20 * 100.f);
 
 	// Game Loop
-	int loops = 0;
 
 	game->start();
-	while (game->is_running) {
+	while (game->is_running)
+	{
 		platform::WindowManager::get_window().poll_input();
 		game->is_running = !platform::WindowManager::get_window().should_close();
 
-		loops = 0;
+		int loops = 0;
 		float escaped_time = 0;
 
 		while (loops < game->MAX_FRAME_SKIP &&
 			std::chrono::high_resolution_clock::now() > game->frame_fixed_end)
 		{
-			physics::tick(game->TICK_DELTA_MILLIS * 0.001f *0.5f);
+			physics::tick(game->TICK_DELTA_MILLIS * 0.001f * 0.5f);
 			game->simulate_step();
-			physics::tick(game->TICK_DELTA_MILLIS * 0.001f *0.5f);
+			physics::tick(game->TICK_DELTA_MILLIS * 0.001f * 0.5f);
 			escaped_time += game->TICK_DELTA_MILLIS;
 			loops++;
 		}

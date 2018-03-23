@@ -1,26 +1,27 @@
 #pragma once
 
-#include "core/math/vec2.h"
 #include "core/math/vec3.h"
 #include "core/types.h"
 
 #undef near
 #undef far
 
-namespace math {
+namespace math
+{
 	constexpr size_t SIZE = 4 * 4;
+
 	struct Mat4x4
 	{
 	private:
-		float elements[SIZE];
+		float elements[SIZE]{};
 
 	public:
-		Mat4x4(const float* elements)
+		explicit Mat4x4(const float* elements)
 		{
 			memcpy(this->elements, elements, SIZE * sizeof(float));
 		}
 
-		Mat4x4(float diagonal)
+		explicit Mat4x4(const float diagonal)
 		{
 			memset(elements, 0, SIZE * sizeof(float));
 			elements[0 + 0 * 4] = diagonal;
@@ -80,7 +81,7 @@ namespace math {
 
 		Mat4x4 operator+(const Mat4x4 other) const
 		{
-			return Mat4x4(
+			return {
 				elements[4 * 0 + 0] + other[4 * 0 + 0],
 				elements[4 * 0 + 1] + other[4 * 0 + 1],
 				elements[4 * 0 + 2] + other[4 * 0 + 2],
@@ -100,7 +101,7 @@ namespace math {
 				elements[4 * 3 + 1] + other[4 * 3 + 1],
 				elements[4 * 3 + 2] + other[4 * 3 + 2],
 				elements[4 * 3 + 3] + other[4 * 3 + 3]
-			);
+			};
 		}
 
 		Mat4x4 operator*(const Mat4x4 other) const
@@ -121,39 +122,41 @@ namespace math {
 			return Mat4x4(data);
 		}
 
-		void set_rotation(float rotation)
+		void set_rotation(const float rotation)
 		{
-			float cos_phi = cosf(rotation);
-			float sin_phi = sinf(rotation);
+			const float cos_phi = cosf(rotation);
+			const float sin_phi = sinf(rotation);
 			elements[0] = cos_phi;
 			elements[4] = -sin_phi;
 			elements[1] = sin_phi;
 			elements[5] = cos_phi;
 		}
 
-		void set_translation(float x, float y, float z)
+		void set_translation(const float x, const float y, const float z)
 		{
 			elements[3 * 4] = x;
 			elements[3 * 4 + 1] = y;
 			elements[3 * 4 + 2] = z;
 		}
 
-		void scale(float x, float y, float z)
+		void scale(const float x, const float y, const float z)
 		{
 			elements[0] *= x;
 			elements[5] *= y;
 			elements[10] *= z;
 		}
-		void set_translation(math::Vec3 translation)
+
+		void set_translation(const Vec3 translation)
 		{
 			set_translation(translation.x, translation.y, translation.z);
 		}
 
-		Mat4x4 orthographic(const float left, const float right, const  float bottom, const float top, const float near, const float far) const
+		Mat4x4 orthographic(const float left, const float right, const float bottom, const float top, const float near,
+			const float far) const
 		{
 			Mat4x4 result(1.0f);
 
-			result.elements[0 + 0 * 4] = 2.0f / (right - left);
+			result.data()[0 + 0 * 4] = 2.0f / (right - left);
 
 			result.elements[1 + 1 * 4] = 2.0f / (top - bottom);
 
@@ -176,7 +179,7 @@ namespace math {
 			const float b = (near + far) / (near - far);
 			const float c = (2.0f * near * far) / (near - far);
 
-			result.elements[0 + 0 * 4] = a;
+			result.data()[0 + 0 * 4] = a;
 			result.elements[1 + 1 * 4] = q;
 			result.elements[2 + 2 * 4] = b;
 			result.elements[2 + 3 * 4] = -1.0f;
@@ -192,7 +195,7 @@ namespace math {
 			const ConstVec3 s = f | up.normalize();
 			const ConstVec3 u = s | f;
 
-			result.elements[0 + 0 * 4] = s.x;
+			result.data()[0 + 0 * 4] = s.x;
 			result.elements[0 + 1 * 4] = s.y;
 			result.elements[0 + 2 * 4] = s.z;
 
@@ -210,9 +213,10 @@ namespace math {
 			return result;
 		}
 
-		Mat4x4 lerp(Mat4x4 other, float lerp) {
+		Mat4x4 lerp(const Mat4x4 other, const float lerp)
+		{
 			Mat4x4 result(1);
-			result.elements[3 * 4] = math::lerp(elements[3 * 4], other.elements[3 * 4], lerp);
+			result.data()[3 * 4] = math::lerp(elements[3 * 4], other.elements[3 * 4], lerp);
 			result.elements[3 * 4 + 1] = math::lerp(elements[3 * 4 + 1], other.elements[3 * 4 + 1], lerp);
 			result.elements[3 * 4 + 2] = math::lerp(elements[3 * 4 + 2], other.elements[3 * 4 + 2], lerp);
 
@@ -224,10 +228,12 @@ namespace math {
 			return elements;
 		}
 
-		String to_string() const {
+		String to_string() const
+		{
 			std::stringstream result;
 			result << "Mat4x4(";
-			for (size_t index = 0; index < 4; index++) {
+			for (size_t index = 0; index < 4; index++)
+			{
 				result
 					<< "("
 					<< elements[index * 4 + 0] << ","

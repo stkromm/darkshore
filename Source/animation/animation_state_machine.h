@@ -9,7 +9,7 @@
 class AnimationStateMachine
 {
 private:
-	std::vector<std::string> pending_transisitons;
+	std::string pending_transisitons = "";
 	std::string current_state_name;
 	std::unordered_map<std::string, std::unique_ptr<AnimationState>> states;
 
@@ -18,5 +18,22 @@ protected:
 
 public:
 	void add_state(AnimationState state);
-	void tick(const float delta_millis);
+	void tick(float delta_millis);
+	void transition(const std::string& state_name, bool force = true)
+	{
+		if (!force)
+			pending_transisitons = state_name;
+		else
+		{
+			if (current_state_name != state_name)
+			{
+				pending_transisitons = state_name;
+				current_state_name = state_name;
+			}
+			else
+			{
+				pending_transisitons = state_name;
+			}
+		}
+	}
 };

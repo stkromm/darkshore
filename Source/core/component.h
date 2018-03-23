@@ -1,17 +1,15 @@
 #pragma once
-#include "component_type.h"
 
 class Entity;
-
 
 class Component
 {
 private:
-	Entity * owner;
+	Entity* owner;
 
 public:
 	Component();
-	~Component();
+	virtual ~Component();
 
 	Entity* get_owner() const
 	{
@@ -25,8 +23,9 @@ public:
 
 	void attach(Entity* entity);
 
-	virtual void on_attach() {}
+	virtual void on_attach()
+	{
+	}
 
 	void detach();
 };
-

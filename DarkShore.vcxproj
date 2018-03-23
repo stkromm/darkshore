@@ -29,6 +29,7 @@
     <ClCompile Include="Source\core\game.cpp" />
     <ClCompile Include="Source\core\math\vine_math.cpp" />
     <ClCompile Include="Source\core\transform.cpp" />
+    <ClCompile Include="Source\graphics\private\Font.cpp" />
     <ClCompile Include="Source\graphics\private\graphics.cpp" />
     <ClCompile Include="Source\graphics\private\index_buffer.cpp" />
     <ClCompile Include="Source\graphics\private\renderer.cpp" />
@@ -52,7 +53,6 @@
     <ClCompile Include="Source\scripting\private\script_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\stb_image.h" />
     <ClInclude Include="Source\animation\animation_state.h" />
     <ClInclude Include="Source\animation\animation_clip.h" />
     <ClInclude Include="Source\animation\animation_manager.h" />
@@ -61,7 +61,6 @@
     <ClInclude Include="Source\audio\private\input_stream.h" />
     <ClInclude Include="Source\core\component.h" />
     <ClInclude Include="Source\core\component_type.h" />
-    <ClInclude Include="Source\core\config.hpp" />
     <ClInclude Include="Source\core\entity.h" />
     <ClInclude Include="Source\core\game.h" />
     <ClInclude Include="Source\core\math\mat4x4.h" />
@@ -78,6 +77,7 @@
     <ClInclude Include="Source\gameplay\sprite_animation_clip.h" />
     <ClInclude Include="Source\gameplay\sprite_animation_component.h" />
     <ClInclude Include="Source\gameplay\sprite_component.h" />
+    <ClInclude Include="Source\graphics\Font.h" />
     <ClInclude Include="Source\graphics\graphics.h" />
     <ClInclude Include="Source\graphics\index_buffer.h" />
     <ClInclude Include="Source\graphics\renderable.h" />
@@ -112,10 +112,7 @@
     <ClInclude Include="Source\scripting\script.h" />
     <ClInclude Include="Source\scripting\script_manager.h" />
     <ClInclude Include="Source\tilemap\level_loader.h" />
-    <ClInclude Include="Source\tilemap\terrain.h" />
-    <ClInclude Include="Source\tilemap\tile.h" />
     <ClInclude Include="Source\tilemap\tile_animation_clip.h" />
-    <ClInclude Include="Source\tilemap\tile_map_grid_layer.h" />
     <ClInclude Include="Source\tilemap\tile_map_sprite_layer.h" />
     <ClInclude Include="Source\tilemap\tile_map.h" />
   </ItemGroup>
@@ -182,7 +179,7 @@
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>lua53.lib;winmm.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;ogg.lib;vorbis.lib;libtmxlite-s-d.lib;glfw3.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua53.lib;winmm.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;ogg.lib;vorbis.lib;libtmxlite-s-d.lib;glfw3.lib;opengl32.lib;glew32s.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreLinkEvent>

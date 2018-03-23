@@ -4,8 +4,8 @@
 
 #include "physics/rigid_body.h"
 
-namespace physics {
-
+namespace physics
+{
 	bool init();
 
 	void shutdown();

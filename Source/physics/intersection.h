@@ -57,7 +57,7 @@ namespace physics
 			math::Vec2 origin;
 			math::Vec2 direction;
 		};
-		
+
 		bool intersect_aabb_aabb(const AABB& a, const AABB& b, IntersectionData* data = nullptr);
 
 		bool intersect_aabb_circle(const AABB& box, const Circle& circle, IntersectionData* data);
