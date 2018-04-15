@@ -4,6 +4,8 @@
 #include <memory>
 
 #include "json.h"
+#include "platform/input.h"
+#include <iostream>
 
 using namespace platform;
 
@@ -107,17 +109,37 @@ void Window::poll_input() const
 	glfwPollEvents();
 }
 
-void glfwKeyCallback(GLFWwindow* w, const int key, const int action, const int c, const int d)
+void glfwKeyCallback(GLFWwindow* w, const int key, const int scancode, const int action, const int mods)
 {
+	if (action == GLFW_PRESS)
+	{
+		platform::set_pressed(key, true);
+	}
+	else if (action == GLFW_RELEASE)
+	{
+		platform::set_pressed(key, false);
+	}
 	auto window = static_cast<Window*>(glfwGetWindowUserPointer(w));
 	if (!window) return;
 	for (auto& cb : window->keyCallbacks)
 	{
-		cb(key, action, c, d);
+		cb(key, scancode, action, mods);
 	}
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		window->close();
+	}
+	if (key == GLFW_KEY_F1 && action == GLFW_PRESS)
+	{
+		window->go_windowed();
+	}
+	if (key == GLFW_KEY_F2 && action == GLFW_PRESS)
+	{
+		window->go_fullscreen();
+	}
+	if (key == GLFW_KEY_F3 && action == GLFW_PRESS)
+	{
+		window->go_borderless();
 	}
 }
 
@@ -170,29 +192,32 @@ Screen Window::get_screen() const
 	return {width, height};
 }
 
-void Window::recreate()
+void Window::create()
 {
-	if (window)
+	if (!window)
 	{
-		glfwDestroyWindow(window);
+		window = glfwCreateWindow(width, height, title.c_str(), nullptr, window);
+		glfwMakeContextCurrent(window);
+		glfwSwapInterval(1);
+		glfwSetWindowPos(window, 0, 0);
+		glfwSetWindowUserPointer(window, this);
+		glfwSetKeyCallback(window, glfwKeyCallback);
+		glfwSetCursorPosCallback(window, glfwCursorPositionCallback);
+		glfwSetMouseButtonCallback(window, glfwMouseButtonCallback);
+		glfwSetCursor(window, cursor);
+		glfwSetWindowIcon(window, 1, icons);
+		glfwSetWindowSizeCallback(window, on_resize);
 	}
-	window = glfwCreateWindow(width, height, title.c_str(), nullptr, window);
+	else
+	{
+		glfwSetWindowMonitor(window, glfwGetWindowMonitor(window), 0, 0, width, height, 60);
+	}
 	if (!window)
 	{
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
 
-	glfwMakeContextCurrent(window);
-	glfwSwapInterval(1);
-	glfwSetWindowPos(window, 0, 0);
-	glfwSetWindowUserPointer(window, this);
-	glfwSetKeyCallback(window, glfwKeyCallback);
-	glfwSetCursorPosCallback(window, glfwCursorPositionCallback);
-	glfwSetMouseButtonCallback(window, glfwMouseButtonCallback);
-	glfwSetCursor(window, cursor);
-	glfwSetWindowIcon(window, 1, icons);
-	glfwSetWindowSizeCallback(window, on_resize);
 }
 
 void Window::swap_buffers() const
@@ -202,10 +227,16 @@ void Window::swap_buffers() const
 
 void Window::go_windowed()
 {
+	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	if (mode)
+	{
+		width = mode->width * 0.5f;
+		height = mode->height * 0.5f;
+	}
 	glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-	recreate();
+	create();
 }
 
 void Window::go_borderless()
@@ -219,7 +250,7 @@ void Window::go_borderless()
 	glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-	recreate();
+	create();
 }
 
 void Window::go_fullscreen()
@@ -233,7 +264,7 @@ void Window::go_fullscreen()
 	glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-	recreate();
+	create();
 }
 
 bool Window::should_close() const

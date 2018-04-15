@@ -13,13 +13,6 @@
 
 namespace graphics
 {
-	struct Tile
-	{
-		uint32_t original_id;
-		uint32_t displayed_id;
-		int x;
-		int y;
-	};
 	struct TileMapSpriteLayer
 	{
 		uint32_t width;
@@ -30,8 +23,6 @@ namespace graphics
 		std::vector<Tile> tiles;
 
 		std::unique_ptr<VertexBuffer> vertex_buffer_position;
-		std::unique_ptr<VertexBuffer> vertex_buffer_uvs;
-		std::unique_ptr<VertexBuffer> vertex_buffer_color;
 		std::unique_ptr<VertexArray> vertex_array;
 		std::unique_ptr<IndexBuffer> index_buffer;
 		std::shared_ptr<TiledTexture> tiled_texture;
@@ -143,6 +134,7 @@ namespace graphics
 		void update_tiles()
 		{
 			std::vector<Vertex> vertices;
+			vertices.reserve(tiles.size());
 			for (auto& tile : tiles)
 			{
 				const uint32_t color = 0x000000FF;
@@ -183,7 +175,7 @@ namespace graphics
 			vertex_buffer_position->update(vertices.data(), sizeof(Vertex) * vertices.size());
 		}
 
-		void draw(Renderer& renderer, Shader* shader) const
+		void draw(SceneRenderer& renderer, Shader* shader) const
 		{
 			renderer.draw(*vertex_array, *index_buffer, *shader);
 		}

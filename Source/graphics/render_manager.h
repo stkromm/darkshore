@@ -1,25 +1,17 @@
 #pragma once
-#include "graphics/graphics.h"
+
+#include "graphics/renderer.h"
+#include "sprite_batch.h"
 
 namespace graphics
 {
 	namespace RenderManager
 	{
-		inline bool init()
-		{
-			if (glewInit() != GLEW_OK)
-			{
-				std::cout << "GLEW init failed" << std::endl;
-				return false;
-			}
+		std::shared_ptr<GUIRenderer> get_gui_renderer();
+		std::shared_ptr<DynamicSpriteBatch> get_sprite_renderer();
+		std::shared_ptr<SceneRenderer> get_scene_renderer();
 
-			std::cout << glGetString(GL_VERSION) << std::endl;
-			std::cout << glGetString(GL_VENDOR) << std::endl;
-			std::cout << glGetString(GL_RENDERER) << std::endl;
-			std::cout << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
-
-			return true;
-		}
+		bool init();
 
 		inline void shutdown()
 		{

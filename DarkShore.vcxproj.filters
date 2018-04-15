@@ -56,6 +56,12 @@
     <Filter Include="Source\core\math">
       <UniqueIdentifier>{af03d558-50e3-4f7c-8392-ecf36dc4831f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\tilemap\private">
+      <UniqueIdentifier>{23b4abd1-d189-4ecf-989a-264455e693ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\gameplay\private">
+      <UniqueIdentifier>{0e8852af-1fa0-4e4a-b1f5-3312a2f6a19d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\animation\private\animation_manager.cpp">
@@ -151,8 +157,14 @@
     <ClCompile Include="Source\physics\private\intersection.cpp">
       <Filter>Source\physics\private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\graphics\private\Font.cpp">
+    <ClCompile Include="Source\platform\private\input.cpp">
+      <Filter>Source\platform\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\private\render_manager.cpp">
       <Filter>Source\graphics\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gameplay\sprite_animation_reader.cpp">
+      <Filter>Source\gameplay\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -339,8 +351,26 @@
     <ClInclude Include="Source\graphics\vertex_buffer_layout.h">
       <Filter>Source\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Source\graphics\Font.h">
+    <ClInclude Include="material.h">
       <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\gui_renderer.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\material.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\sprite_batch.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\platform\input.h">
+      <Filter>Source\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gameplay\sprite_animation_reader.h">
+      <Filter>Source\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\tilemap\tile_map_grid_layer.h">
+      <Filter>Source\tilemap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -29,10 +29,11 @@
     <ClCompile Include="Source\core\game.cpp" />
     <ClCompile Include="Source\core\math\vine_math.cpp" />
     <ClCompile Include="Source\core\transform.cpp" />
-    <ClCompile Include="Source\graphics\private\Font.cpp" />
+    <ClCompile Include="Source\gameplay\sprite_animation_reader.cpp" />
     <ClCompile Include="Source\graphics\private\graphics.cpp" />
     <ClCompile Include="Source\graphics\private\index_buffer.cpp" />
     <ClCompile Include="Source\graphics\private\renderer.cpp" />
+    <ClCompile Include="Source\graphics\private\render_manager.cpp" />
     <ClCompile Include="Source\graphics\private\scene.cpp" />
     <ClCompile Include="Source\graphics\private\shader.cpp" />
     <ClCompile Include="Source\graphics\private\sprite.cpp" />
@@ -46,6 +47,7 @@
     <ClCompile Include="Source\physics\private\physics_simulation.cpp" />
     <ClCompile Include="Source\physics\private\rigid_body.cpp" />
     <ClCompile Include="Source\platform\private\asset_manager.cpp" />
+    <ClCompile Include="Source\platform\private\input.cpp" />
     <ClCompile Include="Source\platform\private\resource_handle.cpp" />
     <ClCompile Include="Source\platform\private\window.cpp" />
     <ClCompile Include="Source\platform\private\window_manager.cpp" />
@@ -53,6 +55,7 @@
     <ClCompile Include="Source\scripting\private\script_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="material.h" />
     <ClInclude Include="Source\animation\animation_state.h" />
     <ClInclude Include="Source\animation\animation_clip.h" />
     <ClInclude Include="Source\animation\animation_manager.h" />
@@ -76,16 +79,19 @@
     <ClInclude Include="Source\gameplay\rigid_body_component.h" />
     <ClInclude Include="Source\gameplay\sprite_animation_clip.h" />
     <ClInclude Include="Source\gameplay\sprite_animation_component.h" />
+    <ClInclude Include="Source\gameplay\sprite_animation_reader.h" />
     <ClInclude Include="Source\gameplay\sprite_component.h" />
-    <ClInclude Include="Source\graphics\Font.h" />
     <ClInclude Include="Source\graphics\graphics.h" />
+    <ClInclude Include="Source\graphics\gui_renderer.h" />
     <ClInclude Include="Source\graphics\index_buffer.h" />
+    <ClInclude Include="Source\graphics\material.h" />
     <ClInclude Include="Source\graphics\renderable.h" />
     <ClInclude Include="Source\graphics\renderer.h" />
     <ClInclude Include="Source\graphics\render_manager.h" />
     <ClInclude Include="Source\graphics\scene.h" />
     <ClInclude Include="Source\graphics\shader.h" />
     <ClInclude Include="Source\graphics\sprite.h" />
+    <ClInclude Include="Source\graphics\sprite_batch.h" />
     <ClInclude Include="Source\graphics\sprite_vertex.h" />
     <ClInclude Include="Source\graphics\texture.h" />
     <ClInclude Include="Source\graphics\tiled_texture.h" />
@@ -104,6 +110,7 @@
     <ClInclude Include="Source\platform\asset_manager.h" />
     <ClInclude Include="Source\platform\asset_types.h" />
     <ClInclude Include="Source\platform\cursor.h" />
+    <ClInclude Include="Source\platform\input.h" />
     <ClInclude Include="Source\platform\resource_handle.h" />
     <ClInclude Include="Source\platform\platform.h" />
     <ClInclude Include="Source\platform\window.h" />
@@ -113,6 +120,7 @@
     <ClInclude Include="Source\scripting\script_manager.h" />
     <ClInclude Include="Source\tilemap\level_loader.h" />
     <ClInclude Include="Source\tilemap\tile_animation_clip.h" />
+    <ClInclude Include="Source\tilemap\tile_map_grid_layer.h" />
     <ClInclude Include="Source\tilemap\tile_map_sprite_layer.h" />
     <ClInclude Include="Source\tilemap\tile_map.h" />
   </ItemGroup>
@@ -179,7 +187,7 @@
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>lua53.lib;winmm.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;ogg.lib;vorbis.lib;libtmxlite-s-d.lib;glfw3.lib;opengl32.lib;glew32s.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>font.lib;lua53.lib;winmm.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;ogg.lib;vorbis.lib;libtmxlite-s-d.lib;glfw3.lib;opengl32.lib;glew32s.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreLinkEvent>

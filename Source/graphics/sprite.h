@@ -4,28 +4,18 @@
 #include "graphics/scene.h"
 #include "graphics/texture.h"
 #include "core/transform.h"
-#include "graphics/sprite_vertex.h"
 
 namespace graphics
 {
 	class Sprite : public Renderable
 	{
 	private:
-		Vertex vertices[4]{};
-
-		uint32_t indices[6] = {
-			0, 1, 2,
-			2, 3, 0
-		};
+		TexturePatch patch;
 		std::shared_ptr<Transform> transform;
 		math::Vec2 extends;
-
+		uint32_t color;
 		std::shared_ptr<Texture> texture;
 
-		std::shared_ptr<Shader> shader;
-		std::unique_ptr<VertexBuffer> vertex_buffer;
-		std::unique_ptr<VertexArray> vertex_array;
-		std::unique_ptr<IndexBuffer> index_buffer;
 	public:
 		Sprite(std::shared_ptr<Transform> transform, math::Vec2 offset, math::Vec2 size, TexturePatch& patch,
 		       uint32_t color = 0x00000000);
@@ -38,6 +28,27 @@ namespace graphics
 
 		void change_patch(TexturePatch& patch);
 
-		void draw(float interpolation, Renderer& renderer) const override;
+		void draw(float interpolation) const override;
+
+		uint32_t get_color() const
+		{
+			return color;
+		}
+		TexturePatch get_texture_patch() const
+		{
+			return patch;
+		}
+		math::Vec2 get_position() const
+		{
+			return { 0.f,0.f };
+		};
+		math::Vec2 get_extends() const
+		{
+			return extends;
+		};
+		std::shared_ptr<Transform> get_transform() const
+		{
+			return transform;
+		}
 	};
 }

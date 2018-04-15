@@ -3,7 +3,7 @@
 #include <utility>
 #include <vector>
 
-#include "tilemap/tile_map_sprite_layer.h"
+#include "tilemap/tile_map_grid_layer.h"
 #include "graphics/renderable.h"
 #include "graphics/scene.h"
 #include "platform/asset.h"
@@ -22,7 +22,7 @@ namespace graphics
 	class TileMap : public Renderable, public Asset, public Entity
 	{
 	private:
-		std::vector<std::shared_ptr<TileMapSpriteLayer>> layers;
+		std::vector<std::shared_ptr<TileMapGridLayer>> layers;
 		std::shared_ptr<Transform> transform;
 		std::shared_ptr<Texture> texture;
 		std::shared_ptr<TiledTexture> tiled_texture;
@@ -33,7 +33,6 @@ namespace graphics
 
 		uint32_t size_x;
 		uint32_t size_y;
-
 	public:
 		static AssetType get_resource_type()
 		{
@@ -42,11 +41,12 @@ namespace graphics
 
 		TileMap(const uint32_t size_x, const uint32_t size_y, std::shared_ptr<Texture> texture,
 			std::shared_ptr<TiledTexture> texture2,
-			std::vector<std::shared_ptr<TileMapSpriteLayer>> layers, std::vector<std::shared_ptr<TileAnimationClip>> animations) : layers(std::move(layers)), texture(
+			std::vector<std::shared_ptr<TileMapGridLayer>> layers, std::vector<std::shared_ptr<TileAnimationClip>> animations) : layers(std::move(layers)), texture(
 				std::move(texture)), animations(animations),
 			tiled_texture(std::move(texture2)), size_x(size_x),
 			size_y(size_y)
 		{
+			this->tag = "map";
 			transform = std::make_shared<Transform>();
 			transform->translate({ -260, -160 });
 			std::vector<Vertex> vertices;
@@ -68,8 +68,25 @@ namespace graphics
 				animation_state_machine->add_state({ "tile_anim", animation });
 				add_component<AnimationComponent>(animation_state_machine);
 			}
+			const auto player = game->find_by_tag<Player>("player");
+			if (player)
+			{
+				transform->set_parent(player->get_transform());
+			}
 		}
-		void draw(const float interpolation, Renderer& renderer) const override
+
+
+		void tick() override
+		{
+			auto player = SceneManager::get_scene()->get_camera();
+			set_render_window(player->transform->get_position().x, player->transform->get_position().y);
+			auto position = transform->get_position();
+			position.x = -1200 - fmod(player->transform->get_position().x, 32 * 2);
+			position.y = -700 - fmod(player->transform->get_position().y, 32 * 2);
+			transform->set_position(position);
+		}
+
+		void draw(const float interpolation) const override
 		{
 			for (auto& layer : layers)
 			{
@@ -78,7 +95,17 @@ namespace graphics
 				shader->set_uniform_mat4x4("vw_matrix", transform->get_local_to_world());
 				texture->bind();
 				shader->set_uniform_1i("tex", 0);
-				layer->draw(renderer, shader.get());
+				layer->draw(*RenderManager::get_scene_renderer(), shader.get());
+			}
+		}
+
+		void set_render_window(const float x, const float y)
+		{
+			for (auto& layer : layers)
+			{
+				layer->render_window_x = x;
+				layer->render_window_y = -y;
+				layer->update_tiles();
 			}
 		}
 

@@ -79,8 +79,8 @@ int main(const int argc, char** argv)
 			std::chrono::high_resolution_clock::now() > game->frame_fixed_end)
 		{
 			physics::tick(game->TICK_DELTA_MILLIS * 0.001f * 0.5f);
-			game->simulate_step();
 			physics::tick(game->TICK_DELTA_MILLIS * 0.001f * 0.5f);
+			game->simulate_step();
 			escaped_time += game->TICK_DELTA_MILLIS;
 			loops++;
 		}

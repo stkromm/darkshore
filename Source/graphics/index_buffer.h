@@ -17,7 +17,10 @@ namespace graphics
 
 		explicit IndexBuffer(std::vector<uint32_t> data) : IndexBuffer(data.data(), data.size())
 		{
-		};
+		}
+
+		void update(const std::vector<unsigned>& indices);
+
 		~IndexBuffer();
 
 		uint32_t get_count() const

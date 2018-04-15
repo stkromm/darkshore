@@ -1,0 +1,151 @@
+{
+	"texture": "hero-sheet.png",
+	"tile_width": 24,
+	"tile_height": 32,
+	"clips": [
+		{
+			"name": "up_idle",
+			"frames": [
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 0
+				}
+			]
+		},
+		{
+			"name": "up_walking",
+			"transition": "up_idle",
+			"frames": [
+				{
+					"duration" : 200,
+					"x": 0,
+					"y": 0
+				},
+				{
+					"duration" : 200,
+					"x": 1,
+					"y": 0
+				},
+				{
+					"duration": 200,
+					"x": 2,
+					"y": 0
+				},
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 0
+				}
+			]
+		},
+		{
+			"name": "down_idle",
+			"frames": [
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 2
+				}
+			]
+		},
+		{
+			"name": "down_walking",
+			"transition": "down_idle",
+			"frames": [
+				{
+					"duration" : 200,
+					"x": 0,
+					"y": 2
+				},
+				{
+					"duration" : 200,
+					"x": 1,
+					"y": 2
+				},
+				{
+					"duration": 200,
+					"x": 2,
+					"y": 2
+				},
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 2
+				}
+			]
+		},
+		{
+			"name": "left_idle",
+			"frames": [
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 3
+				}
+			]
+		},
+		{
+			"name": "left_walking",
+			"transition": "left_idle",
+			"frames": [
+				{
+					"duration" : 200,
+					"x": 0,
+					"y": 3
+				},
+				{
+					"duration" : 200,
+					"x": 1,
+					"y": 3
+				},
+				{
+					"duration": 200,
+					"x": 2,
+					"y": 3
+				},
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 3
+				}
+			]
+		},
+		{
+			"name": "right_idle",
+			"frames": [
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 1
+				}
+			]
+		},
+		{
+			"name": "right_walking",
+			"transition": "right_idle",
+			"frames": [
+				{
+					"duration" : 200,
+					"x": 0,
+					"y": 1
+				},
+				{
+					"duration" : 200,
+					"x": 1,
+					"y": 1
+				},
+				{
+					"duration": 200,
+					"x": 2,
+					"y": 1
+				},
+				{
+					"duration": 200,
+					"x": 1,
+					"y": 1
+				}
+			]
+		}
+	]
+}

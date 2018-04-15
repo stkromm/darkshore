@@ -67,6 +67,6 @@ namespace platform
 		void go_borderless();
 		void go_fullscreen();
 	private:
-		void recreate();
+		void create();
 	};
 };

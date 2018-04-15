@@ -36,4 +36,9 @@ public:
 			}
 		}
 	}
+
+	std::string get_current_state()
+	{
+		return current_state_name;
+	}
 };

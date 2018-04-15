@@ -1,5 +1,4 @@
 #include "animation/animation_state_machine.h"
-#include <iostream>
 
 void AnimationStateMachine::add_state(AnimationState state)
 {
@@ -26,7 +25,6 @@ AnimationState* AnimationStateMachine::get_state()
 void AnimationStateMachine::tick(const float delta_millis)
 {
 	AnimationState* current_state = get_state();
-
 	const float remaining_time = current_state->get_clip()->remaining_clip_time - delta_millis;
 	if (remaining_time <= 0.f)
 	{

@@ -96,5 +96,9 @@ namespace physics
 		}
 
 		void set_velocity(math::Vec2 collider_velocity);
+		math::Vec2 get_impuls()
+		{
+			return linear_impuls;
+		}
 	};
 }

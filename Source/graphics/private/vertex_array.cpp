@@ -51,13 +51,13 @@ void graphics::VertexArray::add_buffer(const VertexBuffer& vb, const VertexBuffe
 	for (size_t i = 0; i < elements.size(); ++i)
 	{
 		const auto& element = elements[i];
-
-		GLCall(glEnableVertexAttribArray(i));
-		GLCall(glVertexAttribPointer(i, element.count, to_gl_element_type(element.type), element.normalized ? GL_TRUE :
+		GLCall(glEnableVertexAttribArray(i + attribute_count));
+		GLCall(glVertexAttribPointer(i + attribute_count, element.count, to_gl_element_type(element.type), element.normalized ? GL_TRUE :
 			GL_FALSE, layout.get_stride(), reinterpret_cast<const void*>(offset)));
 
 		offset += element.count * get_size_of_vertex_buffer_type(element.type);
 	}
+	attribute_count += elements.size(); 
 }
 
 void graphics::VertexArray::bind() const

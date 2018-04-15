@@ -7,6 +7,12 @@ graphics::IndexBuffer::IndexBuffer(const uint32_t* data, const uint32_t count) :
 	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(uint32_t), data, GL_STATIC_DRAW));
 }
 
+void graphics::IndexBuffer::update(const std::vector<unsigned>& indices)
+{
+	bind();
+	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(uint32_t), indices.data(), GL_STATIC_DRAW));
+}
+
 graphics::IndexBuffer::~IndexBuffer()
 {
 	unbind();

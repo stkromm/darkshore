@@ -51,13 +51,13 @@ inline void load_level(Game* game, const std::string& name)
 		std::shared_ptr<graphics::TiledTexture> tiled_texture = std::make_shared<graphics::TiledTexture>(
 			texture, tile_set.getTileSize().x, tile_set.getTileSize().y);
 
-		std::vector<std::shared_ptr<graphics::TileMapSpriteLayer>> layers;
+		std::vector<std::shared_ptr<graphics::TileMapGridLayer>> layers;
 		for (auto& generic_layer : map.getLayers())
 		{
 			if (generic_layer->getType() == tmx::TileLayer::Type::Tile)
 			{
 				const auto& layer = dynamic_cast<tmx::TileLayer*>(generic_layer.get());
-				layers.push_back(std::make_shared<graphics::TileMapSpriteLayer>(size_x, size_y, tile_width, tile_height, layer,
+				layers.push_back(std::make_shared<graphics::TileMapGridLayer>(size_x, size_y, tile_width, tile_height, layer,
 					tiled_texture, tile_set.getColumnCount()));
 
 			}

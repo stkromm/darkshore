@@ -8,6 +8,7 @@ namespace graphics
 	class VertexArray
 	{
 	private:
+		mutable int attribute_count = 0;
 		uint32_t id = 0;
 	public:
 		VertexArray();

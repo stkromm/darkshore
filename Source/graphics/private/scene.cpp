@@ -1,4 +1,5 @@
 #include "graphics/scene.h"
+#include "graphics/render_manager.h"
 
 graphics::Scene* scene = nullptr;
 
@@ -27,11 +28,16 @@ void graphics::Scene::add_renderable(const std::shared_ptr<Renderable> renderabl
 void graphics::Scene::render(const float interpolation)
 {
 	if (!get_camera()) return;
-	//std::cout << "Interpolation " << interpolation << std::endl;
-	renderer->prepare();
-	//std::cout << "Draw #Renderables:" << renderables.size() << std::endl;
+
+	RenderManager::get_scene_renderer()->prepare();
+	RenderManager::get_sprite_renderer()->prepare(get_camera()->get_projection());
+
 	for (const auto& renderable : renderables)
 	{
-		renderable->draw(interpolation, *renderer);
+		renderable->draw(interpolation);
 	}
+
+	RenderManager::get_sprite_renderer()->flush();
+
+	//std::cout << "draw_calls# " << RenderManager::get_scene_renderer()->draw_calls << std::endl;
 }

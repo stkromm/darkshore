@@ -8,6 +8,8 @@
 #include "core/math/mat4x4.h"
 #include "core/transform.h"
 #include "platform/window_manager.h"
+#include "sprite_batch.h"
+#include "platform/asset_manager.h"
 
 namespace graphics
 {
@@ -34,8 +36,6 @@ namespace graphics
 			const float width = 1920;
 			const float height = 1920 * aspect;
 			const math::Mat4x4 world_to_local = transform->get_world_to_local();
-			//world_to_local.data()[3 * 4] = world_to_local.data()[3 * 4] > -1920 / 2 + 196 ? -1920 / 2 + 196: world_to_local.data()[3 * 4];
-			//world_to_local.data()[3 * 4 + 1] = world_to_local.data()[3 * 4 + 1] > -1920 * aspect / 2 + 64 ? -1920 * aspect / 2 + 64: world_to_local.data()[3 * 4 + 1];
 			return world_to_local * math::Mat4x4(1).orthographic(-width / 2.f, width / 2.f, -height / 2.f, height / 2.f, -1, 1);
 		}
 	};
@@ -45,12 +45,10 @@ namespace graphics
 	{
 	public:
 		std::vector<std::shared_ptr<Renderable>> renderables;
-		std::shared_ptr<Renderer> renderer;
 		std::shared_ptr<Camera> camera;
 
 		Scene()
 		{
-			renderer = std::make_shared<Renderer>();
 			camera = std::make_shared<Camera>();
 		}
 

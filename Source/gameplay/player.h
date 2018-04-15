@@ -13,7 +13,8 @@
 #include "gameplay/sprite_component.h"
 
 #include "platform/asset_manager.h"
-
+#include "platform/input.h"
+#include "sprite_animation_reader.h"
 
 class Pawn : public Entity
 {
@@ -67,22 +68,13 @@ public:
 		std::shared_ptr<graphics::Sprite> sprite = get_component<SpriteComponent>()->get_sprite();
 		const graphics::TiledTexture tiled_texture = graphics::TiledTexture(
 			std::shared_ptr<graphics::Texture>(sprite->get_texture()), 24, 32);
-		// ANIMATION
-		std::shared_ptr<AnimationStateMachine> animation_state_machine = std::make_shared<AnimationStateMachine>();
-		// UP
-		std::vector<Frame> frames_up_walking = {
-			{tiled_texture[0][0], 200}, {tiled_texture[1][0], 200}, {tiled_texture[2][0], 200}, {tiled_texture[1][0], 200}
-		};
-		const std::shared_ptr<AnimationClip> up_walking = std::make_shared<SpriteAnimationClip>(
-			sprite, frames_up_walking);
-		animation_state_machine->add_state({ "up_walking", up_walking, "up_idle" });
-		std::vector<Frame> frames_up_idle = { { tiled_texture[1][0], 100 } };
-		const std::shared_ptr<AnimationClip> up_idle = std::make_shared<SpriteAnimationClip>(
-			sprite, frames_up_idle);
-		animation_state_machine->add_state({ "up_idle", up_idle });
-		// DOWN
-		// RIGHT
-		// LEFT
+		std::ifstream config_file("res/animation/hero-anim.json");
+		json settings;
+		if (config_file.is_open())
+			config_file >> settings;
+		else
+			settings = {};
+		std::shared_ptr<AnimationStateMachine> animation_state_machine = read_sprite_animation_file(sprite, settings);
 		add_component<AnimationComponent>(animation_state_machine);
 		add_component<MovementControllerComponent>();
 		std::shared_ptr<graphics::Camera> camera = std::make_shared<graphics::Camera>();
@@ -101,10 +93,56 @@ public:
 		Pawn::self_tick();
 		const auto animation_component = get_component<AnimationComponent>();
 		const auto rigid_body_component = get_component<RigidBodyComponent>();
-		if(!math::is_nearly_zero(rigid_body_component->get_rigid_body()->get_velocity()))
+
+		bool moved = false;
+		// Check input
+		if (platform::is_pressed(GLFW_KEY_W))
 		{
-			animation_component->get_animation()->transition("up_walking");
+			moved = true;
+			rigid_body_component->get_rigid_body()->add_impuls({ 0, 300 });
+			animation_component->get_animation()->transition("up_walking", true);
 		}
+		if (platform::is_pressed(GLFW_KEY_S))
+		{
+			moved = true;
+
+			rigid_body_component->get_rigid_body()->add_impuls({ 0, -300 });
+			animation_component->get_animation()->transition("down_walking", true);
+		}
+		if (platform::is_pressed(GLFW_KEY_A))
+		{
+			moved = true;
+
+			rigid_body_component->get_rigid_body()->add_impuls({ -300, 0 });
+			animation_component->get_animation()->transition("left_walking", true);
+		}
+		if (platform::is_pressed(GLFW_KEY_D))
+		{
+			moved = true;
+
+			rigid_body_component->get_rigid_body()->add_impuls({ 300, 0 });
+			animation_component->get_animation()->transition("right_walking", true);
+		}
+		if (!moved)
+		{
+			if(animation_component->get_animation()->get_current_state() == "right_walking")
+			{
+				animation_component->get_animation()->transition("right_idle", true);
+			}
+			else if (animation_component->get_animation()->get_current_state() == "up_walking")
+			{
+				animation_component->get_animation()->transition("up_idle", true);
+			}
+			else if (animation_component->get_animation()->get_current_state() == "down_walking")
+			{
+				animation_component->get_animation()->transition("down_idle", true);
+			}
+			else if (animation_component->get_animation()->get_current_state() == "left_walking")
+			{
+				animation_component->get_animation()->transition("left_idle", true);
+			}
+		}
+		
 	}
 	void key_press(const size_t k, const size_t m, const size_t s, const size_t a) const
 	{

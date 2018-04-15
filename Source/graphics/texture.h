@@ -43,6 +43,10 @@ namespace graphics
 		{
 			return height;
 		}
+		uint32_t get_id() const
+		{
+			return id;
+		}
 
 		void update_data(byte* data);
 	};
