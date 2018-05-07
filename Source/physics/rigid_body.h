@@ -22,23 +22,23 @@ namespace physics
 		float inversed_mass = 0.f;
 		float linear_damping = 0.f;
 
-		math::Vec2 translation = {0, 0};
-		math::Vec2 velocity = {0, 0};
-		math::Vec2 acceleration = {0, 0};
+		math::FVec2 translation = {0, 0};
+		math::FVec2 velocity = {0, 0};
+		math::FVec2 acceleration = {0, 0};
 
-		math::Vec2 linear_impuls = {0, 0};
-		math::Vec2 linear_impuls_acc = {0, 0};
+		math::FVec2 linear_impuls = {0, 0};
+		math::FVec2 linear_impuls_acc = {0, 0};
 
-		math::Vec2 linear_force = {0, 0};
-		math::Vec2 linear_force_acc = {0, 0};
+		math::FVec2 linear_force = {0, 0};
+		math::FVec2 linear_force_acc = {0, 0};
 
 	public:
 		explicit RigidBody(std::shared_ptr<Transform> transform, std::vector<CollisionBody> bodies = {});
 		~RigidBody();
 
-		void add_force(math::Vec2 force);
-		void add_impuls(math::Vec2 impuls);
-		void move(math::Vec2 move);
+		void add_force(math::FVec2 force);
+		void add_impuls(math::FVec2 impuls);
+		void move(math::FVec2 move);
 		void integrate(float delta);
 
 		std::vector<CollisionBody> get_collision_bodies() const
@@ -65,7 +65,7 @@ namespace physics
 			return false;
 		}
 
-		math::Vec2 get_velocity() const
+		math::FVec2 get_velocity() const
 		{
 			return velocity;
 		}
@@ -95,8 +95,8 @@ namespace physics
 			return *transform;
 		}
 
-		void set_velocity(math::Vec2 collider_velocity);
-		math::Vec2 get_impuls()
+		void set_velocity(math::FVec2 collider_velocity);
+		math::FVec2 get_impuls()
 		{
 			return linear_impuls;
 		}

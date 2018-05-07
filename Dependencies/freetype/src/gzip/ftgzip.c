@@ -5,7 +5,7 @@
 /*    FreeType support for .gz compressed files.                           */
 /*                                                                         */
 /*  This optional component relies on zlib.  It should mainly be used to   */
-/*  parse compressed PCF fonts, as found with many X11 server              */
+/*  parse_tmx compressed PCF fonts, as found with many X11 server              */
 /*  distributions.                                                         */
 /*                                                                         */
 /*  Copyright 2002-2006, 2009-2014 by                                      */

@@ -1,5 +1,4 @@
 #pragma once
-#include "core/types.h"
 
 namespace math
 {
@@ -18,14 +17,33 @@ namespace math
 		return a + (b - a) * lerp;
 	}
 
-	constexpr float abs(const float val)
+	template<typename T>
+	constexpr T abs(T val)
 	{
 		return val > 0.f ? val : -val;
+	}
+
+	template<typename  T>
+	constexpr T clamp(T val, T max)
+	{
+		return val <= max ? val : max;
+	}
+
+	template<typename  T>
+	constexpr T clamp_positive(T val)
+	{
+		return val >= 0 ? val : 0;
 	}
 
 	template <typename T>
 	constexpr T sqrt(T x)
 	{
 		return sqrtf(x);
+	}
+
+	template <typename T>
+	constexpr T invert(T x, T max)
+	{
+		return max - x;
 	}
 }

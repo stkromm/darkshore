@@ -1,7 +1,8 @@
 #pragma once
 
 #include "core/component.h"
-#include "graphics/scene.h"
+
+#include "graphics/scene_manager.h"
 
 class CameraComponent : public Component
 {
@@ -18,7 +19,7 @@ public:
 
 	static std::shared_ptr<ComponentType> get_type()
 	{
-		static std::shared_ptr<ComponentType> rigid_body_type = std::make_shared<ComponentType>(ComponentType{"camera"});
+		static std::shared_ptr<ComponentType> rigid_body_type = std::make_shared<ComponentType>(ComponentType{ "camera" });
 		return rigid_body_type;
 	}
 };

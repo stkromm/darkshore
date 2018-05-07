@@ -3,7 +3,7 @@
 // ReSharper disable once CppUnusedIncludeDirective
 #include <iostream>
 // ReSharper disable once CppUnusedIncludeDirective
-#include "GL/glew.h"
+#include "third_party/gl/glew.h"
 
 namespace graphics
 {

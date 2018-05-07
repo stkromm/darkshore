@@ -2,7 +2,7 @@
 #include <utility>
 
 #include "platform/resource_handle.h"
-#include "SFML/Audio.hpp"
+#include "third_party/sfml/Audio.hpp"
 
 class InputStream : public sf::InputStream
 {

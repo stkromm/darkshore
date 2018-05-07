@@ -7,9 +7,12 @@
 struct RGBAColor
 {
 private:
-	uint32_t rgba;
+	union {
+		uint32_t rgba;
+		byte channel[4];
+	};
 public:
-	explicit constexpr RGBAColor(const uint32_t color) : rgba(color)
+	RGBAColor(const uint32_t color) : rgba(color)
 	{
 	}
 

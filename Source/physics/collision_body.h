@@ -1,7 +1,7 @@
 #pragma once
 
 #include "physics/aabb_hull.h"
-#include "physics/intersection.h"
+#include "physics/private/intersection.h"
 
 namespace physics
 {

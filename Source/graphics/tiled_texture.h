@@ -59,7 +59,6 @@ namespace graphics
 
 		VerticalTileStrip operator[](const uint32_t x) const
 		{
-			ASSERT(x < size_x);
 			return
 			{
 				texture,

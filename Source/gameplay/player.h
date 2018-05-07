@@ -15,6 +15,7 @@
 #include "platform/asset_manager.h"
 #include "platform/input.h"
 #include "sprite_animation_reader.h"
+#include <fstream>
 
 class Pawn : public Entity
 {
@@ -29,8 +30,8 @@ public:
 		const graphics::TiledTexture tiled_texture = graphics::TiledTexture(std::shared_ptr<graphics::Texture>(texture),
 			width,
 			height);
-		sprite = std::make_shared<graphics::Sprite>(transform, math::Vec2{ -width * 2.f, -height * 2.f },
-			math::Vec2{ width * 4.f, height * 4.f }, tiled_texture[x][y], 255);
+		sprite = std::make_shared<graphics::Sprite>(transform, math::FVec2{ -width * 2.f, -height * 2.f },
+			math::FVec2{ width * 4.f, height * 4.f }, tiled_texture[x][y], 255);
 		rigid_body = std::make_shared<physics::RigidBody>(transform);
 	}
 
@@ -65,7 +66,7 @@ public:
 	{
 		Pawn::on_spawn();
 
-		std::shared_ptr<graphics::Sprite> sprite = get_component<SpriteComponent>()->get_sprite();
+		const std::shared_ptr<graphics::Sprite> sprite = get_component<SpriteComponent>()->get_sprite();
 		const graphics::TiledTexture tiled_texture = graphics::TiledTexture(
 			std::shared_ptr<graphics::Texture>(sprite->get_texture()), 24, 32);
 		std::ifstream config_file("res/animation/hero-anim.json");
@@ -78,7 +79,7 @@ public:
 		add_component<AnimationComponent>(animation_state_machine);
 		add_component<MovementControllerComponent>();
 		std::shared_ptr<graphics::Camera> camera = std::make_shared<graphics::Camera>();
-		camera->transform->set_parent(transform);
+		camera->get_transform()->set_parent(transform);
 		add_component<CameraComponent>(camera);
 		get_component<CameraComponent>()->activate();
 	}
@@ -123,6 +124,7 @@ public:
 			rigid_body_component->get_rigid_body()->add_impuls({ 300, 0 });
 			animation_component->get_animation()->transition("right_walking", true);
 		}
+		
 		if (!moved)
 		{
 			if(animation_component->get_animation()->get_current_state() == "right_walking")
@@ -193,7 +195,7 @@ public:
 		get_component<RigidBodyComponent>()->get_rigid_body()->set_linea_damping(0.8f);
 		get_component<RigidBodyComponent>()->get_rigid_body()->set_inverse_mass(1.f);
 		std::shared_ptr<graphics::Camera> camera = std::make_shared<graphics::Camera>();
-		camera->transform->set_parent(transform);
+		camera->get_transform()->set_parent(transform);
 		add_component<CameraComponent>(camera);
 	}
 
@@ -205,7 +207,7 @@ public:
 			followed_transform = game->find_by_tag<Player>("player")->get_transform();
 		}
 
-		const math::Vec2 distance = (followed_transform.lock()->get_position() - transform->get_position());
+		const math::FVec2 distance = (followed_transform.lock()->get_position() - transform->get_position());
 		get_component<RigidBodyComponent>()->get_rigid_body()->add_force(distance * 0.1f);
 	}
 

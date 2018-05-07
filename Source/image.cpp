@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "stb_image.h"
+#include "stb_image/stb_image.h"
 #include "platform/resource_handle.h"
 
 RGBAImage::RGBAImage(const std::string& path, const char channel_count)

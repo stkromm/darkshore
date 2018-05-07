@@ -2,6 +2,7 @@
 
 #include "core/component.h"
 #include "animation/animation_manager.h"
+#include "core/component_type.h"
 
 class AnimationComponent : public Component
 {

@@ -4,5 +4,6 @@
 
 struct Cursor
 {
-	math::Vec2 position;
+	float x;
+	float y;
 };

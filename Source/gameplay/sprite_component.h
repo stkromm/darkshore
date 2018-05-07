@@ -7,6 +7,7 @@
 class SpriteComponent : public Component
 {
 	std::shared_ptr<graphics::Sprite> sprite;
+	
 public:
 	explicit SpriteComponent(const std::shared_ptr<graphics::Sprite> sprite) : sprite(sprite)
 	{

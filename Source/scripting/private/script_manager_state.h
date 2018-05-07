@@ -1,15 +1,15 @@
 #pragma once
 
 extern "C" {
-# include "Lua/lua.h"
+# include "lua/lua.h"
 	// ReSharper disable once CppUnusedIncludeDirective
-# include "Lua/lauxlib.h"
+# include "lua/lauxlib.h"
 	// ReSharper disable once CppUnusedIncludeDirective
-# include "Lua/lualib.h"
+# include "lua/lualib.h"
 }
 
 // ReSharper disable once CppUnusedIncludeDirective
-#include "LuaBridge/LuaBridge.h"
+#include "lua_bridge/LuaBridge.h"
 
 namespace scripting
 {

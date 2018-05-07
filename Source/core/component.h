@@ -11,6 +11,9 @@ public:
 	Component();
 	virtual ~Component();
 
+	virtual void on_attach() {}
+	virtual void on_detach() {}
+
 	Entity* get_owner() const
 	{
 		return owner;
@@ -22,10 +25,6 @@ public:
 	}
 
 	void attach(Entity* entity);
-
-	virtual void on_attach()
-	{
-	}
 
 	void detach();
 };

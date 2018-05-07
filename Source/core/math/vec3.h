@@ -108,7 +108,7 @@ namespace math
 			return *this * *this;
 		}
 
-		String to_string() const
+		std::string to_string() const
 		{
 			std::stringstream result;
 			result << "ConstVec3(" << x << "," << y << "," << z << ")";

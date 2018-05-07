@@ -5,7 +5,7 @@
 /*    FreeType support for .Z compressed files.                            */
 /*                                                                         */
 /*  This optional component relies on NetBSD's zopen().  It should mainly  */
-/*  be used to parse compressed PCF fonts, as found with many X11 server   */
+/*  be used to parse_tmx compressed PCF fonts, as found with many X11 server   */
 /*  distributions.                                                         */
 /*                                                                         */
 /*  Copyright 2004-2006, 2009, 2010, 2012-2014 by                          */

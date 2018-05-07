@@ -10,18 +10,19 @@
 
 namespace platform
 {
-	constexpr uint32_t FULLSCREEN = 0;
-	constexpr uint32_t BORDERLESS_WINDOWED = 1;
-	constexpr uint32_t WINDOWED = 2;
+	constexpr uint32 FULLSCREEN = 0;
+	constexpr uint32 BORDERLESS_WINDOWED = 1;
+	constexpr uint32 WINDOWED = 2;
 
 	using KeyCallback = void(size_t, size_t, size_t, size_t);
 	using CursorPositionCallback = void(double, double);
 	using MouseButtonCallback = void(size_t, size_t, size_t);
+	using WindowResizeCallback = void(size_t, size_t);
 
 	struct Screen
 	{
-		int32_t width;
-		int32_t height;
+		int32 width;
+		int32 height;
 	};
 
 	class Window
@@ -30,12 +31,13 @@ namespace platform
 		std::vector<std::function<KeyCallback>> keyCallbacks;
 		std::vector<std::function<CursorPositionCallback>> cursorPositionCallbacks;
 		std::vector<std::function<MouseButtonCallback>> mouseButtonCallbacks;
+		std::vector<std::function<WindowResizeCallback>> windowResizeCallbacks;
 	private:
-		int32_t width = 1024;
-		int32_t height = 720;
+		int32 width = 1024;
+		int32 height = 720;
 
-		math::Vec2 position = {0, 0};
-		String title = "";
+		math::FVec2 position = {0, 0};
+		std::string title = "";
 		bool closed = false;
 	public:
 		Window();
@@ -58,10 +60,12 @@ namespace platform
 
 		void add_cursor_position_callback(std::function<CursorPositionCallback> cursorPositionCallback);
 
+		void add_resize_callback(std::function<WindowResizeCallback> resizeCallback);
+
 		void set_clipboard_content(const char* content) const;
 		const char* get_clipboard_content() const;
 
-		void resize(uint32_t width, uint32_t height) const;
+		void resize(uint32 width, uint32 height) const;
 
 		void go_windowed();
 		void go_borderless();

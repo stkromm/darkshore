@@ -5,8 +5,10 @@
 #include <vector>
 
 #include "animation/animation_clip.h"
-#include "tilemap/tile_map_sprite_layer.h"
+#include "tile_layer.h"
 
+namespace tilemap
+{
 struct TileFrame
 {
 	uint32_t tile_index;
@@ -18,13 +20,13 @@ class TileAnimationClip : public AnimationClip
 private:
 	uint32_t frame_id = 0;
 	uint32_t tile_id = 0;
-	std::shared_ptr<graphics::TileMapGridLayer> tile_map_layer;
+	std::shared_ptr<tilemap::TileLayer> tile_map_layer;
 
 protected:
-	std::vector<TileFrame> frames;
+	std::vector<TileFrame> frames{};
 
 public:
-	TileAnimationClip(const uint32_t tile_id, std::shared_ptr<graphics::TileMapGridLayer> tile_map_layer, std::vector<TileFrame>& frames) : tile_id(tile_id),
+	TileAnimationClip(const uint32_t tile_id, std::shared_ptr<tilemap::TileLayer> tile_map_layer, std::vector<TileFrame>& frames) : tile_id(tile_id),
 		tile_map_layer(
 			std::move(tile_map_layer)), frames(frames)
 	{
@@ -75,3 +77,4 @@ public:
 		on_frame_update(frame_id);
 	}
 };
+}

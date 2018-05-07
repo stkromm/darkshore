@@ -1,16 +1,11 @@
 #pragma once
 
-#include "platform/window.h"
-#include "gameplay/rigid_body_component.h"
 #include "core/component.h"
-#include "core/entity.h"
 
 class MovementControllerComponent : public Component
 {
 public:
-	MovementControllerComponent()
-	{
-	}
+	MovementControllerComponent() = default;
 
 	static std::shared_ptr<ComponentType> get_type()
 	{

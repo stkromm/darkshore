@@ -228,7 +228,7 @@ namespace math
 			return elements;
 		}
 
-		String to_string() const
+		std::string to_string() const
 		{
 			std::stringstream result;
 			result << "Mat4x4(";

@@ -23,7 +23,7 @@ namespace graphics
 		}
 
 		explicit Texture(const std::string& file_path);
-		explicit Texture(const uint32_t width, const uint32_t height, byte* data);
+		explicit Texture(uint32_t width, uint32_t height, byte* data);
 		~Texture();
 
 		void bind(uint32_t slot = 0) const;

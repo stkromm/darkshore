@@ -2,4 +2,4 @@
 
 #include "core/types.h"
 
-#include <GLFW/glfw3.h>
+#include "platform/private/glfw/glfw3.h"

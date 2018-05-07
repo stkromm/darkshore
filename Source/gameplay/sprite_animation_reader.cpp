@@ -9,7 +9,8 @@
 
 std::shared_ptr<AnimationStateMachine> read_sprite_animation_file(std::shared_ptr<graphics::Sprite> sprite, json source)
 {
-	const graphics::TiledTexture tiled_texture = graphics::TiledTexture(AssetManager::load_asset<graphics::Texture>(source["texture"]), source["tile_width"], source["tile_height"]);
+	std::string texture_name = source["texture"];
+	const graphics::TiledTexture tiled_texture = graphics::TiledTexture(AssetManager::load_asset<graphics::Texture>(texture_name), source["tile_width"], source["tile_height"]);
 	std::shared_ptr<AnimationStateMachine> animation_state_machine = std::make_shared<AnimationStateMachine>();
 
 	for (auto& clip : source["clips"])

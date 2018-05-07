@@ -31,19 +31,19 @@ void RigidBody::remove_collider(CollisionBody collider)
 	}
 }
 
-void RigidBody::add_force(const math::Vec2 force)
+void RigidBody::add_force(const math::FVec2 force)
 {
 	asleep = false;
 	linear_force_acc += force;
 }
 
-void RigidBody::add_impuls(const math::Vec2 impuls)
+void RigidBody::add_impuls(const math::FVec2 impuls)
 {
 	asleep = false;
 	linear_impuls_acc += impuls;
 }
 
-void RigidBody::move(const math::Vec2 move)
+void RigidBody::move(const math::FVec2 move)
 {
 	asleep = false;
 	translation += move;
@@ -56,7 +56,7 @@ void RigidBody::integrate(const float delta)
 		return;
 	}
 
-	math::Vec2 acceleration_acc;
+	math::FVec2 acceleration_acc;
 	if (ignore_mass)
 	{
 		acceleration_acc += linear_force_acc;
@@ -81,7 +81,7 @@ void RigidBody::integrate(const float delta)
 	linear_impuls_acc = {0, 0};
 
 	transform->translate(translation + velocity * delta);
-	translation = math::Vec2(0, 0);
+	translation = math::FVec2(0, 0);
 
 	if (is_nearly_zero(velocity) && is_nearly_zero(translation))
 	{
@@ -89,7 +89,7 @@ void RigidBody::integrate(const float delta)
 	}
 }
 
-void RigidBody::set_velocity(const math::Vec2 collider_velocity)
+void RigidBody::set_velocity(const math::FVec2 collider_velocity)
 {
 	this->velocity = collider_velocity;
 }

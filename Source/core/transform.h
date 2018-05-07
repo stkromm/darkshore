@@ -19,7 +19,7 @@ private:
 
 	math::Vec3 position;
 	float rotation;
-	math::Vec2 scale_factor;
+	math::FVec2 scale_factor;
 public:
 	Transform();
 	~Transform();
@@ -28,15 +28,18 @@ public:
 	math::Mat4x4 get_local_to_world(float interpolate) const;
 	math::Mat4x4 get_world_to_local() const;
 
-	void translate(math::Vec2 translation);
-	void set_position(math::Vec2 position);
+	void translate(math::FVec2 translation);
+	void set_position(math::FVec2 position);
 	void rotate(float angle);
 	void scale(float scale_factor);
 	void scale(float scale_x, float scale_y);
+	void set_scale(float zoom);
 
 	void set_parent(const std::shared_ptr<Transform> parent)
 	{
 		this->parent = parent;
+		dirty_local_to_world = true;
+		dirty_world_to_local = true;
 	}
 
 	float get_rotation() const
@@ -44,12 +47,12 @@ public:
 		return rotation;
 	}
 
-	math::Vec2 get_position() const
+	math::FVec2 get_position() const
 	{
 		return {position.x, position.y};
 	}
 
-	math::Vec2 get_scale() const
+	math::FVec2 get_scale() const
 	{
 		return scale_factor;
 	}

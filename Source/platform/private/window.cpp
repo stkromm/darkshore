@@ -5,7 +5,6 @@
 
 #include "json.h"
 #include "platform/input.h"
-#include <iostream>
 
 using namespace platform;
 
@@ -91,12 +90,30 @@ Window::~Window()
 
 Cursor Window::get_cursor() const
 {
-	return {{0, 0}};
+	float64 x;
+	float64 y;
+	glfwGetCursorPos(window, &x, &y);
+
+	return { float(x), float(y) };
 }
 
-void on_resize(GLFWwindow* w, const int width, const int height)
+const Window* get_current_window(GLFWwindow* w)
+{
+	return static_cast<Window*>(glfwGetWindowUserPointer(w));
+}
+
+void on_resize(GLFWwindow* w, const int32 width, const int32 height)
 {
 	glViewport(0, 0, width, height);
+
+	const Window* window = get_current_window(w);
+	if (window)
+	{
+		for (const auto& callback_on_resize : window->windowResizeCallbacks)
+		{
+			callback_on_resize(width, height);
+		}
+	}
 }
 
 void Window::update() const
@@ -109,7 +126,7 @@ void Window::poll_input() const
 	glfwPollEvents();
 }
 
-void glfwKeyCallback(GLFWwindow* w, const int key, const int scancode, const int action, const int mods)
+void glfwKeyCallback(GLFWwindow* w, const int32 key, const int32 scancode, const int32 action, const int32 mods)
 {
 	if (action == GLFW_PRESS)
 	{
@@ -143,7 +160,7 @@ void glfwKeyCallback(GLFWwindow* w, const int key, const int scancode, const int
 	}
 }
 
-void glfwCursorPositionCallback(GLFWwindow* w, const double x, const double y)
+void glfwCursorPositionCallback(GLFWwindow* w, const float64 x, const float64 y)
 {
 	const Window* window = static_cast<Window*>(glfwGetWindowUserPointer(w));
 	if (!window) return;
@@ -169,7 +186,7 @@ void Window::close()
 	glfwDestroyWindow(window);
 }
 
-void Window::resize(const uint32_t width, const uint32_t height) const
+void Window::resize(const uint32 width, const uint32 height) const
 {
 	glfwSetWindowSize(window, width, height);
 }
@@ -189,7 +206,7 @@ Screen Window::get_screen() const
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
 
-	return {width, height};
+	return { width, height };
 }
 
 void Window::create()
@@ -230,8 +247,8 @@ void Window::go_windowed()
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	if (mode)
 	{
-		width = mode->width * 0.5f;
-		height = mode->height * 0.5f;
+		width = mode->width / 2;
+		height = mode->height / 2;
 	}
 	glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
@@ -285,4 +302,9 @@ void Window::add_mouse_button_callback(const std::function<MouseButtonCallback> 
 void Window::add_cursor_position_callback(const std::function<CursorPositionCallback> cursorPositionCallback)
 {
 	cursorPositionCallbacks.push_back(cursorPositionCallback);
+}
+
+void Window::add_resize_callback(const std::function<WindowResizeCallback> resizeCallback)
+{
+	windowResizeCallbacks.push_back(resizeCallback);
 }

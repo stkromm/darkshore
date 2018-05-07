@@ -11,11 +11,11 @@ namespace physics
 		/**
 		Offset relative offset to transform position
 		*/
-		math::Vec2 offset;
+		math::FVec2 offset;
 		/**
 		Size of the AABB hull
 		*/
-		math::Vec2 extends;
+		math::FVec2 extends;
 
 		std::string to_string() const;
 

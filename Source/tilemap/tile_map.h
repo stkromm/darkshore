@@ -1,119 +1,23 @@
 #pragma once
 
-#include <utility>
-#include <vector>
+#include "json.h"
 
-#include "tilemap/tile_map_grid_layer.h"
-#include "graphics/renderable.h"
-#include "graphics/scene.h"
-#include "platform/asset.h"
-#include "platform/asset_manager.h"
-#include "graphics/shader.h"
-#include "graphics/tiled_texture.h"
-#include "platform/asset_types.h"
+#include "tile_layer.h"
+#include "chipset.h"
 
-#include "physics/collision_body.h"
-
-#include "core/object.h"
-#include "tile_animation_clip.h"
-
-namespace graphics
+namespace tilemap
 {
-	class TileMap : public Renderable, public Asset, public Entity
+	class TileMap
 	{
-	private:
-		std::vector<std::shared_ptr<TileMapGridLayer>> layers;
-		std::shared_ptr<Transform> transform;
-		std::shared_ptr<Texture> texture;
-		std::shared_ptr<TiledTexture> tiled_texture;
-		std::shared_ptr<Shader> shader;
+		uint32 width;
+		uint32 height;
+		int32 offset_x;
+		int32 offset_y;
 
-		std::vector<physics::CollisionBody> collision_bodies;
-		std::vector<std::shared_ptr<TileAnimationClip>> animations;
+		std::vector<std::shared_ptr<TileLayer>> layers;
+		std::vector<std::shared_ptr<Chipset>> tile_sets;
 
-		uint32_t size_x;
-		uint32_t size_y;
 	public:
-		static AssetType get_resource_type()
-		{
-			return MAP;
-		}
-
-		TileMap(const uint32_t size_x, const uint32_t size_y, std::shared_ptr<Texture> texture,
-			std::shared_ptr<TiledTexture> texture2,
-			std::vector<std::shared_ptr<TileMapGridLayer>> layers, std::vector<std::shared_ptr<TileAnimationClip>> animations) : layers(std::move(layers)), texture(
-				std::move(texture)), animations(animations),
-			tiled_texture(std::move(texture2)), size_x(size_x),
-			size_y(size_y)
-		{
-			this->tag = "map";
-			transform = std::make_shared<Transform>();
-			transform->translate({ -260, -160 });
-			std::vector<Vertex> vertices;
-			std::vector<uint32_t> indices;
-			shader = AssetManager::load_asset<Shader>("basic.shader");
-
-		}
-
-		~TileMap()
-		{
-			std::cout << "Delete tilemap" << std::endl;
-		}
-
-		void on_spawn() override
-		{
-			for (auto& animation : animations)
-			{
-				std::shared_ptr<AnimationStateMachine> animation_state_machine = std::make_shared<AnimationStateMachine>();
-				animation_state_machine->add_state({ "tile_anim", animation });
-				add_component<AnimationComponent>(animation_state_machine);
-			}
-			const auto player = game->find_by_tag<Player>("player");
-			if (player)
-			{
-				transform->set_parent(player->get_transform());
-			}
-		}
-
-
-		void tick() override
-		{
-			auto player = SceneManager::get_scene()->get_camera();
-			set_render_window(player->transform->get_position().x, player->transform->get_position().y);
-			auto position = transform->get_position();
-			position.x = -1200 - fmod(player->transform->get_position().x, 32 * 2);
-			position.y = -700 - fmod(player->transform->get_position().y, 32 * 2);
-			transform->set_position(position);
-		}
-
-		void draw(const float interpolation) const override
-		{
-			for (auto& layer : layers)
-			{
-				shader->bind();
-				shader->set_uniform_mat4x4("pr_matrix", SceneManager::get_scene()->get_camera()->get_projection());
-				shader->set_uniform_mat4x4("vw_matrix", transform->get_local_to_world());
-				texture->bind();
-				shader->set_uniform_1i("tex", 0);
-				layer->draw(*RenderManager::get_scene_renderer(), shader.get());
-			}
-		}
-
-		void set_render_window(const float x, const float y)
-		{
-			for (auto& layer : layers)
-			{
-				layer->render_window_x = x;
-				layer->render_window_y = -y;
-				layer->update_tiles();
-			}
-		}
-
-		std::string to_string() const
-		{
-			std::stringstream sstream;
-			sstream << "TileMap(size:(" << size_x << "," << size_y << "),layerCount:" << layers.size() << ")";
-			return sstream.str();
-		}
+		void parse(json map_source);
 	};
-};
+}

@@ -53,6 +53,7 @@ namespace graphics
 
 	void Texture::unbind() const
 	{
+		std::cout << "Unbind texture " << id << std::endl;
 		GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 	}
 

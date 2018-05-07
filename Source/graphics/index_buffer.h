@@ -11,6 +11,7 @@ namespace graphics
 	private:
 		uint32_t id = 0;
 		uint32_t count;
+		uint32_t capacity;
 
 	public:
 		IndexBuffer(const uint32_t* data, uint32_t count);

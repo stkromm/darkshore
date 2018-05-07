@@ -141,7 +141,7 @@ FT_BEGIN_HEADER
   /* LZW-compressed file support.                                          */
   /*                                                                       */
   /*   FreeType now handles font files that have been compressed with the  */
-  /*   `compress' program.  This is mostly used to parse many of the PCF   */
+  /*   `compress' program.  This is mostly used to parse_tmx many of the PCF   */
   /*   files that come with various X11 distributions.  The implementation */
   /*   uses NetBSD's `zopen' to partially uncompress the file on the fly   */
   /*   (see src/lzw/ftgzip.c).                                             */
@@ -156,7 +156,7 @@ FT_BEGIN_HEADER
   /* Gzip-compressed file support.                                         */
   /*                                                                       */
   /*   FreeType now handles font files that have been compressed with the  */
-  /*   `gzip' program.  This is mostly used to parse many of the PCF files */
+  /*   `gzip' program.  This is mostly used to parse_tmx many of the PCF files */
   /*   that come with XFree86.  The implementation uses `zlib' to          */
   /*   partially uncompress the file on the fly (see src/gzip/ftgzip.c).   */
   /*                                                                       */
@@ -192,7 +192,7 @@ FT_BEGIN_HEADER
   /* Bzip2-compressed file support.                                        */
   /*                                                                       */
   /*   FreeType now handles font files that have been compressed with the  */
-  /*   `bzip2' program.  This is mostly used to parse many of the PCF      */
+  /*   `bzip2' program.  This is mostly used to parse_tmx many of the PCF      */
   /*   files that come with XFree86.  The implementation uses `libbz2' to  */
   /*   partially uncompress the file on the fly (see src/bzip2/ftbzip2.c). */
   /*   Contrary to gzip, bzip2 currently is not included and need to use   */

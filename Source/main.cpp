@@ -5,16 +5,16 @@
 
 #include "json.h"
 
-#include "scripting/script_manager.h"
 #include "graphics/render_manager.h"
 #include "platform/window_manager.h"
+#include "scripting/script_manager.h"
 #include "platform/asset_manager.h"
 #include "physics/physics.h"
 #include "animation/animation_manager.h"
 
 #include "core/game.h"
-#include "gameplay/player.h"
-#include "tilemap/level_loader.h"
+#include "dslevel/level_loader.h"
+#include "graphics/scene_manager.h"
 
 int main(const int argc, char** argv)
 {
@@ -59,13 +59,8 @@ int main(const int argc, char** argv)
 	std::cout << "Load level" << std::endl;
 	const std::string map_path = settings["start-level"];
 	load_level(game, map_path);
-	
-	game->add_object<Player>();
-	for (int i = 0; i < 10; ++i)
-		game->add_object<NPC>(i % 15 * 100.f, i % 20 * 100.f);
 
 	// Game Loop
-
 	game->start();
 	while (game->is_running)
 	{

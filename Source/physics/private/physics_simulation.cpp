@@ -6,8 +6,8 @@
 #include <omp.h>
 #include <algorithm>
 
-#include "physics/private/contact.h"
-#include "physics/intersection.h"
+#include "physics/private/contact-resolving.h"
+#include "physics/private/intersection.h"
 
 static std::vector<std::shared_ptr<physics::RigidBody>> physic_bodies = {};
 
