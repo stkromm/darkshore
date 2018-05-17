@@ -1,6 +1,6 @@
 #pragma once
 
-#include "platform/asset.h"
+#include "core/platform/asset.h"
 
 namespace R
 {

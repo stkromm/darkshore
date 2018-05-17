@@ -1,14 +1,14 @@
 #include <utility>
 #include "graphics/sprite.h"
-#include "platform/asset_manager.h"
+#include "core/platform/asset_manager.h"
 #include "graphics/render_manager.h"
-
+#include "core/logger/log.h"
 using namespace graphics;
 
 
 Sprite::~Sprite()
 {
-	std::cout << "Delete sprite" << std::endl;
+	LOG_INFO << "Delete sprite" << LOG_END;
 }
 
 Sprite::Sprite(std::shared_ptr<Transform> transform, const math::FVec2 offset, const math::FVec2 size,

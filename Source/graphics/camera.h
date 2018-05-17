@@ -3,7 +3,8 @@
 #include <iostream>
 
 #include "core/transform.h"
-#include "platform/window_manager.h"
+#include "core/platform/window_manager.h"
+#include "core/logger/log.h"
 
 namespace graphics
 {
@@ -23,7 +24,7 @@ namespace graphics
 
 		~Camera()
 		{
-			std::cout << "Delete camera" << std::endl;
+			LOG_INFO << "Delete camera" << LOG_END;
 		}
 
 		math::Mat4x4 get_projection() const

@@ -12,8 +12,12 @@ namespace graphics
 
 		bool init();
 
+		void prepare();
+
 		inline void shutdown()
 		{
 		}
+
+		void flush();
 	};
 };

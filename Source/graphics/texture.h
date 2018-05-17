@@ -3,8 +3,8 @@
 #include <string>
 #include <memory>
 
-#include "platform/asset.h"
-#include "platform/asset_types.h"
+#include "core/platform/asset.h"
+#include "core/platform/asset_types.h"
 #include "core/types.h"
 
 namespace graphics

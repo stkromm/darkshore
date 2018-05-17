@@ -3,13 +3,14 @@
 #include <iostream>
 
 #include "graphics/graphics.h"
-#include "image.h"
+#include "core/image/image.h"
+#include "core/logger/log.h"
 
 namespace graphics
 {
 	Texture::Texture(const std::string& file_path) : file_path(file_path)
 	{
-		std::cout << "Load texture: " << file_path << std::endl;
+		LOG_INFO << "Load texture: " << file_path << LOG_END;
 		RGBAImage image = RGBAImage(file_path);
 		GLCall(glGenTextures(1, &id));
 		bind();
@@ -53,7 +54,7 @@ namespace graphics
 
 	void Texture::unbind() const
 	{
-		std::cout << "Unbind texture " << id << std::endl;
+		LOG_INFO << "Unbind texture " << id << LOG_END;
 		GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 	}
 

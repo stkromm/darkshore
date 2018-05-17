@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include "platform/asset.h"
-#include "platform/asset_types.h"
+#include "core/platform/asset.h"
+#include "core/platform/asset_types.h"
 
 #include "core/math/mat4x4.h"
 

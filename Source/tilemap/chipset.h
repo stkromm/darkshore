@@ -1,6 +1,6 @@
 #pragma once
 
-#include "json.h"
+#include "core/json/json.h"
 #include "core/types.h"
 #include "terrain.h"
 #include "tile_animation_clip.h"
@@ -23,8 +23,8 @@ namespace tilemap
 
 		std::vector<ChipsetTile> tiles;
 
-		uint32 tile_height;
-		uint32 tile_width;
+		uint32 tile_height = 0;
+		uint32 tile_width = 0;
 
 	public:
 		void parse_tmx(json tileset_source);

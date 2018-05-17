@@ -1,7 +1,8 @@
 #include <utility>
 #include "graphics/standalone_sprite.h"
 #include "graphics/sprite_vertex.h"
-#include "platform/asset_manager.h"
+#include "core/platform/asset_manager.h"
+#include "core/logger/log.h"
 #include "graphics/scene_manager.h"
 #include "graphics/render_manager.h"
 
@@ -10,7 +11,7 @@ using namespace graphics;
 
 StandaloneSprite::~StandaloneSprite()
 {
-	std::cout << "Delete standalone sprite" << std::endl;
+	LOG_INFO << "Delete standalone sprite" << LOG_END;
 }
 
 StandaloneSprite::StandaloneSprite(std::shared_ptr<Transform> transform, const math::FVec2 offset, const math::FVec2 size,

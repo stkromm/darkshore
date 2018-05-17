@@ -1,4 +1,4 @@
-#include "platform/asset_manager.h"
+#include "core/platform/asset_manager.h"
 
 #include <iostream>
 

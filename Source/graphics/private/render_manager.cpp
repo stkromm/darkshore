@@ -1,7 +1,8 @@
 #include "graphics/render_manager.h"
 
 #include "graphics/graphics.h"
-#include "platform/asset_manager.h"
+#include "core/platform/asset_manager.h"
+#include "core/logger/log.h"
 #include "res.h"
 
 std::shared_ptr<graphics::SceneRenderer> scene_renderer;
@@ -24,13 +25,22 @@ bool graphics::RenderManager::init()
 		std::cout << "GLEW init failed" << std::endl;
 		return false;
 	}
-
-	std::cout << glGetString(GL_VERSION) << std::endl;
-	std::cout << glGetString(GL_VENDOR) << std::endl;
-	std::cout << glGetString(GL_RENDERER) << std::endl;
-	std::cout << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
+	LOG_INFO << glGetString(GL_VERSION) << LOG_END;
+	LOG_INFO << glGetString(GL_VENDOR) << LOG_END;
+	LOG_INFO << glGetString(GL_RENDERER) << LOG_END;
+	LOG_INFO << glGetString(GL_SHADING_LANGUAGE_VERSION) << LOG_END;
 
 	scene_renderer = std::make_shared<SceneRenderer>();
-	sprite_batch = std::make_shared<DynamicSpriteBatch>(scene_renderer, AssetManager::load_asset<Shader>(R::shader::basic));
+	sprite_batch = std::make_shared<DynamicSpriteBatch>(scene_renderer, AssetManager::load_asset<Shader>("batch.shader"));
 	return true;
+}
+
+void graphics::RenderManager::prepare()
+{
+	scene_renderer->prepare();
+}
+
+void graphics::RenderManager::flush()
+{
+	sprite_batch->flush();
 }

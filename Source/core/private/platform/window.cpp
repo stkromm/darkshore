@@ -1,10 +1,11 @@
-#include "platform/window.h"
+#include "core/platform/window.h"
 
 #include <fstream>
 #include <memory>
 
-#include "json.h"
-#include "platform/input.h"
+#include "core/platform/platform.h"
+#include "core/json/json.h"
+#include "core/platform/input.h"
 
 using namespace platform;
 

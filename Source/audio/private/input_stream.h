@@ -1,7 +1,7 @@
 #pragma once
 #include <utility>
 
-#include "platform/resource_handle.h"
+#include "core/platform/resource_handle.h"
 #include "third_party/sfml/Audio.hpp"
 
 class InputStream : public sf::InputStream

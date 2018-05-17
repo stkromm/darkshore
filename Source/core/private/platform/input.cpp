@@ -1,4 +1,4 @@
-#include "platform/input.h"
+#include "core/platform/input.h"
 
 using namespace platform;
 

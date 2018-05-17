@@ -1,4 +1,5 @@
 #include "graphics/vertex_array.h"
+#include "core/logger/log.h"
 
 static uint32_t to_gl_element_type(const graphics::VertexBufferElementType type)
 {
@@ -32,6 +33,7 @@ static uint32_t get_size_of_vertex_buffer_type(const graphics::VertexBufferEleme
 
 graphics::VertexArray::VertexArray()
 {
+	LOG_INFO << "Creating VertexArray" << LOG_END;
 	GLCall(glGenVertexArrays(1, &id));
 	bind();
 };

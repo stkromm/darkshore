@@ -245,5 +245,11 @@ namespace math
 			result << ")";
 			return result.str();
 		}
+
+	
 	};
+}
+
+inline std::ostream & operator<<(std::ostream &os, const math::Mat4x4& m) {
+	return os << m.to_string();
 }

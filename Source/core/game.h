@@ -1,12 +1,12 @@
 #pragma once
 
-#include <chrono>
 #include <vector>
 #include <string>
 #include <memory>
 #include <unordered_map>
 
 #include "core/object.h"
+#include "core/time/time.h"
 
 class Game
 {
@@ -20,11 +20,11 @@ public:
 	const int MAX_FRAME_SKIP = 5;
 	const int TICKS_PER_SECOND = 60;
 	const float TICK_DELTA_MILLIS = 1000.0f / float(TICKS_PER_SECOND);
-	const std::chrono::nanoseconds tick_delta_nanos = std::chrono::nanoseconds(int(TICK_DELTA_MILLIS * 1000000.0f));
+	const float tick_delta_micros = 1000000.0f / float(TICKS_PER_SECOND);
 
 	bool is_running = true;
 	long ticks = 0;
-	std::chrono::time_point<std::chrono::steady_clock> frame_fixed_end = std::chrono::high_resolution_clock::now();
+	Timestamp frame_fixed_end = Timestamp();
 
 	void add_object(std::shared_ptr<GameObject> object);
 

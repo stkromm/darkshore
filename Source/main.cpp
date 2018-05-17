@@ -3,23 +3,26 @@
 #include <fstream>
 #include <string>
 
-#include "json.h"
+#include "core/json/json.h"
 
 #include "graphics/render_manager.h"
-#include "platform/window_manager.h"
+#include "core/platform/window_manager.h"
 #include "scripting/script_manager.h"
-#include "platform/asset_manager.h"
+#include "core/platform/asset_manager.h"
 #include "physics/physics.h"
 #include "animation/animation_manager.h"
 
 #include "core/game.h"
 #include "dslevel/level_loader.h"
 #include "graphics/scene_manager.h"
+#include "core/logger/log.h"
+#include "core/time/time.h"
+
 
 int main(const int argc, char** argv)
 {
-	std::cout << "Vine Engine started" << std::endl;
-
+	LOG_INFO << "Vine Engine started" << LOG_END;
+	
 	std::ifstream config_file("config.json");
 	json settings;
 	if (config_file.is_open())
@@ -56,7 +59,7 @@ int main(const int argc, char** argv)
 	}
 
 	auto game = new Game();
-	std::cout << "Load level" << std::endl;
+
 	const std::string map_path = settings["start-level"];
 	load_level(game, map_path);
 
@@ -70,17 +73,16 @@ int main(const int argc, char** argv)
 		int loops = 0;
 		float escaped_time = 0;
 
-		while (loops < game->MAX_FRAME_SKIP &&
-			std::chrono::high_resolution_clock::now() > game->frame_fixed_end)
+		while (loops < game->MAX_FRAME_SKIP && Timestamp() > game->frame_fixed_end)
 		{
-			physics::tick(game->TICK_DELTA_MILLIS * 0.001f * 0.5f);
-			physics::tick(game->TICK_DELTA_MILLIS * 0.001f * 0.5f);
+			// LOG_INFO << Timestamp{} -game->frame_fixed_end << LOG_END;
+			physics::tick(game->TICK_DELTA_MILLIS * 0.0001f);
+			physics::tick(game->TICK_DELTA_MILLIS * 0.0001f);
 			game->simulate_step();
 			escaped_time += game->TICK_DELTA_MILLIS;
 			loops++;
 		}
-
-		AnimationManager::update(escaped_time);
+		AnimationManager::update(escaped_time * 0.2f);
 		graphics::SceneManager::get_scene()->render(game->get_tick_interpolation());
 		platform::WindowManager::get_window().swap_buffers();
 	}

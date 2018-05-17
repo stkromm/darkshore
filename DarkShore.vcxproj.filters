@@ -26,12 +26,6 @@
     <Filter Include="Source\audio\private">
       <UniqueIdentifier>{d06ac05c-2207-41a6-a07a-0ab7faad19a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\platform">
-      <UniqueIdentifier>{1eca6d27-affe-40a0-a883-e50a953b87a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\platform\private">
-      <UniqueIdentifier>{c823bd8c-f6db-45ba-965f-05de1a05a890}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\scripting">
       <UniqueIdentifier>{0a4174b7-94cd-498d-8315-bd6f934b3875}</UniqueIdentifier>
     </Filter>
@@ -44,17 +38,11 @@
     <Filter Include="Source\gameplay">
       <UniqueIdentifier>{cde978c8-bd5b-4490-80f1-ef71de61a89a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\core">
-      <UniqueIdentifier>{6d5299bc-36bf-4b9d-996d-9ce7170707d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\graphics">
       <UniqueIdentifier>{e21542a0-c273-46d6-ad4e-0c49a47fedbc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\graphics\private">
       <UniqueIdentifier>{e5413587-4599-4cd3-ab82-4f7336bd82d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\math">
-      <UniqueIdentifier>{af03d558-50e3-4f7c-8392-ecf36dc4831f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\tilemap\private">
       <UniqueIdentifier>{23b4abd1-d189-4ecf-989a-264455e693ce}</UniqueIdentifier>
@@ -62,23 +50,68 @@
     <Filter Include="Source\gameplay\private">
       <UniqueIdentifier>{0e8852af-1fa0-4e4a-b1f5-3312a2f6a19d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\core\private">
-      <UniqueIdentifier>{20dd8e1f-d95a-4a44-8ad3-133bbbf78501}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\xml">
       <UniqueIdentifier>{4dcd86fa-2c29-4b1e-91df-3bc0d7973aa7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\xml\private">
       <UniqueIdentifier>{1228e131-26cb-4d23-8c03-b99109e97ccf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\zlib">
-      <UniqueIdentifier>{324b363b-3a92-4a95-8d77-94f705d0b786}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\zlib\private">
-      <UniqueIdentifier>{0b8daf37-4183-491a-b9d3-68bfcc7bbfdc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\dslevel">
       <UniqueIdentifier>{d4035014-1d4b-4b8b-9008-5eb2d815f140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core">
+      <UniqueIdentifier>{a78fb196-b98a-4674-8596-25e669a537dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private">
+      <UniqueIdentifier>{488f2b12-af69-49ae-940f-77b7634ddb42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\time">
+      <UniqueIdentifier>{50b477cb-1772-45e6-8f2f-28ec8348a5c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\platform">
+      <UniqueIdentifier>{10e2407c-ca64-4bf1-ad1a-12f65fa9cb20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\math">
+      <UniqueIdentifier>{a7e08673-fc09-45d0-988d-da5568fb13be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\logger">
+      <UniqueIdentifier>{fe078982-dd6e-47ee-8775-a40ca8230d8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\json">
+      <UniqueIdentifier>{2dfc0ea9-5057-4b28-ab13-8d4a4177cd7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\compression">
+      <UniqueIdentifier>{92f1437f-418e-4988-9405-86a0fbf6f453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\compression\zlib">
+      <UniqueIdentifier>{58670901-b480-460a-8ed0-257f23a58f34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\image">
+      <UniqueIdentifier>{ca8b59a3-1dbb-4871-a589-e5d717412da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\time">
+      <UniqueIdentifier>{53be1be7-6537-45aa-9042-ad2ec555814c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\platform">
+      <UniqueIdentifier>{f716da34-8c93-431c-bcd2-158f1128eb49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\image">
+      <UniqueIdentifier>{3af5086d-702d-44e2-b103-ef5c780214cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\image\stb_image">
+      <UniqueIdentifier>{65e1bade-d289-41fa-9db5-72b4da86fcad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\platform\glfw">
+      <UniqueIdentifier>{27ad08ec-94a2-44b8-889e-667fbb45f17c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\compression">
+      <UniqueIdentifier>{869729a4-577a-4431-aa6c-daddc3207277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\logger">
+      <UniqueIdentifier>{0ed2545b-9831-4cd9-a21d-f781994851cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core\private\json">
+      <UniqueIdentifier>{d8cddaab-8fa8-4589-bd0f-b572a0e43cea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +126,6 @@
     </ClCompile>
     <ClCompile Include="Source\audio\private\music.cpp">
       <Filter>Source\audio\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\window.cpp">
-      <Filter>Source\platform\private</Filter>
     </ClCompile>
     <ClCompile Include="Source\scripting\private\script.cpp">
       <Filter>Source\scripting\private</Filter>
@@ -124,20 +154,11 @@
     <ClCompile Include="Source\graphics\private\vertex_buffer.cpp">
       <Filter>Source\graphics\private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\image.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\math\vine_math.cpp">
-      <Filter>Source\core\math</Filter>
-    </ClCompile>
     <ClCompile Include="Source\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\scripting\private\script_manager.cpp">
       <Filter>Source\scripting\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\window_manager.cpp">
-      <Filter>Source\platform\private</Filter>
     </ClCompile>
     <ClCompile Include="Source\physics\private\aabb_hull.cpp">
       <Filter>Source\physics\private</Filter>
@@ -145,20 +166,11 @@
     <ClCompile Include="Source\physics\private\physics_simulation.cpp">
       <Filter>Source\physics\private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\platform\private\asset_manager.cpp">
-      <Filter>Source\platform\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\resource_handle.cpp">
-      <Filter>Source\platform\private</Filter>
-    </ClCompile>
     <ClCompile Include="Source\animation\private\animation_state.cpp">
       <Filter>Source\animation\private</Filter>
     </ClCompile>
     <ClCompile Include="Source\physics\private\intersection.cpp">
       <Filter>Source\physics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\input.cpp">
-      <Filter>Source\platform\private</Filter>
     </ClCompile>
     <ClCompile Include="Source\graphics\private\render_manager.cpp">
       <Filter>Source\graphics\private</Filter>
@@ -171,24 +183,6 @@
     </ClCompile>
     <ClCompile Include="Source\graphics\private\scene_manager.cpp">
       <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\component.cpp">
-      <Filter>Source\core\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\entity.cpp">
-      <Filter>Source\core\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\game.cpp">
-      <Filter>Source\core\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\transform.cpp">
-      <Filter>Source\core\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\stb_image\stb_image.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\zlib\private\miniz.c">
-      <Filter>Source\zlib\private</Filter>
     </ClCompile>
     <ClCompile Include="Source\xml\private\tinyxml2.cpp">
       <Filter>Source\xml\private</Filter>
@@ -205,19 +199,55 @@
     <ClCompile Include="Source\graphics\private\standalone_sprite.cpp">
       <Filter>Source\graphics\private</Filter>
     </ClCompile>
+    <ClCompile Include="Source\core\math\vine_math.cpp">
+      <Filter>Source\core\math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\image\image.cpp">
+      <Filter>Source\core\private\image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\image\stb_image\stb_image.cpp">
+      <Filter>Source\core\private\image\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\platform\asset_manager.cpp">
+      <Filter>Source\core\private\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\platform\input.cpp">
+      <Filter>Source\core\private\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\platform\resource_handle.cpp">
+      <Filter>Source\core\private\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\platform\window.cpp">
+      <Filter>Source\core\private\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\platform\window_manager.cpp">
+      <Filter>Source\core\private\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\time\time.cpp">
+      <Filter>Source\core\private\time</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\component.cpp">
+      <Filter>Source\core\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\entity.cpp">
+      <Filter>Source\core\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\game.cpp">
+      <Filter>Source\core\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\transform.cpp">
+      <Filter>Source\core\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\compression\zlib\miniz.c">
+      <Filter>Source\core\private\compression</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\private\logger\log.cpp">
+      <Filter>Source\core\private\logger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio\private\input_stream.h">
       <Filter>Source\audio\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\asset.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\platform.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\window.h">
-      <Filter>Source\platform</Filter>
     </ClInclude>
     <ClInclude Include="Source\audio\music.h">
       <Filter>Source\audio</Filter>
@@ -242,24 +272,6 @@
     </ClInclude>
     <ClInclude Include="Source\scripting\script.h">
       <Filter>Source\scripting</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\component.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\entity.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\game.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\object.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\transform.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\types.h">
-      <Filter>Source\core</Filter>
     </ClInclude>
     <ClInclude Include="Source\gameplay\camera_component.h">
       <Filter>Source\gameplay</Filter>
@@ -315,53 +327,17 @@
     <ClInclude Include="Source\graphics\vertex_buffer.h">
       <Filter>Source\graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Source\image.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\json.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\mat4x4.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\vec2.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\vec3.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\vine_math.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
     <ClInclude Include="Source\scripting\script_manager.h">
       <Filter>Source\scripting</Filter>
     </ClInclude>
     <ClInclude Include="Source\scripting\private\script_manager_state.h">
       <Filter>Source\scripting\private</Filter>
     </ClInclude>
-    <ClInclude Include="Source\platform\window_manager.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\asset_types.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\component_type.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
     <ClInclude Include="Source\physics\private\contact.h">
       <Filter>Source\physics\private</Filter>
     </ClInclude>
     <ClInclude Include="Source\physics\aabb_hull.h">
       <Filter>Source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\asset_manager.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\resource_handle.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\cursor.h">
-      <Filter>Source\platform</Filter>
     </ClInclude>
     <ClInclude Include="Source\graphics\sprite_vertex.h">
       <Filter>Source\graphics</Filter>
@@ -377,9 +353,6 @@
     </ClInclude>
     <ClInclude Include="Source\graphics\sprite_batch.h">
       <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\input.h">
-      <Filter>Source\platform</Filter>
     </ClInclude>
     <ClInclude Include="Source\gameplay\sprite_animation_reader.h">
       <Filter>Source\gameplay</Filter>
@@ -402,14 +375,8 @@
     <ClInclude Include="Source\xml\xml.h">
       <Filter>Source\xml</Filter>
     </ClInclude>
-    <ClInclude Include="Source\zlib\miniz.h">
-      <Filter>Source\zlib</Filter>
-    </ClInclude>
     <ClInclude Include="Source\xml\private\tinyxml2.h">
       <Filter>Source\xml\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\base_encoding.h">
-      <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Source\tilemap\tile_map.h">
       <Filter>Source\tilemap</Filter>
@@ -418,9 +385,6 @@
       <Filter>Source\tilemap</Filter>
     </ClInclude>
     <ClInclude Include="Source\tilemap\terrain.h">
-      <Filter>Source\tilemap</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\tilemap\tile_layer.h">
       <Filter>Source\tilemap</Filter>
     </ClInclude>
     <ClInclude Include="Source\physics\private\contact-resolving.h">
@@ -440,6 +404,99 @@
     </ClInclude>
     <ClInclude Include="Source\graphics\standalone_sprite.h">
       <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\math\mat4x4.h">
+      <Filter>Source\core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\math\vec2.h">
+      <Filter>Source\core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\math\vec3.h">
+      <Filter>Source\core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\math\vine_math.h">
+      <Filter>Source\core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\logger\log.h">
+      <Filter>Source\core\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\json\json.h">
+      <Filter>Source\core\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\compression\base_encoding.h">
+      <Filter>Source\core\compression</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\compression\zlib\miniz.h">
+      <Filter>Source\core\compression\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\asset.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\asset_manager.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\asset_types.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\cursor.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\input.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\platform.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\resource_handle.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\window.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\platform\window_manager.h">
+      <Filter>Source\core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\time\time.h">
+      <Filter>Source\core\time</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\image\image.h">
+      <Filter>Source\core\image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\private\image\stb_image\stb_image.h">
+      <Filter>Source\core\private\image\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\private\platform\glfw\glfw3.h">
+      <Filter>Source\core\private\platform\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\private\platform\glfw\glfw3native.h">
+      <Filter>Source\core\private\platform\glfw</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\private\json\json.hpp">
+      <Filter>Source\core\private\json</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\component.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\component_type.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\entity.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\game.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\object.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\transform.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\types.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\tilemap\tile_layer.h">
+      <Filter>Source\tilemap\private</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
 #include "graphics/vertex_buffer.h"
-
+#include "core/logger/log.h"
 
 graphics::VertexBuffer::VertexBuffer(const void* data, const uint32_t size)
 {
+	LOG_INFO << "Creating VertexBuffer" << LOG_END;
 	capacity = size;
 	GLCall(glGenBuffers(1, &id));
 	bind();
@@ -28,11 +29,11 @@ void graphics::VertexBuffer::update(std::vector<T> data)
 void graphics::VertexBuffer::update(const void* data, const uint32_t size) 
 {
 	bind();
-	if (size >= capacity)
+	if (size > capacity)
 	{
 		capacity = size;
 		GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
-		std::cout << "New vertex buffer capacity " << capacity << std::endl;
+		LOG_INFO << "New vertex buffer capacity " << capacity << LOG_END;
 	}
 	else
 	{

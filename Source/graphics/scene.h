@@ -6,11 +6,8 @@
 #include "graphics/scene_renderer.h"
 #include "graphics/renderable.h"
 
-#include "core/math/mat4x4.h"
-#include "core/transform.h"
-#include "platform/window_manager.h"
 #include "sprite_batch.h"
-#include "platform/asset_manager.h"
+#include "core/platform/asset_manager.h"
 #include "graphics/camera.h"
 
 namespace graphics

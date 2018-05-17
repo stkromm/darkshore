@@ -12,8 +12,8 @@
 #include "gameplay/sprite_animation_clip.h"
 #include "gameplay/sprite_component.h"
 
-#include "platform/asset_manager.h"
-#include "platform/input.h"
+#include "core/platform/asset_manager.h"
+#include "core/platform/input.h"
 #include "sprite_animation_reader.h"
 #include <fstream>
 

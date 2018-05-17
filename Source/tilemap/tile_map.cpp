@@ -12,7 +12,6 @@ void tilemap::TileMap::parse(json map_source)
 			std::shared_ptr<TileLayer> layer = std::make_shared<TileLayer>();
 			layer->parse(layer_source);
 			layers.push_back(layer);
-
 		}
 	}
 
@@ -23,8 +22,8 @@ void tilemap::TileMap::parse(json map_source)
 
 	for(auto& tileset_source : map_source["tilesets"])
 	{
-		//std::shared_ptr<ChipSet> tile_set = std::make_shared<ChipSet>();
-		//tile_set->parse(tileset_source);
-		//tile_sets.push_back(tile_set);
+		std::shared_ptr<tilemap::Chipset> tile_set = std::make_shared<tilemap::Chipset>();
+		tile_set->parse_tmx(tileset_source);
+		tile_sets.push_back(tile_set);
 	}
 }

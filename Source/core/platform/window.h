@@ -3,10 +3,9 @@
 #include <vector>
 #include <functional>
 
-#include "platform/platform.h"
 #include "core/types.h"
 #include "core/math/vec2.h"
-#include "platform/cursor.h"
+#include "core/platform/cursor.h"
 
 namespace platform
 {

@@ -2,8 +2,8 @@
 
 float Game::get_tick_interpolation() const
 {
-	const auto remaining_tick_duration = frame_fixed_end - std::chrono::high_resolution_clock::now();
-	return (remaining_tick_duration.count() * 0.0000001f) / TICK_DELTA_MILLIS;
+	const auto remaining_tick_duration = frame_fixed_end - Timestamp();
+	return remaining_tick_duration / tick_delta_micros;
 }
 
 void Game::add_object(std::shared_ptr<GameObject> object)
@@ -22,7 +22,7 @@ void Game::add_object(std::shared_ptr<GameObject> object)
 
 void Game::simulate_step()
 {
-	frame_fixed_end += tick_delta_nanos;
+	frame_fixed_end += tick_delta_micros;
 	for (auto& obj : to_be_added)
 	{
 		obj->set_game(this);
@@ -61,5 +61,5 @@ void Game::simulate_step()
 
 void Game::start()
 {
-	frame_fixed_end = std::chrono::high_resolution_clock::now();
+	frame_fixed_end = Timestamp();
 }

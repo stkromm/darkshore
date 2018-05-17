@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "platform/asset_types.h"
+#include "core/platform/asset_types.h"
 
 std::string get_res_folder_path(AssetType type, const std::string& name);
 

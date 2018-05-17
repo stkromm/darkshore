@@ -7,7 +7,7 @@
 #include <vector>
 #include <unordered_map>
 
-#include "platform/resource_handle.h"
+#include "core/platform/resource_handle.h"
 #include "graphics/graphics.h"
 
 namespace graphics
@@ -98,7 +98,7 @@ namespace graphics
 			}
 		}
 
-		return {shader_stream[0].str(), shader_stream[1].str()};
+		return { shader_stream[0].str(), shader_stream[1].str() };
 	}
 
 	static uint32_t compile_shader(const Shader::Type type, const std::string& source_code)
@@ -155,17 +155,27 @@ namespace graphics
 		GLCall(glDeleteProgram(id));
 	}
 
+	static int currently_bound_shader = -1;
+
 	void Shader::bind() const
 	{
-		GLCall(glUseProgram(id));
+		if (currently_bound_shader != id)
+		{
+			std::cout << "Binding shader " << id << std::endl;
+			currently_bound_shader = id;
+			GLCall(glUseProgram(id));
+		}
 	}
-
 
 	void Shader::unbind() const
 	{
-		GLCall(glUseProgram(0));
+		if (currently_bound_shader != 0)
+		{
+			std::cout << "Unbinding shader " << id << std::endl;
+			currently_bound_shader = 0;
+			GLCall(glUseProgram(0));
+		}
 	}
-
 
 	void Shader::set_uniform_1i(std::string name, const int value)
 	{

@@ -1,4 +1,5 @@
 #include "graphics/scene_manager.h"
+#include "core/logger/log.h"
 
 graphics::Scene* scene = nullptr;
 
@@ -9,7 +10,7 @@ graphics::Scene* graphics::SceneManager::get_scene()
 
 bool graphics::SceneManager::init()
 {
-	std::cout << "Created scene" << std::endl;
+	LOG_INFO << "Created scene";
 	scene = new Scene();
 	return true;
 }

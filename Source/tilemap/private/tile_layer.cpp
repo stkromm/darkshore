@@ -1,6 +1,6 @@
 #include "tilemap/tile_layer.h"
-#include "platform/window_manager.h"
-#include <iostream>
+#include "core/platform/window_manager.h"
+#include "core/logger/log.h"
 
 /*
 tilemap::TileLayer::TileLayer(const uint32_t size_x, const uint32_t size_y,
@@ -38,15 +38,17 @@ tilemap::TileLayer::TileLayer(const uint32_t size_x, const uint32_t size_y,
 */
 tilemap::TileLayer::~TileLayer()
 {
-	std::cout << "Delete layer" << std::endl;
+	LOG_INFO << "Delete layer" << LOG_END;
 }
 
 void tilemap::TileLayer::parse(json layer_source)
 {
-	int32 x = layer_source["x"];
-	int32 y = layer_source["y"];
-	uint32 height = layer_source["height"];
-	uint32 width = layer_source["width"];
+	const int32 x = layer_source["x"];
+	const int32 y = layer_source["y"];
+	const uint32 height = layer_source["height"];
+	this->height = height;
+	const uint32 width = layer_source["width"];
+	this->width = width;
 	float opacity = layer_source["opacity"];
 
 	std::vector<uint32> tiles;
@@ -60,18 +62,5 @@ void tilemap::TileLayer::parse(json layer_source)
 
 void tilemap::TileLayer::update_tile_state(const uint32_t o_id, const uint32_t d_id)
 {
-	bool success = false;
-	/*
-	for (auto& tile : grid->tiles)
-	{
-		if (tile.original_id == o_id)
-		{
-			success = true;
-			tile.displayed_id = d_id;
-		}
-	}
-	if (success)
-	{
-		render_view->update();
-	}*/
+	tile_states[o_id] = d_id;
 }

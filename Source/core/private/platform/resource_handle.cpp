@@ -1,4 +1,4 @@
-#include "platform/resource_handle.h"
+#include "core/platform/resource_handle.h"
 
 #include <sstream>
 #include <cassert>

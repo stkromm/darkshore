@@ -1,13 +1,11 @@
 #pragma once
 
-#include <memory>
-
 #include "graphics/tiled_texture.h"
-#include "private/tile_grid.h"
-#include "json.h"
+#include "core/json/json.h"
 
 namespace tilemap
 {
+
 	class TileLayer
 	{
 		uint32_t width;
@@ -15,7 +13,7 @@ namespace tilemap
 		uint32_t tile_width;
 		uint32_t tile_height;
 		std::vector<uint32> tile_ids;
-
+		std::vector<uint32> tile_states;
 	public:
 		TileLayer() {}
 		~TileLayer();

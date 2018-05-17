@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include "core/logger/log.h"
 #include "vertex_buffer.h"
 #include "vertex_array.h"
 #include "index_buffer.h"
@@ -43,14 +44,14 @@ namespace graphics
 			vertex_array->add_buffer(*vertex_buffer, layout);
 		}
 
-		void prepare(const math::Mat4x4 projection)
+		void prepare()
 		{
-			shader->bind();
-			shader->set_uniform_mat4x4("pr_matrix", projection);
-			shader->set_uniform_mat4x4("vw_matrix", math::Mat4x4(1.f));
-			shader->set_uniform_1i("tex", 0);
 		}
 
+		std::shared_ptr<Shader> get_shader() const
+		{
+			return shader;
+		}
 		void submit(const float interpolation, const TexturePatch texture_patch, const math::FVec2 position, const math::FVec2 extends, const uint32_t color, const std::shared_ptr<Transform> transform)
 		{
 			// Enable texture
@@ -68,7 +69,7 @@ namespace graphics
 			{
 				if(texture_ids.size() == 8)
 				{
-					std::cout << "Flush because tex" << std::endl;
+					LOG_INFO << "Flush because too many textures active" << LOG_END;
 					flush();
 				}
 				texture_ids.push_back(texture_id);
@@ -120,8 +121,8 @@ namespace graphics
 			vertices.push_back(d);
 
 			
-			if (vertices.size() >= 1024)
-				flush();
+			//if (vertices.size() >= 1024)
+			//	flush();
 		}
 
 		void flush()

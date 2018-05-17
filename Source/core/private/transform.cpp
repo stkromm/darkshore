@@ -1,6 +1,5 @@
 #include "core/transform.h"
-
-#include <iostream>
+#include "core/logger/log.h"
 
 Transform::Transform() :
 	dirty_local_to_world(false),
@@ -17,7 +16,7 @@ Transform::Transform() :
 
 Transform::~Transform()
 {
-	std::cout << "Delete transform" << std::endl;
+	LOG_INFO << "Delete transform" << LOG_END;
 }
 
 math::Mat4x4 Transform::get_local_to_world() const

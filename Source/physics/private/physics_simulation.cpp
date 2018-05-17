@@ -1,6 +1,5 @@
 #include "physics/physics.h"
 
-#include <chrono>
 #include <vector>
 // ReSharper disable once CppUnusedIncludeDirective
 #include <omp.h>
@@ -8,6 +7,7 @@
 
 #include "physics/private/contact-resolving.h"
 #include "physics/private/intersection.h"
+#include <iostream>
 
 static std::vector<std::shared_ptr<physics::RigidBody>> physic_bodies = {};
 
@@ -36,7 +36,7 @@ void physics::tick(const float delta)
 		physic_bodies[i]->integrate(delta);
 	}
 
-	// Collision detection
+	// Collision detection : Last benchmark ~ 70-90% of physics tick duration
 	//
 	// 1. Broad phase, find rigidbody pairs that might collide
 	//
@@ -54,7 +54,7 @@ void physics::tick(const float delta)
 	for (int i = 0; i < int(physic_bodies.size()) - 1; ++i)
 	{
 		RigidBody* body = physic_bodies[i].get();
-		const float x_end = body->get_transform().get_position().x + body->get_hull().extends.x + body->get_hull().offset.x;
+		const float x_end = body->get_transform().get_position().x + body->get_hull().extends.x + body->get_hull().offset.x; // TODO Transform offset not applied
 		const float pos_y = body->get_transform().get_position().y + body->get_hull().offset.y;
 		const float height = body->get_hull().extends.y;
 		int j = i + 1;
@@ -81,6 +81,7 @@ void physics::tick(const float delta)
 
 	// 2. Narrow phase
 	std::vector<Contact> contacts;
+#pragma omp parallel for schedule(dynamic)
 	for (int i = 0; i < int(collision_pairs.size()); ++i)
 	{
 		RigidBody* body_a = collision_pairs[i].first;
@@ -97,10 +98,16 @@ void physics::tick(const float delta)
 		//if(body_a->get_collision_bodies()[0].collide_with(body_b->get_collision_bodies()[0], &data))
 		if (intersect_aabb_aabb(aabb_a, aabb_b, &data))
 		{
+#pragma omp critical
 			contacts.emplace_back(Contact{collision_pairs[i], data.normal, data.penetration});
 		}
 	}
 
+	// For large set of contacts
+	// 1 : Build contact forest: nodes == rigidbodies, edge == contact between 2 rigidbodies
+	// 2 : Remove edges in order to build even big (sub)trees.
+	// 3 : Resolve trees in parallel
+	// 4 : Resolve removed edges from 2
 
 	// 3. Contact resolution
 	for (auto contact : contacts)

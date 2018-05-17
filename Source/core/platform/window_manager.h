@@ -1,6 +1,6 @@
 #pragma once
 
-#include "platform/window.h"
+#include "core/platform/window.h"
 
 namespace platform
 {

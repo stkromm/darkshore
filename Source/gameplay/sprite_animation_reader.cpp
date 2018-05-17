@@ -1,11 +1,11 @@
 #include "sprite_animation_reader.h"
 
-#include "json.h"
+#include "core/json/json.h"
 #include "animation/animation_state_machine.h"
 #include "graphics/texture.h"
 #include "sprite_animation_clip.h"
 #include "graphics/tiled_texture.h"
-#include "platform/asset_manager.h"
+#include "core/platform/asset_manager.h"
 
 std::shared_ptr<AnimationStateMachine> read_sprite_animation_file(std::shared_ptr<graphics::Sprite> sprite, json source)
 {
