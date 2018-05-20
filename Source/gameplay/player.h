@@ -195,7 +195,7 @@ public:
 		get_component<RigidBodyComponent>()->get_rigid_body()->set_linea_damping(0.8f);
 		get_component<RigidBodyComponent>()->get_rigid_body()->set_inverse_mass(1.f);
 		std::shared_ptr<graphics::Camera> camera = std::make_shared<graphics::Camera>();
-		camera->get_transform()->set_parent(transform);
+		camera->get_transform()->set_parent(transform.get());
 		add_component<CameraComponent>(camera);
 	}
 

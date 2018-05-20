@@ -26,12 +26,6 @@
     <Filter Include="Source\audio\private">
       <UniqueIdentifier>{d06ac05c-2207-41a6-a07a-0ab7faad19a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\scripting">
-      <UniqueIdentifier>{0a4174b7-94cd-498d-8315-bd6f934b3875}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\scripting\private">
-      <UniqueIdentifier>{8aac2359-a7be-4d0a-8416-9a094f12436a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\tilemap">
       <UniqueIdentifier>{6f65bdd5-485d-4dcd-a673-87f666f63685}</UniqueIdentifier>
     </Filter>
@@ -127,9 +121,6 @@
     <ClCompile Include="Source\audio\private\music.cpp">
       <Filter>Source\audio\private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\scripting\private\script.cpp">
-      <Filter>Source\scripting\private</Filter>
-    </ClCompile>
     <ClCompile Include="Source\graphics\private\graphics.cpp">
       <Filter>Source\graphics\private</Filter>
     </ClCompile>
@@ -156,9 +147,6 @@
     </ClCompile>
     <ClCompile Include="Source\main.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\scripting\private\script_manager.cpp">
-      <Filter>Source\scripting\private</Filter>
     </ClCompile>
     <ClCompile Include="Source\physics\private\aabb_hull.cpp">
       <Filter>Source\physics\private</Filter>
@@ -244,6 +232,12 @@
     <ClCompile Include="Source\core\private\logger\log.cpp">
       <Filter>Source\core\private\logger</Filter>
     </ClCompile>
+    <ClCompile Include="Source\gameplay\tile_map_entity.cpp">
+      <Filter>Source\gameplay\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gameplay\tile_map_grid_render_view.cpp">
+      <Filter>Source\gameplay\private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio\private\input_stream.h">
@@ -269,9 +263,6 @@
     </ClInclude>
     <ClInclude Include="Source\physics\rigid_body.h">
       <Filter>Source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scripting\script.h">
-      <Filter>Source\scripting</Filter>
     </ClInclude>
     <ClInclude Include="Source\gameplay\camera_component.h">
       <Filter>Source\gameplay</Filter>
@@ -326,12 +317,6 @@
     </ClInclude>
     <ClInclude Include="Source\graphics\vertex_buffer.h">
       <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scripting\script_manager.h">
-      <Filter>Source\scripting</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scripting\private\script_manager_state.h">
-      <Filter>Source\scripting\private</Filter>
     </ClInclude>
     <ClInclude Include="Source\physics\private\contact.h">
       <Filter>Source\physics\private</Filter>
@@ -497,6 +482,18 @@
     </ClInclude>
     <ClInclude Include="Source\tilemap\tile_layer.h">
       <Filter>Source\tilemap\private</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gameplay\tile_map_entity.h">
+      <Filter>Source\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gameplay\tile_map_grid_render_view.h">
+      <Filter>Source\gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\core.h">
+      <Filter>Source\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\darkshore.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

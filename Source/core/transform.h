@@ -15,8 +15,8 @@ private:
 
 	mutable math::Mat4x4 local_to_world;
 	mutable math::Mat4x4 world_to_local;
-	std::shared_ptr<Transform> parent;
-
+	Transform* parent;
+	
 	math::Vec3 position;
 	float rotation;
 	math::FVec2 scale_factor;
@@ -35,7 +35,12 @@ public:
 	void scale(float scale_x, float scale_y);
 	void set_scale(float zoom);
 
-	void set_parent(const std::shared_ptr<Transform> parent)
+	void set_parent(std::shared_ptr<Transform> parent)
+	{
+		set_parent(parent.get());
+	}
+
+	void set_parent(Transform* parent)
 	{
 		this->parent = parent;
 		dirty_local_to_world = true;

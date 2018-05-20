@@ -1,34 +1,9 @@
-#include <chrono>
-#include <iostream>
-#include <fstream>
-#include <string>
-
-#include "core/json/json.h"
-
-#include "graphics/render_manager.h"
-#include "core/platform/window_manager.h"
-#include "scripting/script_manager.h"
-#include "core/platform/asset_manager.h"
-#include "physics/physics.h"
-#include "animation/animation_manager.h"
-
-#include "core/game.h"
-#include "dslevel/level_loader.h"
-#include "graphics/scene_manager.h"
-#include "core/logger/log.h"
-#include "core/time/time.h"
-
+#include "darkshore.h"
 
 int main(const int argc, char** argv)
 {
 	LOG_INFO << "Vine Engine started" << LOG_END;
 	
-	std::ifstream config_file("config.json");
-	json settings;
-	if (config_file.is_open())
-		config_file >> settings;
-	else
-		settings = {};
 	if (!AssetManager::init())
 	{
 		return -1;
@@ -45,10 +20,6 @@ int main(const int argc, char** argv)
 	{
 		return -1;
 	}
-	if (!scripting::ScriptManager::init())
-	{
-		return -1;
-	}
 	if (!physics::init())
 	{
 		return -1;
@@ -59,7 +30,12 @@ int main(const int argc, char** argv)
 	}
 
 	auto game = new Game();
-
+	std::ifstream config_file("config.json");
+	json settings;
+	if (config_file.is_open())
+		config_file >> settings;
+	else
+		settings = {};
 	const std::string map_path = settings["start-level"];
 	load_level(game, map_path);
 
@@ -91,7 +67,6 @@ int main(const int argc, char** argv)
 
 	AnimationManager::shutdown();
 	physics::shutdown();
-	scripting::ScriptManager::shutdown();
 	graphics::SceneManager::shutdown();
 	graphics::RenderManager::shutdown();
 	platform::WindowManager::shutdown();

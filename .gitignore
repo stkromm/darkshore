@@ -1,10 +1,12 @@
 // Visual Studio
-Debug
-.vs
 x86
 x64
 Release
+Debug
+
 *.vcxproj.user
+.vs
+DarkShore.sln.DotSettings
 
 // nodesjs
 node_modules
