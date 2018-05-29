@@ -1,8 +1,17 @@
 #pragma once
+#include <string>
 
-#include "audio/private/input_stream.h"
-
-namespace audio
+namespace ds
 {
-	void play_background_music(const std::string& path);
+	namespace audio
+	{
+		namespace BackgroundMusic
+		{
+			void play(const std::string& path, float fade_in = 0);
+			void set_volume(float volume);
+			void resume(float fade_in = 0);
+			void pause(float fade_out = 0);
+			void stop(float fade_out = 0);
+		}
+	}
 }

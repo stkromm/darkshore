@@ -3,6 +3,7 @@
 #include "core/math/vine_math.h"
 #include <sstream>
 
+
 namespace math
 {
 	struct Vec3

@@ -13,8 +13,9 @@ namespace physics
 	class RigidBody
 	{
 	private:
-		AABBHull hull = {{-48, -64}, {96, 128}};
 		std::shared_ptr<Transform> transform;
+		math::FVec2 aabb_offset = { -48, -64 };
+		AABBHull hull = {{-48, -64}, {96, 128}};
 		std::vector<CollisionBody> collision_bodies;
 
 		bool ignore_mass = true;
@@ -50,7 +51,7 @@ namespace physics
 
 		void remove_collider(CollisionBody collider);
 
-		AABBHull get_hull() const
+		const AABBHull& get_hull() const
 		{
 			return hull;
 		}
@@ -65,7 +66,7 @@ namespace physics
 			return false;
 		}
 
-		math::FVec2 get_velocity() const
+		const math::FVec2& get_velocity() const
 		{
 			return velocity;
 		}
@@ -96,7 +97,7 @@ namespace physics
 		}
 
 		void set_velocity(math::FVec2 collider_velocity);
-		math::FVec2 get_impuls()
+		const math::FVec2& get_impuls() const
 		{
 			return linear_impuls;
 		}

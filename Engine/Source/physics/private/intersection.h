@@ -46,20 +46,24 @@ namespace physics
 			std::vector<math::FVec2> points;
 		};
 
+		template<typename T>
 		struct Line
 		{
-			math::FVec2 start;
-			math::FVec2 end;
+			math::Vec2<T> start;
+			math::Vec2<T> end;
 		};
 
+		template<typename T>
 		struct Ray
 		{
-			math::FVec2 origin;
-			math::FVec2 direction;
+			math::Vec2<T> origin;
+			math::Vec2<T> direction;
 		};
 
-		bool intersect_aabb_aabb(const AABB& a, const AABB& b, IntersectionData* data = nullptr);
+		bool intersect_aabb_aabb(AABB&& a, AABB&& b, IntersectionData* data = nullptr);
 
-		bool intersect_aabb_circle(const AABB& box, const Circle& circle, IntersectionData* data);
+		bool intersect_aabb_circle(AABB& box, Circle& circle, IntersectionData* data = nullptr);
+
+		bool intersect_aabb_segment(AABB&& box, Line<float>&& line, IntersectionData* data = nullptr);
 	};
 };

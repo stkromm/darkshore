@@ -11,6 +11,8 @@ RigidBody::RigidBody(std::shared_ptr<Transform> transform, std::vector<Collision
 	{
 		hull.merge(c.hull);
 	}
+	aabb_offset = hull.offset;
+	//hull.offset += transform->get_position();
 }
 
 RigidBody::~RigidBody()
@@ -19,6 +21,8 @@ RigidBody::~RigidBody()
 void RigidBody::add_collider(CollisionBody collider)
 {
 	hull.merge(collider.hull);
+	aabb_offset = hull.offset;
+	//hull.offset += transform->get_position();
 	collision_bodies.push_back(collider);
 }
 
@@ -29,6 +33,8 @@ void RigidBody::remove_collider(CollisionBody collider)
 	{
 		hull.merge(c.hull);
 	}
+	aabb_offset = hull.offset;
+	//hull.offset += transform->get_position();
 }
 
 void RigidBody::add_force(const math::FVec2 force)
@@ -81,12 +87,15 @@ void RigidBody::integrate(const float delta)
 	linear_impuls_acc = {0, 0};
 
 	transform->translate(translation + velocity * delta);
-	translation = math::FVec2(0, 0);
 
 	if (is_nearly_zero(velocity) && is_nearly_zero(translation))
 	{
 		asleep = true;
 	}
+
+	translation.x = 0;
+	translation.y = 0;
+	hull.offset = transform->get_position() + aabb_offset;
 }
 
 void RigidBody::set_velocity(const math::FVec2 collider_velocity)

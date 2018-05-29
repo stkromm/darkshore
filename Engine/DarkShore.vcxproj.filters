@@ -95,6 +95,12 @@
     <Filter Include="Source\game\private">
       <UniqueIdentifier>{d498fad5-2cb8-4a60-bf6e-5ada9f4eceda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\particles">
+      <UniqueIdentifier>{8553b9c5-6e96-421b-98d8-f6b8bcff7fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\particles\private">
+      <UniqueIdentifier>{d20efc21-f633-4358-ae52-b2febbca6ede}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\animation\private\animation_manager.cpp">
@@ -144,9 +150,6 @@
     </ClCompile>
     <ClCompile Include="Source\gameplay\sprite_animation_reader.cpp">
       <Filter>Source\gameplay\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\math\vine_math.cpp">
-      <Filter>Source\core\math</Filter>
     </ClCompile>
     <ClCompile Include="Source\core\private\image\image.cpp">
       <Filter>Source\core\private\image</Filter>
@@ -428,6 +431,33 @@
     </ClInclude>
     <ClInclude Include="Source\graphics\framebuffer.h">
       <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\audio\listener.h">
+      <Filter>Source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\audio\audio_player.h">
+      <Filter>Source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\audio\audio.h">
+      <Filter>Source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\audio\sound_effect.h">
+      <Filter>Source\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\particles\particle_system.h">
+      <Filter>Source\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\graphics\context.h">
+      <Filter>Source\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\math\math.h">
+      <Filter>Source\core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics\tracing.h">
+      <Filter>Source\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\physics\private\trace_datastructure.h">
+      <Filter>Source\physics\private</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

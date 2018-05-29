@@ -98,6 +98,7 @@ public:
 	void self_tick() override
 	{
 		Pawn::self_tick();
+
 		const auto animation_component = get_component<AnimationComponent>();
 		const auto rigid_body_component = get_component<RigidBodyComponent>();
 

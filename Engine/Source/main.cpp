@@ -1,35 +1,39 @@
 #include "darkshore.h"
 
-int main(const int argc, char** argv)
+int init_platform()
 {
-	LOG_INFO << "Vine Engine started" << LOG_END;
-	
 	if (!AssetManager::init())
 	{
-		std::cin.get();
-		return -1;
+		return -11;
 	}
 	if (!platform::WindowManager::init())
 	{
-		std::cin.get();
-		return -1;
+		return -12;
 	}
 	if (!graphics::RenderManager::init())
 	{
-		std::cin.get();
-		return -1;
+		return -13;
 	}
 	if (!graphics::SceneManager::init())
 	{
-		std::cin.get();
-		return -1;
+		return -14;
 	}
 	if (!physics::init())
 	{
-		std::cin.get();
-		return -1;
+		return -15;
 	}
 	if (!AnimationManager::init())
+	{
+		return -16;
+	}
+	return 0;
+}
+int DS_MAIN(const int argc, char** argv)
+{
+	
+	LOG_INFO << "Vine Engine started" << LOG_END;
+	
+	if(init_platform() != 0)
 	{
 		std::cin.get();
 		return -1;
@@ -58,26 +62,14 @@ int main(const int argc, char** argv)
 
 		while (loops < game->MAX_FRAME_SKIP && Timestamp() > game->frame_fixed_end)
 		{
-			// LOG_INFO << Timestamp{} -game->frame_fixed_end << LOG_END;
-			physics::tick(game->TICK_DELTA_MILLIS * 0.0001f);
-			physics::tick(game->TICK_DELTA_MILLIS * 0.0001f);
+			physics::tick(game->TICK_DELTA_MILLIS * 0.0008f);
 			game->simulate_step();
 			escaped_time += game->TICK_DELTA_MILLIS;
 			loops++;
 		}
-		AnimationManager::update(escaped_time * 0.2f);
-		Timestamp start_render;
+		AnimationManager::update(escaped_time);
 		graphics::SceneManager::get_scene()->render(game->get_tick_interpolation());
-		Timestamp end_render;
-		millis += end_render - start_render;
-		benchmark_loops++;
-
-		if(benchmark_loops == 60)
-		{
-			benchmark_loops = 0;
-			LOG_INFO << millis / 60 << LOG_END;
-			millis = 0;
-		}
+	
 		platform::WindowManager::get_window().swap_buffers();
 	}
 

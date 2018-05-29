@@ -9,3 +9,8 @@
 #include "physics/physics.h"
 #include "animation/animation_manager.h"
 #include "dslevel/level_loader.h"
+
+#ifdef WIN32
+#else
+#define DS_MAIN main
+#endif

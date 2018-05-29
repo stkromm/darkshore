@@ -9,6 +9,49 @@ namespace math
 	{
 		T x;
 		T y;
+
+		constexpr Vec2(const T x, const T y) : x(x), y(y)
+		{
+		}
+
+		constexpr Vec2() : x(0), y(0)
+		{
+		}
+
+		constexpr Vec2(const Vec2& copy) = default;
+
+		explicit constexpr Vec2(const Vec2* copy) : x(copy->x), y(copy->y)
+		{
+		}
+
+		explicit constexpr Vec2(T* data) : x(data[0]), y(data[1])
+		{
+		};
+
+		Vec2 perpendicular() const { return { x, -y }; }
+
+		constexpr Vec2 operator*(const float scale) const { return Vec2(x * scale, y * scale); }
+
+		constexpr T operator*(const Vec2& other) const { return x * other.x + y * other.y; }
+
+		constexpr Vec2 operator+(const Vec2& other) const { return add(*this, other); }
+
+		constexpr void operator+=(const Vec2& other)
+		{
+			x += other.x;
+			y += other.y;
+		}
+
+		constexpr Vec2 operator-(const Vec2& other) const { return Vec2(x - other.x, y - other.y); }
+
+		constexpr T length() const { return sqrt(*this * *this); }
+
+		constexpr void normalize()
+		{
+			T i_length = 1 / length();
+			x *= i_length;
+			y *= i_length;
+		}
 	};
 
 	struct FVec2;
@@ -55,6 +98,12 @@ namespace math
 		constexpr FVec2 operator-(const FVec2& other) const { return FVec2(x - other.x, y - other.y); }
 
 		constexpr float length() const { return sqrt(*this * *this); }
+		void normalize()
+		{
+			float i_length = 1 / length();
+			x *= i_length;
+			y *= i_length;
+		}
 	};
 
 	constexpr FVec2 add(const FVec2& a, const FVec2& b) { return FVec2(a.x + b.x, a.y + b.y); }

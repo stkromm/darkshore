@@ -9,6 +9,7 @@ namespace physics
 		const float total_inv_mass = contact.collision_pair.first->get_inversed_mass() + contact
 			.collision_pair.second->
 			get_inversed_mass();
+		float total_mass = 0;
 
 		if (!math::is_nearly_zero(contact.penetration))
 		{
@@ -29,25 +30,30 @@ namespace physics
 					}
 					else
 					{
-						const float total_speed = collided_with_speed + collider_speed;
+						const float total_ispeed = 1 / (collided_with_speed + collider_speed);
 
-						const math::FVec2 collider_impact_translation = impact_translation * (-collider_speed / total_speed);
+						const math::FVec2 collider_impact_translation = impact_translation * (-collider_speed * total_ispeed);
 						contact.collision_pair.first->move(collider_impact_translation);
 
-						const math::FVec2 collided_with_impact_translation = impact_translation * (collided_with_speed / total_speed);
+						const math::FVec2 collided_with_impact_translation = impact_translation * (collided_with_speed * total_ispeed);
 						contact.collision_pair.second->move(collided_with_impact_translation);
 					}
 				}
 			}
 			else
 			{
-				const math::FVec2 impact_translation = contact.normal * (contact.penetration / total_inv_mass);
+				total_mass = 1.f / total_inv_mass;
+				const math::FVec2 impact_translation = contact.normal * (contact.penetration * total_mass);
 
 				contact.collision_pair.first->move(impact_translation * -contact.collision_pair.first->get_inversed_mass());
 				contact.collision_pair.second->move(impact_translation * contact.collision_pair.second->get_inversed_mass());
 			}
 		}
 
+		if(total_mass == 0 && total_inv_mass != 0)
+		{
+			total_mass = 1.f / total_inv_mass;
+		}
 		math::FVec2 rel_velocity = contact.collision_pair.second->get_velocity();
 		rel_velocity = rel_velocity - contact.collision_pair.first->get_velocity();
 
@@ -58,10 +64,10 @@ namespace physics
 			return;
 		}
 
-		const float post_separation_speed = -separation_speed / total_inv_mass;
+		const float post_separation_speed = -separation_speed * total_mass;
 		const float delta_speed = post_separation_speed - separation_speed;
 
-		const float impulse = delta_speed / total_inv_mass;
+		const float impulse = delta_speed * total_mass;
 		const math::FVec2 impact_velocity = contact.normal * impulse;
 
 		if (contact.collision_pair.first->is_kinematic())

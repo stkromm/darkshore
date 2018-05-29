@@ -1,6 +1,6 @@
 #include "intersection.h"
 
-bool physics::intersection::intersect_aabb_aabb(const AABB& a, const AABB& b, IntersectionData* data)
+bool physics::intersection::intersect_aabb_aabb(AABB&& a, AABB&& b, IntersectionData* data)
 {
 	const math::FVec2 difference = b.position - a.position;
 	const math::FVec2 full_extends_b = b.half_extends * 2;
@@ -20,33 +20,33 @@ bool physics::intersection::intersect_aabb_aabb(const AABB& a, const AABB& b, In
 		{
 			if (difference.y < 0)
 			{
-				data->normal = {0, -1};
-				data->penetration = {overlap.y};
+				data->normal = { 0, -1 };
+				data->penetration = { overlap.y };
 			}
 			else
 			{
-				data->normal = {0, 1};
-				data->penetration = {overlap.y};
+				data->normal = { 0, 1 };
+				data->penetration = { overlap.y };
 			}
 		}
 		else
 		{
 			if (difference.x < 0)
 			{
-				data->normal = {-1, 0};
-				data->penetration = {overlap.x};
+				data->normal = { -1, 0 };
+				data->penetration = { overlap.x };
 			}
 			else
 			{
-				data->normal = {1, 0};
-				data->penetration = {overlap.x};
+				data->normal = { 1, 0 };
+				data->penetration = { overlap.x };
 			}
 		}
 	}
 	return hit;
 }
 
-bool physics::intersection::intersect_aabb_circle(const AABB& box, const Circle& circle, IntersectionData* data)
+bool physics::intersection::intersect_aabb_circle(AABB& box, Circle& circle, IntersectionData* data)
 {
 	math::FVec2 relative_circle_pos = circle.position - box.position;
 	const math::FVec2 box_size = box.half_extends * 2;
@@ -68,15 +68,85 @@ bool physics::intersection::intersect_aabb_circle(const AABB& box, const Circle&
 		relative_circle_pos.y = 0;
 	}
 
-	math::FVec2 distance_vec = circle.position - box.position - relative_circle_pos;
+	math::FVec2 distance_vec = circle.position - (box.position + relative_circle_pos);
 	const float distance = distance_vec.length();
 
 	const bool hit = distance <= circle.radius;
 	if (hit && data)
 	{
+		math::FVec2 normal = (circle.position - box.position);
+		normal.normalize();
 		data->penetration = circle.radius - distance;
-		data->normal = distance_vec;
-		data->point = relative_circle_pos + box_size;
+		data->normal = normal;
+		data->point = relative_circle_pos + box.position;
 	}
 	return hit;
+}
+
+bool physics::intersection::intersect_aabb_segment(AABB&& box, Line<float>&& line, IntersectionData* data)
+{
+	if (line.end.x < box.position.x)//If the second point of the segment is at left/bottom-left/top-left of the AABB
+	{
+
+	}
+	else if (line.end.x > box.position.x + box.half_extends.x * 2) //If the second point of the segment is at right/bottom-right/top-right of the AABB
+	{
+
+	}
+	else //If the second point of the segment is at top/bottom of the AABB
+	{
+
+	}
+	return false;
+}
+
+//https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
+template<typename T>
+bool find_intersection(physics::intersection::Line<T> a, physics::intersection::Line<T> b, math::Vec2<T>* intersection)
+{
+	const float denominator = (a.start.x - a.end.x)*(b.start.y - b.end.y) - (a.start.y - a.end.y)*(b.start.x - b.end.x);
+	if (denominator == 0) return false;
+
+	float x_nominator = 0;
+	float y_nominator = 0;
+	//float xNominator = (x1*y2 - y1 * x2)*(x3 - x4) - (x1 - x2)*(x3*y4 - y3 * x4);
+	//float yNominator = (x1*y2 - y1 * x2)*(y3 - y4) - (y1 - y2)*(x3*y4 - y3 * x4);
+	const float inverse_denominator = 1 / denominator;
+
+	intersection = { x_nominator * inverse_denominator, y_nominator * inverse_denominator };
+	return true;
+}
+
+template<typename T>
+bool intersect_ray_line(math::Vec2<T> origin, math::Vec2<T> direction, math::Vec2<T> line_a, math::Vec2<T> line_b)
+{
+	T length_x = (line_a.x - origin.x) / direction.x;
+	T ray_y_position = origin.y + direction.y * length_x;
+
+	math::Vec2<T> line_direction = line_b - line_a;
+	if (line_direction * direction == math::PI) // Lines are parallel. Check if ray contains line
+	{
+		if (ray_y_position == line_a.y)
+		{
+			return true; // Ray contains line
+		}
+		else
+		{
+			return false; // Ray is parallel to line
+		}
+	}
+	else // Ray could intersect line
+	{
+		if (ray_y_position >= line_a.y && ray_y_position <= line_b.y)
+		{
+			T length_y = (line_a.y - origin.y) / direction.y;
+			T ray_x_position = origin.x + direction.x * length_y;
+			if (ray_x_position >= line_a.x && ray_x_position >= line_b.x)
+			{
+				return true;
+			}
+			return false;
+		}
+	}
+	return false;
 }

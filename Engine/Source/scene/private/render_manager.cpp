@@ -9,7 +9,6 @@
 
 std::shared_ptr<ds::graphics::SceneRenderer> scene_renderer;
 std::shared_ptr<graphics::DynamicSpriteBatch> sprite_batch;
-std::shared_ptr<ShaderAsset> shader;
 
 std::shared_ptr<graphics::DynamicSpriteBatch> graphics::RenderManager::get_sprite_renderer()
 {
@@ -29,8 +28,7 @@ bool graphics::RenderManager::init()
 	}
 
 	scene_renderer = std::make_shared<ds::graphics::SceneRenderer>();
-	shader = AssetManager::load_asset<ShaderAsset>("batch.shader");
-	sprite_batch = std::make_shared<DynamicSpriteBatch>(scene_renderer, shader->shader);
+	sprite_batch = std::make_shared<DynamicSpriteBatch>(scene_renderer);
 
 	return true;
 }

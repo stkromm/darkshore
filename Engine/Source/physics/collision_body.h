@@ -21,9 +21,9 @@ namespace physics
 
 		bool collide_with(intersection::Circle& collide_with, intersection::IntersectionData* data);
 		bool collide_with(intersection::AABB& collide_with, intersection::IntersectionData* data);
-		bool collide_with(intersection::Ray& collide_with, intersection::IntersectionData* data);
+		bool collide_with(intersection::Ray<float>& collide_with, intersection::IntersectionData* data);
 		bool collide_with(intersection::Polygon& collide_with, intersection::IntersectionData* data);
 		bool collide_with(intersection::Ellipsoid& collide_with, intersection::IntersectionData* data);
-		bool collide_with(intersection::Line& collide_with, intersection::IntersectionData* data);
+		bool collide_with(intersection::Line<float>& collide_with, intersection::IntersectionData* data);
 	};
 }
