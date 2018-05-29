@@ -1,7 +1,3 @@
 [submodule "googletest"]
  path = Dependencies/googletest
  url = https://github.com/google/googletest.git
-
-[submodule "glfw"]
- path = Dependencies/glfw
- url = https://github.com/glfw/glfw
