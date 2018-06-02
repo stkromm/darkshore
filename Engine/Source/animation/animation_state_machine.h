@@ -19,7 +19,7 @@ protected:
 public:
 	void add_state(AnimationState state);
 	void tick(float delta_millis);
-	void transition(const std::string& state_name, bool force = true)
+	void transition(const std::string& state_name, const bool force = true)
 	{
 		if (!force)
 			pending_transisitons = state_name;

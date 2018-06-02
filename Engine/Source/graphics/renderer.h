@@ -3,8 +3,6 @@
 #include "graphics/vertex_array.h"
 #include "graphics/index_buffer.h"
 #include "graphics/shader.h"
-#include "framebuffer.h"
-#include <memory>
 
 namespace ds {
 	namespace graphics
@@ -22,7 +20,7 @@ namespace ds {
 				LOG_INFO << "Delete renderer" << LOG_END;
 			}
 
-			void draw(const ds::graphics::VertexArray& vertex_array, const ds::graphics::IndexBuffer& index_buffer, const ds::graphics::Shader& shader) const;
+			void draw(const VertexArray& vertex_array, const IndexBuffer& index_buffer, const Shader& shader) const;
 			void prepare() const;
 		};
 	}

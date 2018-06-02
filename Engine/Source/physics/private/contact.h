@@ -7,7 +7,7 @@ namespace ds {
 	{
 		struct Contact
 		{
-			Contact(std::pair<RigidBody*, RigidBody*> collision_pair, ds::FVec2 normal, float penetration) : collision_pair(std::move(collision_pair)), normal(std::move(normal)),
+			Contact(std::pair<RigidBody*, RigidBody*> collision_pair, FVec2 normal, const float penetration) : collision_pair(std::move(collision_pair)), normal(std::move(normal)),
 				penetration(penetration) {}
 			std::pair<RigidBody*, RigidBody*> collision_pair;
 			ds::FVec2 normal;
