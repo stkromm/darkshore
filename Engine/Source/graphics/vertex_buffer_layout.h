@@ -1,11 +1,11 @@
 #pragma once
 
 #include <vector>
-
 #include "core/types.h"
 
 namespace ds {
 	namespace graphics {
+
 		enum VertexBufferElementType
 		{
 			UNSIGNED_INT,

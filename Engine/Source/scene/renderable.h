@@ -1,14 +1,16 @@
 #pragma once
 
-namespace graphics
-{
-	class Renderable
+namespace ds {
+	namespace scene
 	{
-	public:
-		virtual ~Renderable() = default;
-
-		virtual void draw(const float interpolation) const
+		class Renderable
 		{
-		}
-	};
+		public:
+			virtual ~Renderable() = default;
+
+			virtual void draw(const float interpolation) const
+			{
+			}
+		};
+	}
 }

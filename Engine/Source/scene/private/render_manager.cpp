@@ -7,38 +7,39 @@
 #include <memory>
 #include "scene/shader_asset.h"
 
+using namespace ds::scene;
 std::shared_ptr<ds::graphics::SceneRenderer> scene_renderer;
-std::shared_ptr<graphics::DynamicSpriteBatch> sprite_batch;
+std::shared_ptr<DynamicSpriteBatch> sprite_batch;
 
-std::shared_ptr<graphics::DynamicSpriteBatch> graphics::RenderManager::get_sprite_renderer()
+std::shared_ptr<DynamicSpriteBatch> RenderManager::get_sprite_renderer()
 {
 	return sprite_batch;
 }
 
-std::shared_ptr<ds::graphics::SceneRenderer> graphics::RenderManager::get_scene_renderer()
+std::shared_ptr<ds::graphics::SceneRenderer> RenderManager::get_scene_renderer()
 {
 	return scene_renderer;
 }
 
-bool graphics::RenderManager::init()
+bool RenderManager::init()
 {
-	if (!ds::graphics::init())
+	if (!graphics::init())
 	{
 		return false;
 	}
 
-	scene_renderer = std::make_shared<ds::graphics::SceneRenderer>();
+	scene_renderer = std::make_shared<graphics::SceneRenderer>();
 	sprite_batch = std::make_shared<DynamicSpriteBatch>(scene_renderer);
 
 	return true;
 }
 
-void graphics::RenderManager::prepare()
+void RenderManager::prepare()
 {
 	scene_renderer->prepare();
 }
 
-void graphics::RenderManager::flush()
+void RenderManager::flush()
 {
 	sprite_batch->flush();
 }

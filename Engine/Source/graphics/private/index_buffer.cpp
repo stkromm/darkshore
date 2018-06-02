@@ -35,7 +35,7 @@ ds::graphics::IndexBuffer::~IndexBuffer()
 
 static uint32 last_bound_buffer = 0;
 
-void ds::graphics::IndexBuffer::set_count(uint32 count)
+void ds::graphics::IndexBuffer::set_count(const uint32 count)
 {
 	this->count = count;
 }

@@ -6,7 +6,7 @@
 #undef near
 #undef far
 
-namespace math
+namespace ds
 {
 	constexpr size_t SIZE = 4 * 4;
 
@@ -216,9 +216,9 @@ namespace math
 		Mat4x4 lerp(const Mat4x4 other, const float lerp)
 		{
 			Mat4x4 result(1);
-			result.data()[3 * 4] = math::lerp(elements[3 * 4], other.elements[3 * 4], lerp);
-			result.elements[3 * 4 + 1] = math::lerp(elements[3 * 4 + 1], other.elements[3 * 4 + 1], lerp);
-			result.elements[3 * 4 + 2] = math::lerp(elements[3 * 4 + 2], other.elements[3 * 4 + 2], lerp);
+			result.data()[3 * 4] = ds::lerp(elements[3 * 4], other.elements[3 * 4], lerp);
+			result.elements[3 * 4 + 1] = ds::lerp(elements[3 * 4 + 1], other.elements[3 * 4 + 1], lerp);
+			result.elements[3 * 4 + 2] = ds::lerp(elements[3 * 4 + 2], other.elements[3 * 4 + 2], lerp);
 
 			return result;
 		}
@@ -250,6 +250,6 @@ namespace math
 	};
 }
 
-inline std::ostream & operator<<(std::ostream &os, const math::Mat4x4& m) {
+inline std::ostream & operator<<(std::ostream &os, const ds::Mat4x4& m) {
 	return os << m.to_string();
 }

@@ -2,6 +2,7 @@
 
 #include "core/types.h"
 
+namespace ds {
 /**
  * System local timestamp in microseconds
  */
@@ -22,3 +23,4 @@ public:
 
 uint64_t microseconds_since_epoch();
 
+}

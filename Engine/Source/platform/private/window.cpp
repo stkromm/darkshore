@@ -7,7 +7,7 @@
 #include "core/json/json.h"
 #include "platform/input.h"
 
-using namespace platform;
+using namespace ds::platform;
 
 static GLFWwindow* window;
 static GLFWcursor* cursor;
@@ -131,11 +131,11 @@ void glfwKeyCallback(GLFWwindow* w, const int32 key, const int32 scancode, const
 {
 	if (action == GLFW_PRESS)
 	{
-		platform::set_pressed(key, true);
+		set_pressed(key, true);
 	}
 	else if (action == GLFW_RELEASE)
 	{
-		platform::set_pressed(key, false);
+		set_pressed(key, false);
 	}
 	auto window = static_cast<Window*>(glfwGetWindowUserPointer(w));
 	if (!window) return;

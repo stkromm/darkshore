@@ -12,7 +12,7 @@ namespace audio
 	class AudioPlayer
 	{
 		sf::Sound sound;
-		math::FVec2 position;
+		ds::FVec2 position;
 		std::shared_ptr<SoundEffect> sound_effect;
 	public:
 		void set_sound_effect(std::shared_ptr<SoundEffect> effect)

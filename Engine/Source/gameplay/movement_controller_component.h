@@ -2,21 +2,23 @@
 
 #include "game/component.h"
 
-class MovementControllerComponent : public Component
-{
-public:
-	MovementControllerComponent() = default;
-
-	static std::shared_ptr<ComponentType> get_type()
+namespace ds {
+	class MovementControllerComponent : public game::Component
 	{
-		static std::shared_ptr<ComponentType> sprite_type = std::make_shared<ComponentType>(ComponentType{
-			"movement-controller"
-		});
-		return sprite_type;
-	}
+	public:
+		MovementControllerComponent() = default;
 
-	void on_attach() override
-	{
-	}
+		static std::shared_ptr<game::ComponentType> get_type()
+		{
+			static std::shared_ptr<game::ComponentType> sprite_type = std::make_shared<game::ComponentType>(game::ComponentType{
+				"movement-controller"
+				});
+			return sprite_type;
+		}
 
-};
+		void on_attach() override
+		{
+		}
+
+	};
+}

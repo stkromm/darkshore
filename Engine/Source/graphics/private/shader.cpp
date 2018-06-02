@@ -202,12 +202,12 @@ namespace ds {
 			GLCall(glUniform4i(get_uniform_location(std::move(name)), i0, i1, i2, i3));
 		}
 
-		void Shader::set_uniform_mat4x4(std::string name, math::Mat4x4 mat)
+		void Shader::set_uniform_mat4x4(std::string name, ds::Mat4x4 mat)
 		{
 			GLCall(glUniformMatrix4fv(get_uniform_location(std::move(name)), 1, GL_FALSE, mat.data()));
 		}
 
-		void Shader::set_uniform_vec3(std::string name, const math::Vec3 vec)
+		void Shader::set_uniform_vec3(std::string name, const ds::Vec3 vec)
 		{
 			float d[3]{
 				vec.x, vec.y, vec.z

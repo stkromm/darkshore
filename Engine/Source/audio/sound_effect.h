@@ -11,7 +11,7 @@ namespace audio
 		SoundEffect(const std::string& path)
 		{
 			// Load sound into buffer
-			buffer.loadFromFile(get_res_folder_path(SOUND, path));
+			buffer.loadFromFile(ds::get_res_folder_path(ds::SOUND, path));
 		}
 
 		friend class AudioPlayer;

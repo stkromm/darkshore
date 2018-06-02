@@ -3,21 +3,23 @@
 #include "graphics/renderer.h"
 #include "sprite_batch.h"
 
-namespace graphics
-{
-	namespace RenderManager
+namespace ds {
+	namespace scene
 	{
-		std::shared_ptr<DynamicSpriteBatch> get_sprite_renderer();
-		std::shared_ptr<ds::graphics::SceneRenderer> get_scene_renderer();
-
-		bool init();
-
-		void prepare();
-
-		inline void shutdown()
+		namespace RenderManager
 		{
-		}
+			std::shared_ptr<DynamicSpriteBatch> get_sprite_renderer();
+			std::shared_ptr<graphics::SceneRenderer> get_scene_renderer();
 
-		void flush();
+			bool init();
+
+			void prepare();
+
+			inline void shutdown()
+			{
+			}
+
+			void flush();
+		};
 	};
-};
+}

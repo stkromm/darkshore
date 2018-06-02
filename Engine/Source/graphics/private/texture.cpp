@@ -50,7 +50,7 @@ namespace ds {
 		static uint32 last_bound_id = -1;
 
 
-		void Texture::bind(uint32_t slot) const
+		void Texture::bind(const uint32_t slot) const
 		{
 			if (last_bound_slot != slot || last_bound_id != id)
 			{

@@ -7,12 +7,20 @@
 
 #include "gameplay/player.h"
 
-inline void load_level(Game* game, const std::string& name)
+namespace ds
 {
-	game->add_object<Player>();
+	namespace game
+	{
 
-	for (int i = 0; i < 50; ++i)
-		game->add_object<NPC>(i % 15 * 100.f, i % 20 * 100.f);
+		inline void load_level(Game* game, const std::string& name)
+		{
+			game->add_object<Player>();
 
-	ds::audio::BackgroundMusic::play("music.wav");
+			for (int i = 0; i < 50; ++i)
+				game->add_object<NPC>(i % 15 * 100.f, i % 20 * 100.f);
+
+			ds::audio::BackgroundMusic::play("music.wav");
+		}
+
+	}
 }

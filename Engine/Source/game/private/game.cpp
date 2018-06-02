@@ -1,6 +1,8 @@
 #include "game/game.h"
 #include "game/object.h"
 
+using namespace ds::game;
+
 float Game::get_tick_interpolation() const
 {
 	const auto remaining_tick_duration = frame_fixed_end - Timestamp();

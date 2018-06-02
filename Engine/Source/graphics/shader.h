@@ -37,8 +37,8 @@ namespace ds {
 			void set_uniform_4ui(std::string name, uint32_t i0, uint32_t i1, uint32_t i2, uint32_t i3);
 			void set_uniform_4f(std::string name, float f0, float f1, float f2, float f3);
 
-			void set_uniform_mat4x4(std::string name, math::Mat4x4 mat);
-			void set_uniform_vec3(std::string name, math::Vec3 vec);
+			void set_uniform_mat4x4(std::string name, ds::Mat4x4 mat);
+			void set_uniform_vec3(std::string name, ds::Vec3 vec);
 
 			int get_uniform_location(std::string name) const;
 

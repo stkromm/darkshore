@@ -321,9 +321,6 @@
     <ClInclude Include="Source\darkshore.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\graphics\camera.h">
-      <Filter>Source\game</Filter>
-    </ClInclude>
     <ClInclude Include="Source\graphics\index_buffer.h">
       <Filter>Source\graphics</Filter>
     </ClInclude>
@@ -458,6 +455,12 @@
     </ClInclude>
     <ClInclude Include="Source\physics\private\trace_datastructure.h">
       <Filter>Source\physics\private</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\math\mat3x3.h">
+      <Filter>Source\core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\math\vec4.h">
+      <Filter>Source\core\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

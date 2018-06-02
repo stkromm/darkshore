@@ -2,21 +2,23 @@
 #include "core/logger/log.h"
 #include "scene/scene.h"
 
-graphics::Scene* scene = nullptr;
+using namespace ds::scene;
 
-graphics::Scene* graphics::SceneManager::get_scene()
+Scene* s_scene = nullptr;
+
+Scene* SceneManager::get_scene()
 {
-	return scene;
+	return s_scene;
 }
 
-bool graphics::SceneManager::init()
+bool SceneManager::init()
 {
-	scene = new Scene();
+	s_scene = new Scene();
 	LOG_INFO << "Created scene" << LOG_END;
 	return true;
 }
 
-void graphics::SceneManager::shutdown()
+void SceneManager::shutdown()
 {
-	delete scene;
+	delete s_scene;
 }

@@ -2,6 +2,8 @@
 #include "game/object.h"
 #include "game/component_type.h"
 
+using namespace ds::game;
+
 Entity::Entity()
 {
 	transform = std::make_shared<Transform>();

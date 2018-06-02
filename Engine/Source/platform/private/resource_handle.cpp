@@ -5,6 +5,7 @@
 #include <fstream>
 #include <utility>
 
+using namespace ds;
 std::string get_res_folder_path(const AssetType type, const std::string& name)
 {
 	std::stringstream string_stream;

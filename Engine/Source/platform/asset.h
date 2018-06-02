@@ -1,10 +1,12 @@
 #pragma once
 
-class Asset
-{
-};
+namespace ds {
+	class Asset
+	{
+	};
 
-struct resource
-{
-	long long identifier;
-};
+	struct resource
+	{
+		long long identifier;
+	};
+}

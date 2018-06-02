@@ -4,13 +4,14 @@
 
 #include "physics/rigid_body.h"
 
-namespace physics
-{
-	bool init();
+namespace ds {
+	namespace physics {
+		bool init();
 
-	void shutdown();
+		void shutdown();
 
-	void add_rigid_body(std::shared_ptr<RigidBody> rigid_body);
+		void add_rigid_body(std::shared_ptr<RigidBody> rigid_body);
 
-	void tick(float delta);
+		void tick(float delta);
+	}
 }

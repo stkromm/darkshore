@@ -4,25 +4,26 @@
 #include "scene/sprite.h"
 #include "scene/scene_manager.h"
 
-
-class SpriteComponent : public Component
-{
-	std::shared_ptr<graphics::Sprite> sprite;
-	
-public:
-	explicit SpriteComponent(const std::shared_ptr<graphics::Sprite> sprite) : sprite(sprite)
+namespace ds {
+	class SpriteComponent : public game::Component
 	{
-		graphics::SceneManager::get_scene()->add_renderable(sprite);
-	}
+		std::shared_ptr<scene::Sprite> sprite;
 
-	static std::shared_ptr<ComponentType> get_type()
-	{
-		static std::shared_ptr<ComponentType> sprite_type = std::make_shared<ComponentType>(ComponentType{"sprite"});
-		return sprite_type;
-	}
+	public:
+		explicit SpriteComponent(const std::shared_ptr<scene::Sprite> sprite) : sprite(sprite)
+		{
+			scene::SceneManager::get_scene()->add_renderable(sprite);
+		}
 
-	std::shared_ptr<graphics::Sprite> get_sprite() const
-	{
-		return sprite;
-	}
-};
+		static std::shared_ptr<game::ComponentType> get_type()
+		{
+			static std::shared_ptr<game::ComponentType> sprite_type = std::make_shared<game::ComponentType>(game::ComponentType{ "sprite" });
+			return sprite_type;
+		}
+
+		std::shared_ptr<scene::Sprite> get_sprite() const
+		{
+			return sprite;
+		}
+	};
+}
