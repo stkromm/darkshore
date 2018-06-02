@@ -31,9 +31,13 @@ namespace ds
 	template<class T>
 	struct Vec2
 	{
-		T x;
-		T y;
-
+		union {
+			struct {
+				T x;
+				T y;
+			};
+			T data[2];
+		};
 		constexpr Vec2(const T x, const T y) : x(x), y(y)
 		{
 		}
