@@ -29,7 +29,7 @@ namespace ds {
 		uint32_t x, y, n;
 		byte* pixels;
 	public:
-		explicit RGBAImage(const std::string& path, char channel_count = 4);
+		explicit RGBAImage(const std::string& path);
 		~RGBAImage();
 
 		uint32_t get_width() const
@@ -59,7 +59,7 @@ namespace ds {
 
 		RGBAColor operator[](const size_t index) const
 		{
-			return RGBAColor(*(reinterpret_cast<uint32_t*>(pixels) + index));
+			return { *(reinterpret_cast<uint32_t*>(pixels) + index) };
 		}
 	};
 }

@@ -7,11 +7,11 @@
 #include "platform/asset_types.h"
 
 using namespace ds;
-RGBAImage::RGBAImage(const std::string& path, const char channel_count)
+RGBAImage::RGBAImage(const std::string& path)
 {
 	int t_x, t_y, t_n;
 	stbi_set_flip_vertically_on_load(1);
-	pixels = stbi_load(path.c_str(), &t_x, &t_y, &t_n, channel_count);
+	pixels = stbi_load(path.c_str(), &t_x, &t_y, &t_n, 4);
 	/*ResourceHandle resource_handle = ResourceHandle(path);
 	size_t size = resource_handle.get_byte_size();
 	byte* buffer = new byte[size];
