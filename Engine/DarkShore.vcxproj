@@ -70,10 +70,12 @@
     <ClInclude Include="Source\core\image\image.h" />
     <ClInclude Include="Source\core\json\json.h" />
     <ClInclude Include="Source\core\logger\log.h" />
+    <ClInclude Include="Source\core\math\mat3x3.h" />
     <ClInclude Include="Source\core\math\mat4x4.h" />
     <ClInclude Include="Source\core\math\math.h" />
     <ClInclude Include="Source\core\math\vec2.h" />
     <ClInclude Include="Source\core\math\vec3.h" />
+    <ClInclude Include="Source\core\math\vec4.h" />
     <ClInclude Include="Source\core\math\vine_math.h" />
     <ClInclude Include="Source\core\private\image\stb_image\stb_image.h" />
     <ClInclude Include="Source\core\private\json\json.hpp" />
@@ -96,7 +98,6 @@
     <ClInclude Include="Source\game\entity.h" />
     <ClInclude Include="Source\game\game.h" />
     <ClInclude Include="Source\game\object.h" />
-    <ClInclude Include="Source\graphics\camera.h" />
     <ClInclude Include="Source\graphics\context.h" />
     <ClInclude Include="Source\graphics\framebuffer.h" />
     <ClInclude Include="Source\graphics\graphics.h" />

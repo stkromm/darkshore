@@ -2,12 +2,14 @@
 
 #include "scene.h"
 
-namespace graphics
-{
-	namespace SceneManager
+namespace ds {
+	namespace scene
 	{
-		Scene* get_scene();
-		bool init();
-		void shutdown();
-	};
+		namespace SceneManager
+		{
+			Scene* get_scene();
+			bool init();
+			void shutdown();
+		};
+	}
 }

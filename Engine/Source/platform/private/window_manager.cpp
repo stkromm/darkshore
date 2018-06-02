@@ -4,7 +4,7 @@
 #include "core/logger/log.h"
 #include "platform/window.h"
 
-using namespace platform;
+using namespace ds::platform;
 static Window* global_window;
 
 bool WindowManager::init()

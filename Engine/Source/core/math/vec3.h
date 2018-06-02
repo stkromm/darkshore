@@ -4,7 +4,7 @@
 #include <sstream>
 
 
-namespace math
+namespace ds
 {
 	struct Vec3
 	{
@@ -12,15 +12,9 @@ namespace math
 		float y;
 		float z;
 
-		Vec3(const float x, const float y, const float z) : x(x), y(y), z(z)
-		{
-		}
-
-		Vec3(const Vec3& copy) = default;
-
 		Vec3 operator+(const Vec3& other) const
 		{
-			return Vec3(x + other.x, y + other.y, z + other.z);
+			return { x + other.x, y + other.y, z + other.z };
 		}
 	};
 

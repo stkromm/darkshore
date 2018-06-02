@@ -10,36 +10,38 @@
 #include "platform/asset_manager.h"
 #include "game/camera.h"
 
-namespace graphics
-{
-	class Scene
+namespace ds {
+	namespace scene
 	{
-	public:
-		std::vector<std::shared_ptr<Renderable>> renderables;
-		std::shared_ptr<Camera> camera;
-
-		Scene()
+		class Scene
 		{
-			camera = std::make_shared<Camera>();
-		}
+		public:
+			std::vector<std::shared_ptr<Renderable>> renderables;
+			std::shared_ptr<Camera> camera;
 
-		~Scene()
-		{
-			std::cout << "Delete scene" << std::endl;
-		}
+			Scene()
+			{
+				camera = std::make_shared<Camera>();
+			}
 
-		void set_camera(const std::shared_ptr<Camera> camera)
-		{
-			this->camera = camera;
-		}
+			~Scene()
+			{
+				std::cout << "Delete scene" << std::endl;
+			}
 
-		std::shared_ptr<Camera> get_camera() const
-		{
-			return camera;
-		}
+			void set_camera(const std::shared_ptr<Camera> camera)
+			{
+				this->camera = camera;
+			}
 
-		void add_renderable(std::shared_ptr<Renderable> renderable);
+			std::shared_ptr<Camera> get_camera() const
+			{
+				return camera;
+			}
 
-		void render(float interpolation);
-	};
+			void add_renderable(std::shared_ptr<Renderable> renderable);
+
+			void render(float interpolation);
+		};
+	}
 }

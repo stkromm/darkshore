@@ -2,7 +2,13 @@
 
 #include <string>
 
-struct ComponentType
+namespace ds
 {
-	std::string name;
-};
+	namespace game
+	{
+		struct ComponentType
+		{
+			std::string name;
+		};
+	}
+}

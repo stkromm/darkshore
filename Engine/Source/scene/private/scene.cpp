@@ -5,12 +5,14 @@
 #include "scene/scene.h"
 #include "darkshore.h"
 
-void graphics::Scene::add_renderable(const std::shared_ptr<Renderable> renderable)
+using namespace ds::scene;
+
+void Scene::add_renderable(const std::shared_ptr<Renderable> renderable)
 {
 	renderables.push_back(renderable);
 }
 
-void graphics::Scene::render(const float interpolation)
+void Scene::render(const float interpolation)
 {
 	if (!get_camera()) return;
 
@@ -24,6 +26,4 @@ void graphics::Scene::render(const float interpolation)
 	}
 
 	RenderManager::flush();
-
-	//std::cout << "Draw calls " << RenderManager::get_scene_renderer()->draw_calls << std::endl;
 }

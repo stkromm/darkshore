@@ -6,19 +6,20 @@
 #include "core/transform.h"
 #include "renderable.h"
 
-namespace graphics
+namespace ds {
+namespace scene
 {
 	class Sprite : public Renderable
 	{
 	protected:
 		ds::graphics::TexturePatch patch;
 		std::shared_ptr<Transform> transform;
-		math::FVec2 extends;
+		ds::FVec2 extends;
 		uint32_t color;
 		std::shared_ptr<ds::graphics::Texture> texture;
 
 	public:
-		Sprite(std::shared_ptr<Transform> transform, math::FVec2 offset, math::FVec2 size, ds::graphics::TexturePatch& patch,
+		Sprite(std::shared_ptr<Transform> transform, ds::FVec2 offset, ds::FVec2 size, ds::graphics::TexturePatch& patch,
 			uint32_t color = 0x00000000);
 
 		~Sprite();
@@ -42,12 +43,12 @@ namespace graphics
 			return patch;
 		}
 
-		math::FVec2 get_position() const
+		ds::FVec2 get_position() const
 		{
 			return transform->get_position();
 		};
 
-		math::FVec2 get_extends() const
+		ds::FVec2 get_extends() const
 		{
 			return extends;
 		};
@@ -57,4 +58,5 @@ namespace graphics
 			return transform;
 		}
 	};
+}
 }

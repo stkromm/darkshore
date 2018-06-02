@@ -1,5 +1,7 @@
 #include "darkshore.h"
 
+using namespace ds;
+
 int init_platform()
 {
 	if (!AssetManager::init())
@@ -10,11 +12,11 @@ int init_platform()
 	{
 		return -12;
 	}
-	if (!graphics::RenderManager::init())
+	if (!scene::RenderManager::init())
 	{
 		return -13;
 	}
-	if (!graphics::SceneManager::init())
+	if (!scene::SceneManager::init())
 	{
 		return -14;
 	}
@@ -30,16 +32,16 @@ int init_platform()
 }
 int DS_MAIN(const int argc, char** argv)
 {
-	
+
 	LOG_INFO << "Vine Engine started" << LOG_END;
-	
-	if(init_platform() != 0)
+
+	if (init_platform() != 0)
 	{
 		std::cin.get();
-		return -1;
+		return -10;
 	}
 
-	auto game = new Game();
+	auto game = new game::Game();
 	std::ifstream config_file("../config.json");
 	json settings;
 	if (config_file.is_open())
@@ -56,7 +58,7 @@ int DS_MAIN(const int argc, char** argv)
 	{
 		platform::WindowManager::get_window().poll_input();
 		game->is_running = !platform::WindowManager::get_window().should_close();
-		
+
 		int loops = 0;
 		float escaped_time = 0;
 
@@ -68,8 +70,8 @@ int DS_MAIN(const int argc, char** argv)
 			loops++;
 		}
 		AnimationManager::update(escaped_time);
-		graphics::SceneManager::get_scene()->render(game->get_tick_interpolation());
-	
+		scene::SceneManager::get_scene()->render(game->get_tick_interpolation());
+
 		platform::WindowManager::get_window().swap_buffers();
 	}
 
@@ -77,8 +79,8 @@ int DS_MAIN(const int argc, char** argv)
 
 	AnimationManager::shutdown();
 	physics::shutdown();
-	graphics::SceneManager::shutdown();
-	graphics::RenderManager::shutdown();
+	scene::SceneManager::shutdown();
+	scene::RenderManager::shutdown();
 	platform::WindowManager::shutdown();
 
 	AssetManager::clean();

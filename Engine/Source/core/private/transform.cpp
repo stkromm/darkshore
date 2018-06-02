@@ -1,16 +1,18 @@
 #include "core/transform.h"
 #include "core/logger/log.h"
 
+using namespace ds;
+
 Transform::Transform() :
 	dirty_local_to_world(false),
 	dirty_world_to_local(false),
-	previous_local_to_world(math::Mat4x4(1)),
-	local_to_world(math::Mat4x4(1)),
-	world_to_local(math::Mat4x4(1)),
+	previous_local_to_world(ds::Mat4x4(1)),
+	local_to_world(ds::Mat4x4(1)),
+	world_to_local(ds::Mat4x4(1)),
 	parent(nullptr),
-	position({0, 0, 0}),
+	position({ 0, 0, 0 }),
 	rotation(0),
-	scale_factor({1, 1})
+	scale_factor({ 1, 1 })
 {
 }
 
@@ -19,7 +21,7 @@ Transform::~Transform()
 	LOG_INFO << "Delete transform" << LOG_END;
 }
 
-math::Mat4x4 Transform::get_local_to_world() const
+ds::Mat4x4 Transform::get_local_to_world() const
 {
 	if (dirty_local_to_world)
 	{
@@ -53,10 +55,10 @@ void Transform::update() const
 	}
 }
 
-math::Mat4x4 Transform::get_local_to_world(const float interpolate) const
+ds::Mat4x4 Transform::get_local_to_world(const float interpolate) const
 {
 	previous_local_to_world = local_to_world;
-	const math::Mat4x4 calc = get_local_to_world();
+	const ds::Mat4x4 calc = get_local_to_world();
 	if (interpolate > 0 && interpolate < 1)
 	{
 		if (parent)
@@ -66,7 +68,7 @@ math::Mat4x4 Transform::get_local_to_world(const float interpolate) const
 	return calc;
 }
 
-math::Mat4x4 Transform::get_world_to_local() const
+ds::Mat4x4 Transform::get_world_to_local() const
 {
 	if (dirty_world_to_local)
 	{
@@ -82,7 +84,7 @@ math::Mat4x4 Transform::get_world_to_local() const
 	return world_to_local;
 }
 
-void Transform::translate(const math::FVec2 translation)
+void Transform::translate(const ds::FVec2 translation)
 {
 	dirty_local_to_world = true;
 	dirty_world_to_local = true;
@@ -90,7 +92,7 @@ void Transform::translate(const math::FVec2 translation)
 	this->position.y += translation.y;
 }
 
-void Transform::set_position(const math::FVec2 position)
+void Transform::set_position(const ds::FVec2 position)
 {
 	this->position.x = position.x;
 	this->position.y = position.y;

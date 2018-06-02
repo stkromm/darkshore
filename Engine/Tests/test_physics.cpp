@@ -104,6 +104,7 @@ TEST(IntersectionTest, CircleAabbIntersectCorner)
 	EXPECT_EQ(hit_data.normal.x, 0.707107f);
 	EXPECT_EQ(hit_data.normal.y, 0.707107f);
 }
+
 int main()
 {
 	if (RUN_ALL_TESTS() != 0)

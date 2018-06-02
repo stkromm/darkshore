@@ -9,7 +9,7 @@ static long long frequency;
 
 static long long get_frequency()
 {
-	if(!init)
+	if (!init)
 	{
 		LARGE_INTEGER Frequency;
 		QueryPerformanceFrequency(&Frequency);
@@ -17,6 +17,8 @@ static long long get_frequency()
 	}
 	return frequency;
 }
+
+using namespace ds;
 
 Timestamp::Timestamp()
 {
@@ -33,7 +35,7 @@ long Timestamp::operator-(const Timestamp start_timestamp) const
 
 void Timestamp::operator+=(const float microseconds)
 {
-	this->ticks += (microseconds*get_frequency() /1000000);
+	this->ticks += (microseconds*get_frequency() / 1000000);
 }
 
 uint64_t microseconds_since_epoch()

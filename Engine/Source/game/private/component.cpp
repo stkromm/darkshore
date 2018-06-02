@@ -1,6 +1,8 @@
 #include "game/component.h"
 
-Component::Component(): owner(nullptr)
+using namespace ds::game;
+
+Component::Component() : owner(nullptr)
 {
 }
 
@@ -9,9 +11,9 @@ Component::~Component() = default;
 
 void Component::attach(Entity* entity)
 {
-	if(entity)
+	if (entity)
 	{
-		if(owner)
+		if (owner)
 		{
 			detach();
 		}

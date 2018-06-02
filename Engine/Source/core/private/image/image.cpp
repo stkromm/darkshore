@@ -6,6 +6,7 @@
 #include "platform/resource_handle.h"
 #include "platform/asset_types.h"
 
+using namespace ds;
 RGBAImage::RGBAImage(const std::string& path, const char channel_count)
 {
 	int t_x, t_y, t_n;

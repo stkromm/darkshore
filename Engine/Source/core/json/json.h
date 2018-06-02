@@ -2,5 +2,7 @@
 
 #include "core/private/json/json.hpp"
 
-// for convenience
-using json = nlohmann::json;
+namespace ds {
+	// for convenience
+	using json = nlohmann::json;
+}

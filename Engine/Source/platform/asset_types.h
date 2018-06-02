@@ -1,11 +1,13 @@
 #pragma once
 
-enum AssetType
-{
-	IMAGE,
-	SOUND,
-	MAP,
-	SHADER,
-	SCRIPT,
-	FONT
-};
+namespace ds {
+	enum AssetType
+	{
+		IMAGE,
+		SOUND,
+		MAP,
+		SHADER,
+		SCRIPT,
+		FONT
+	};
+}

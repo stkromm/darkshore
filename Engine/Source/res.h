@@ -6,6 +6,6 @@ namespace R
 {
 	namespace shader
 	{
-		resource basic = { 0 };
+		ds::resource basic = { 0 };
 	}
 }

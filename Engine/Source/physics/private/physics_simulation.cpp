@@ -9,27 +9,29 @@
 #include "physics/private/intersection.h"
 #include "physics/private/trace_datastructure.h"
 
-static std::vector<std::shared_ptr<physics::RigidBody>> physic_bodies = {};
+using namespace ds::physics;
+
+static std::vector<std::shared_ptr<RigidBody>> physic_bodies = {};
 static TraceAccelerationDatastructure scene_graph;
 
-bool physics::init()
+bool init()
 {
 	physic_bodies = {};
 	return true;
 }
 
-void physics::shutdown()
+void shutdown()
 {
 	physic_bodies.clear();
 }
 
-void physics::add_rigid_body(const std::shared_ptr<RigidBody> rigid_body)
+void add_rigid_body(const std::shared_ptr<RigidBody> rigid_body)
 {
 	physic_bodies.push_back(rigid_body);
 	scene_graph.add_rigid_body(rigid_body);
 }
 
-void physics::tick(float delta)
+void tick(float delta)
 {
 	delta *= 0.5f;
 	for (int iteration = 0; iteration < 2; ++iteration) {

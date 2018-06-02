@@ -2,6 +2,10 @@
 
 #include <string>
 
+namespace ds
+{
+	namespace game
+	{
 class Game;
 
 class GameObject
@@ -50,3 +54,7 @@ public:
 		this->game = game;
 	}
 };
+
+
+	}
+}

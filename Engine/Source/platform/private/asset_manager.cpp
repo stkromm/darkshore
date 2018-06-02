@@ -3,6 +3,7 @@
 #include <iostream>
 #include <unordered_map>
 
+using namespace ds;
 std::unordered_map<AssetType, std::unordered_map<std::string, std::shared_ptr<Asset>>> AssetManager::loaded_assets
 	= {};
 

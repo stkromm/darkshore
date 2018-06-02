@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-using namespace physics;
+using namespace ds::physics;
 
 std::string AABBHull::to_string() const
 {
