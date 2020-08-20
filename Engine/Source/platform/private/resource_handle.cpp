@@ -6,7 +6,7 @@
 #include <utility>
 
 using namespace ds;
-std::string get_res_folder_path(const AssetType type, const std::string& name)
+std::string ds::get_res_folder_path(const AssetType type, const std::string& name)
 {
 	std::stringstream string_stream;
 	string_stream << "res/";

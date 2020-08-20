@@ -2,7 +2,7 @@
 
 using namespace ds::physics::intersection;
 
-bool intersect_aabb_aabb(AABB&& a, AABB&& b, IntersectionData* data)
+bool ds::physics::intersection::intersect_aabb_aabb(AABB&& a, AABB&& b, IntersectionData* data)
 {
 	const ds::FVec2 difference = b.position - a.position;
 	const ds::FVec2 full_extends_b = b.half_extends * 2;
@@ -48,7 +48,7 @@ bool intersect_aabb_aabb(AABB&& a, AABB&& b, IntersectionData* data)
 	return hit;
 }
 
-bool intersect_aabb_circle(AABB& box, Circle& circle, IntersectionData* data)
+bool ds::physics::intersection::intersect_aabb_circle(AABB& box, Circle& circle, IntersectionData* data)
 {
 	ds::FVec2 relative_circle_pos = circle.position - box.position;
 	const ds::FVec2 box_size = box.half_extends * 2;
@@ -85,7 +85,7 @@ bool intersect_aabb_circle(AABB& box, Circle& circle, IntersectionData* data)
 	return hit;
 }
 
-bool intersect_aabb_segment(AABB&& box, Line<float>&& line, IntersectionData* data)
+bool ds::physics::intersection::intersect_aabb_segment(AABB&& box, Line<float>&& line, IntersectionData* data)
 {
 	if (line.end.x < box.position.x)//If the second point of the segment is at left/bottom-left/top-left of the AABB
 	{

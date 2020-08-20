@@ -10,7 +10,7 @@
 
 using namespace ds;
 
-std::shared_ptr<AnimationStateMachine> read_sprite_animation_file(std::shared_ptr<scene::Sprite> sprite, json source)
+std::shared_ptr<AnimationStateMachine> ds::read_sprite_animation_file(std::shared_ptr<scene::Sprite> sprite, json source)
 {
 	const std::string texture_name = source["texture"];
 	const ds::graphics::TiledTexture tiled_texture = ds::graphics::TiledTexture(AssetManager::load_asset<TextureAsset>(texture_name)->texture, source["tile_width"], source["tile_height"]);

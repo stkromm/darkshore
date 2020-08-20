@@ -14,24 +14,24 @@ using namespace ds::physics;
 static std::vector<std::shared_ptr<RigidBody>> physic_bodies = {};
 static TraceAccelerationDatastructure scene_graph;
 
-bool init()
+bool ds::physics::init()
 {
 	physic_bodies = {};
 	return true;
 }
 
-void shutdown()
+void ds::physics::shutdown()
 {
 	physic_bodies.clear();
 }
 
-void add_rigid_body(const std::shared_ptr<RigidBody> rigid_body)
+void ds::physics::add_rigid_body(const std::shared_ptr<RigidBody> rigid_body)
 {
 	physic_bodies.push_back(rigid_body);
 	scene_graph.add_rigid_body(rigid_body);
 }
 
-void tick(float delta)
+void ds::physics::tick(float delta)
 {
 	delta *= 0.5f;
 	for (int iteration = 0; iteration < 2; ++iteration) {
