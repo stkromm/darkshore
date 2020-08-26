@@ -101,6 +101,9 @@
     <Filter Include="Source\particles\private">
       <UniqueIdentifier>{d20efc21-f633-4358-ae52-b2febbca6ede}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\gui">
+      <UniqueIdentifier>{8d38b48b-3ed2-43e0-9934-5a633964cfae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\animation\private\animation_manager.cpp">
@@ -210,6 +213,13 @@
     </ClCompile>
     <ClCompile Include="Source\graphics\private\framebuffer.cpp">
       <Filter>Source\graphics\private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\graphics\private\texture_atlas.cpp" />
+    <ClCompile Include="Source\gui\private\gui_manager.cpp">
+      <Filter>Source\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gui\private\text.cpp">
+      <Filter>Source\gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -461,6 +471,17 @@
     </ClInclude>
     <ClInclude Include="Source\core\math\vec4.h">
       <Filter>Source\core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fonts\font.h" />
+    <ClInclude Include="Source\graphics\texture_atlas.h" />
+    <ClInclude Include="Source\gui\gui.h">
+      <Filter>Source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gui\gui_manager.h">
+      <Filter>Source\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\gui\text.h">
+      <Filter>Source\gui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

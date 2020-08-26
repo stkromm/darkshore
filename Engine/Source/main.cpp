@@ -20,13 +20,17 @@ int init_platform()
 	{
 		return -14;
 	}
-	if (!physics::init())
+	if (!gui::GuiManager::init())
 	{
 		return -15;
 	}
-	if (!AnimationManager::init())
+	if (!physics::init())
 	{
 		return -16;
+	}
+	if (!AnimationManager::init())
+	{
+		return -17;
 	}
 	return 0;
 }
@@ -71,7 +75,7 @@ int DS_MAIN(const int argc, char** argv)
 		}
 		AnimationManager::update(escaped_time);
 		scene::SceneManager::get_scene()->render(game->get_tick_interpolation());
-
+		gui::GuiManager::get_gui()->render(game->get_tick_interpolation());
 		platform::WindowManager::get_window().swap_buffers();
 	}
 
@@ -81,6 +85,7 @@ int DS_MAIN(const int argc, char** argv)
 	physics::shutdown();
 	scene::SceneManager::shutdown();
 	scene::RenderManager::shutdown();
+	gui::GuiManager::shutdown();
 	platform::WindowManager::shutdown();
 
 	AssetManager::clean();
