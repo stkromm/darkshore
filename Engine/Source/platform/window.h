@@ -37,7 +37,7 @@ namespace ds {
 			int32 height = 720;
 
 			ds::FVec2 position = { 0, 0 };
-			std::string title = "";
+			std::string title = "Anima Island";
 			bool closed = false;
 		public:
 			Window();

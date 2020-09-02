@@ -23,7 +23,7 @@ namespace ds
 
 			ds::audio::BackgroundMusic::play("music.wav");
 
-			gui::GuiManager::get_gui()->add_element(std::reinterpret_pointer_cast<gui::GuiElement>(std::make_shared<gui::Text>("Hello World")));
+			gui::GuiManager::get_gui()->add_element(std::reinterpret_pointer_cast<gui::GuiElement>(std::make_shared<gui::Text>("Hello World let's get also this large text right")));
 		}
 
 	}

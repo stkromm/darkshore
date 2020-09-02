@@ -2,6 +2,12 @@
 
 #include <vector>
 #include "core/types.h"
+#include "graphics/texture.h"
+#include "graphics/texture_atlas.h"
+#include <map>
+
+#include "third_party/ft2build.h"
+#include "third_party/freetype/freetype.h"
 
 using namespace ds;
 
@@ -47,17 +53,17 @@ namespace ds {
 			/**
 			 * Glyph's width in pixels.
 			 */
-			size_t width;
+			float width;
 
 			/**
 			 * Glyph's height in pixels.
 			 */
-			size_t height;
+			float height;
 
 			/**
 			 * Glyph's left bearing expressed in integer pixels.
 			 */
-			int offset_x;
+			float offset_x;
 
 			/**
 			 * Glyphs's top bearing expressed in integer pixels.
@@ -65,7 +71,7 @@ namespace ds {
 			 * Remember that this is the distance from the baseline to the top-most
 			 * glyph scanline, upwards y coordinates being positive.
 			 */
-			int offset_y;
+			float offset_y;
 
 			/**
 			 * For horizontal text layouts, this is the horizontal distance (in
@@ -115,6 +121,17 @@ namespace ds {
 			 * Glyph outline thickness
 			 */
 			float outline_thickness;
+		};
+
+		class Font {
+			std::shared_ptr<graphics::TextureAtlas> texture_atlas;
+			std::map<uint32, Glyph> glyph_cache;
+			FT_Library library;
+			FT_Face face;
+		public:
+			Font(std::string path);
+			std::shared_ptr<graphics::Texture> get_texture();
+			Glyph get_glyph(char character);
 		};
 	}
 }

@@ -28,6 +28,7 @@
     <ClCompile Include="Source\core\private\logger\log.cpp" />
     <ClCompile Include="Source\core\private\time\time.cpp" />
     <ClCompile Include="Source\core\private\transform.cpp" />
+    <ClCompile Include="Source\fonts\private\font.cpp" />
     <ClCompile Include="Source\gameplay\sprite_animation_reader.cpp" />
     <ClCompile Include="Source\game\private\component.cpp" />
     <ClCompile Include="Source\game\private\entity.cpp" />

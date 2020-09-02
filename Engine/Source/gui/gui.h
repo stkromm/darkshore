@@ -19,10 +19,7 @@ namespace ds {
 			{
 				dirty = false;
 			};
-			bool needs_rerender()
-			{
-				return dirty;
-			};
+			virtual bool needs_rerender() { return true; }
 		};
 		class Gui {
 			std::vector<std::shared_ptr<GuiElement>> elements;

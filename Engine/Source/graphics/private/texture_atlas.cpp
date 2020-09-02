@@ -9,12 +9,12 @@
 #include <string.h>
 #include <assert.h>
 #include <limits>
-
+#include "core/logger/log.h"
 #include "graphics/texture_atlas.h"
 
-ds::graphics::TextureAtlas::TextureAtlas(const size_t width,
-	const size_t height,
-	const size_t depth) : width(width), height(height), depth(depth)
+ds::graphics::TextureAtlas::TextureAtlas(const uint32 width,
+	const uint32 height,
+	const uint32 depth) : width(width), height(height), depth(depth)
 {
 	this->used = 0;
 	this->id = 0;
@@ -22,20 +22,18 @@ ds::graphics::TextureAtlas::TextureAtlas(const size_t width,
 	// We want a one pixel border around the whole atlas to avoid any artefact when
 	// sampling texture
 	this->nodes.push_back({ 1,1,width - 2 });
-	this->data = (unsigned char *)calloc(width*height*depth, sizeof(unsigned char));
+	this->data = (unsigned char *) calloc(width*height*depth, sizeof(unsigned char));
+	this->texture = std::make_shared<graphics::Texture>(this->width, this->height, this->data);
 }
 
 ds::graphics::TextureAtlas::~TextureAtlas()
 {
 }
 
-void ds::graphics::TextureAtlas::set_region(
-	ds::graphics::TextureAtlasRegion region,
-	const unsigned char * data,
-	const size_t stride)
+void ds::graphics::TextureAtlas::set_region(ds::graphics::TextureAtlasRegion region, const unsigned char * data, const uint32 stride)
 {
 	size_t i;
-	size_t depth;
+	size_t depth = this->depth;
 	size_t charsize;
 
 	assert(region.x > 0);
@@ -49,13 +47,25 @@ void ds::graphics::TextureAtlas::set_region(
 	//and prevent memcpy's undefined behavior when count is zero
 	assert(region.height == 0 || (data != NULL && region.width > 0));
 
-	depth = this->depth;
+
 	charsize = sizeof(char);
 	for (i = 0; i < region.height; ++i)
 	{
-		memcpy(this->data + ((region.y + i)*this->width + region.x) * charsize * depth,
-			data + (i*stride) * charsize, region.width * charsize * depth);
+		memcpy(this->data + ((region.y + i)*this->width + region.x) * charsize * this->depth,
+			data + (i * region.width * 4), region.width * charsize * this->depth);
 	}
+	/*
+	LOG_INFO << "Texture Atlas" << LOG_END;
+	for (int a = 0; a < width; ++a)
+	{
+		for (int b = 0; b < height; ++b)
+		{
+			LOG_INFO << (reinterpret_cast<int*>(this->data))[a * width + b];
+		}
+		LOG_INFO << LOG_END;
+	}
+	*/
+	this->texture->update_data(this->data);
 }
 
 
@@ -75,7 +85,7 @@ int ds::graphics::TextureAtlas::fit(
 		return -1;
 	}
 	y = node.y;
-	while (width_left > 0)
+	while (width_left > 0 && i < this->nodes.size())
 	{
 		node = this->nodes[i];
 		if (node.y > y)
@@ -108,10 +118,37 @@ void ds::graphics::TextureAtlas::merge()
 	}
 }
 
+std::shared_ptr<ds::graphics::Texture> ds::graphics::TextureAtlas::get_texture() {
+	return this->texture;
+}
+
+int32 x = 1;
+int32 maxRowHeight = 0;
+int32 y = 1;
 ds::graphics::TextureAtlasRegion ds::graphics::TextureAtlas::get_region(
-	const size_t width,
-	const size_t height)
+	const uint32 width,
+	const uint32 height)
 {
+	if (x + width > 510) {
+		y += maxRowHeight;
+		x = 1;
+		maxRowHeight = height;
+		return {
+			x, y,
+			static_cast<int32>(width),
+			static_cast<int32>(height)
+		};
+	} else {
+		x += width;
+		maxRowHeight = maxRowHeight > height ? maxRowHeight : height;
+		return {
+			x - static_cast<int32>(width),
+			y,
+			static_cast<int32>(width),
+			static_cast<int32>(height)
+		};
+	}
+	/*
 	int y, best_index;
 	size_t best_height, best_width;
 	ds::graphics::TextureAtlasNode node, prev;
@@ -179,6 +216,7 @@ ds::graphics::TextureAtlasRegion ds::graphics::TextureAtlas::get_region(
 	this->merge();
 	this->used += width * height;
 	return region;
+	*/
 }
 
 void ds::graphics::TextureAtlas::clear()

@@ -3,6 +3,7 @@
 #include "core/types.h"
 #include "core/math/vec4.h"
 #include <vector>
+#include "graphics/texture.h"
 
 using namespace ds;
 
@@ -47,7 +48,8 @@ namespace ds {
 			/**
 			 * Atlas data
 			 */
-			unsigned char * data;
+			byte * data;
+			std::shared_ptr<graphics::Texture> texture;
 
 			int fit(const size_t index, const size_t width, const size_t height);
 			void merge();
@@ -62,13 +64,13 @@ namespace ds {
 			 * @return          a new empty texture atlas.
 			 *
 			 */
-			explicit TextureAtlas(const uint32 width,
+			TextureAtlas(const uint32 width,
 				const uint32 height,
 				const uint32 depth);
 
 			~TextureAtlas();
 
-
+			std::shared_ptr<graphics::Texture> get_texture();
 			/**
 			 *  Allocate a new region in the atlas.
 			 *

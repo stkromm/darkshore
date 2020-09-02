@@ -221,6 +221,7 @@
     <ClCompile Include="Source\gui\private\text.cpp">
       <Filter>Source\gui</Filter>
     </ClCompile>
+    <ClCompile Include="Source\fonts\private\font.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio\private\input_stream.h">

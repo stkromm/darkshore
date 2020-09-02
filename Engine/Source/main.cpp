@@ -60,6 +60,8 @@ int DS_MAIN(const int argc, char** argv)
 	game->start();
 	while (game->is_running)
 	{
+		// glPolygonMode(GL_FRONT, GL_LINE);
+		glPolygonMode(GL_BACK, GL_LINE);
 		platform::WindowManager::get_window().poll_input();
 		game->is_running = !platform::WindowManager::get_window().should_close();
 
