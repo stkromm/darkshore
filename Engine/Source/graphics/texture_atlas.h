@@ -51,9 +51,6 @@ namespace ds {
 			byte * data;
 			std::shared_ptr<graphics::Texture> texture;
 
-			int fit(const size_t index, const size_t width, const size_t height);
-			void merge();
-
 		public:
 			/**
 			 * Creates a new empty texture atlas.

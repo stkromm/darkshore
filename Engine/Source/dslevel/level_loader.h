@@ -18,12 +18,15 @@ namespace ds
 		{
 			game->add_object<Player>();
 
-			for (int i = 0; i < 50; ++i)
+			for (int i = 0; i < 20; ++i)
 				game->add_object<NPC>(i % 15 * 100.f, i % 20 * 100.f);
 
-			ds::audio::BackgroundMusic::play("music.wav");
+			// ds::audio::BackgroundMusic::play("music.wav");
 
-			gui::GuiManager::get_gui()->add_element(std::reinterpret_pointer_cast<gui::GuiElement>(std::make_shared<gui::Text>("Hello World let's get also this large text right")));
+			auto counter = std::reinterpret_pointer_cast<gui::GuiElement>(std::make_shared<gui::Text>("HP 100"));
+			counter->set_position(480, 400);
+			gui::GuiManager::get_gui()->add_element(counter);
+			gui::GuiManager::get_gui()->add_element(std::reinterpret_pointer_cast<gui::GuiElement>(std::make_shared<gui::Text>("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890=?!'*-+")));
 		}
 
 	}

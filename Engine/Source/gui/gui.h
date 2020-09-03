@@ -20,6 +20,10 @@ namespace ds {
 				dirty = false;
 			};
 			virtual bool needs_rerender() { return true; }
+			void set_position(int32 x, int32 y) {
+				position.x = x;
+				position.y = y;
+			}
 		};
 		class Gui {
 			std::vector<std::shared_ptr<GuiElement>> elements;

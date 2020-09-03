@@ -68,60 +68,11 @@ void ds::graphics::TextureAtlas::set_region(ds::graphics::TextureAtlasRegion reg
 	this->texture->update_data(this->data);
 }
 
-
-int ds::graphics::TextureAtlas::fit(
-	const size_t index,
-	const size_t width,
-	const size_t height)
-{
-	auto node = this->nodes[index];
-	auto x = node.x;
-	auto y = node.y;
-	auto width_left = width;
-	auto i = index;
-
-	if ((x + width) > (this->width - 1))
-	{
-		return -1;
-	}
-	y = node.y;
-	while (width_left > 0 && i < this->nodes.size())
-	{
-		node = this->nodes[i];
-		if (node.y > y)
-		{
-			y = node.y;
-		}
-		if ((y + height) > (this->height - 1))
-		{
-			return -1;
-		}
-		width_left -= node.z;
-		++i;
-	}
-	return y;
-}
-
-
-void ds::graphics::TextureAtlas::merge()
-{
-	for (uint32 i = 0; i < this->nodes.size() - 1; ++i)
-	{
-		auto node = this->nodes[i];
-		auto next = this->nodes[i + 1];
-		if (node.y == next.y)
-		{
-			node.z += next.z;
-			this->nodes.erase(this->nodes.begin() + i + 1);
-			--i;
-		}
-	}
-}
-
 std::shared_ptr<ds::graphics::Texture> ds::graphics::TextureAtlas::get_texture() {
 	return this->texture;
 }
 
+// TODO Should be moved to class scope.
 int32 x = 1;
 int32 maxRowHeight = 0;
 int32 y = 1;
@@ -129,7 +80,7 @@ ds::graphics::TextureAtlasRegion ds::graphics::TextureAtlas::get_region(
 	const uint32 width,
 	const uint32 height)
 {
-	if (x + width > 510) {
+	if (x + width >= this->width - 2) {
 		y += maxRowHeight;
 		x = 1;
 		maxRowHeight = height;
@@ -148,84 +99,13 @@ ds::graphics::TextureAtlasRegion ds::graphics::TextureAtlas::get_region(
 			static_cast<int32>(height)
 		};
 	}
-	/*
-	int y, best_index;
-	size_t best_height, best_width;
-	ds::graphics::TextureAtlasNode node, prev;
-	ds::graphics::TextureAtlasRegion region = { 0,0,width,height };
-	size_t i;
-
-	best_height = std::numeric_limits<uint32>::max();
-	best_index = -1;
-	best_width = std::numeric_limits<uint32>::max();
-	for (i = 0; i < this->nodes.size(); ++i)
-	{
-		y = this->fit(i, width, height);
-		if (y >= 0)
-		{
-			node = this->nodes[i];
-			if (((y + height) < best_height) ||
-				(((y + height) == best_height) && (node.z > 0 && (size_t)node.z < best_width)))
-			{
-				best_height = y + height;
-				best_index = i;
-				best_width = node.z;
-				region.x = node.x;
-				region.y = y;
-			}
-		}
-	}
-
-	if (best_index == -1)
-	{
-		region = { -1, -1, 0, 0 };
-		return region;
-	}
-
-	node = ds::graphics::TextureAtlasNode();
-	node.x = region.x;
-	node.y = region.y + height;
-	node.z = width;
-	this->nodes.insert(this->nodes.begin() + best_index, node);
-
-	for (i = best_index + 1; i < this->nodes.size(); ++i)
-	{
-		node = this->nodes[i];
-		prev = this->nodes[i - 1];
-
-		if (node.x < (prev.x + prev.z))
-		{
-			int shrink = prev.x + prev.z - node.x;
-			node.x += shrink;
-			node.z -= shrink;
-			if (node.z <= 0)
-			{
-				this->nodes.erase(this->nodes.begin() + i);
-				--i;
-			}
-			else
-			{
-				break;
-			}
-		}
-		else
-		{
-			break;
-		}
-	}
-	this->merge();
-	this->used += width * height;
-	return region;
-	*/
 }
 
 void ds::graphics::TextureAtlas::clear()
 {
 	assert(this->data);
 	this->nodes.clear();
-	this->used = 0;
-	// We want a one pixel border around the whole atlas to avoid any artefact when
-	// sampling texture
-	this->nodes.push_back({ 1,1,this->width - 2 });
+	x = 0;
+	y = 0;
 	memset(this->data, 0, this->width*this->height*this->depth);
 }

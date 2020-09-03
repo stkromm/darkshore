@@ -4,7 +4,7 @@
 #include "core/types.h"
 #include "graphics/texture.h"
 #include "graphics/texture_atlas.h"
-#include <map>
+#include <unordered_map>
 
 #include "third_party/ft2build.h"
 #include "third_party/freetype/freetype.h"
@@ -124,12 +124,13 @@ namespace ds {
 		};
 
 		class Font {
-			std::shared_ptr<graphics::TextureAtlas> texture_atlas;
-			std::map<uint32, Glyph> glyph_cache;
+			std::unique_ptr<graphics::TextureAtlas> texture_atlas;
+			std::unordered_map<uint32, Glyph> glyph_cache;
 			FT_Library library;
 			FT_Face face;
 		public:
 			Font(std::string path);
+			~Font();
 			std::shared_ptr<graphics::Texture> get_texture();
 			Glyph get_glyph(char character);
 		};

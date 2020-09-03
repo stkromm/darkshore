@@ -43,9 +43,12 @@ namespace ds {
 			void generate_vertex_data();
 		public:
 			Text(std::string text);
-			virtual bool needs_rerender();
+			virtual bool needs_rerender() override;
 			void set_text(std::string text);
-			std::string get_render_text();
+			std::string get_render_text() const;
+			std::vector<GlyphVertex> get_vertex_data() const;
+			Mat4x4 get_transformation() const;
+			std::shared_ptr<graphics::Texture> get_texture() const;
 		};
 	}
 }

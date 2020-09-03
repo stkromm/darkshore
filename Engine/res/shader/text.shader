@@ -38,5 +38,5 @@ void main()
 	{
 		discard;
 	}
-	color = vec4(1,1,1,color.a);
+	color = vec4(tint.rgb,color.a);
 };
