@@ -16,6 +16,7 @@ namespace ds
 				music->stop();
 #ifdef DEVELOPMENT
 				music->openFromFile(get_res_folder_path(SOUND, path));
+				music->play();
 #else
 				//InputStream input_stream = InputStream(ResourceHandle(get_res_folder_path(ResourceType::SOUND, path)));
 				//music->openFromStream(input_stream);

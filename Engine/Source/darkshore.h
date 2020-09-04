@@ -5,6 +5,7 @@
 
 #include "scene/render_manager.h"
 #include "scene/scene_manager.h"
+#include "gui/gui_manager.h"
 #include "platform/window_manager.h"
 #include "physics/physics.h"
 #include "animation/animation_manager.h"
