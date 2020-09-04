@@ -103,6 +103,8 @@
     </Filter>
     <Filter Include="Source\gui">
       <UniqueIdentifier>{8d38b48b-3ed2-43e0-9934-5a633964cfae}</UniqueIdentifier>
+    <Filter Include="Source\third_party">
+      <UniqueIdentifier>{df5c9b60-f9d4-4a45-8df2-ee124d8c75cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,9 +137,6 @@
     </ClCompile>
     <ClCompile Include="Source\graphics\private\vertex_buffer.cpp">
       <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\main.cpp">
-      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\physics\private\aabb_hull.cpp">
       <Filter>Source\physics\private</Filter>
@@ -222,6 +221,42 @@
       <Filter>Source\gui</Filter>
     </ClCompile>
     <ClCompile Include="Source\fonts\private\font.cpp" />
+    <ClCompile Include="Source\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\FreeFuncs.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\ImageLayer.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\LayerGroup.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\Map.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\miniz.c">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\Object.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\ObjectGroup.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\Property.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\TileLayer.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\Tileset.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\third_party\tmxlite\src\detail\pugixml.cpp">
+      <Filter>Source\third_party</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio\private\input_stream.h">
@@ -483,6 +518,20 @@
     </ClInclude>
     <ClInclude Include="Source\gui\text.h">
       <Filter>Source\gui</Filter>
+    <ClInclude Include="Source\third_party\tmxlite\src\miniz.h">
+      <Filter>Source\third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugiconfig.hpp">
+      <Filter>Source\third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugixml.hpp">
+      <Filter>Source\third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\third_party\tmxlite\detail\Android.hpp">
+      <Filter>Source\third_party</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\third_party\tmxlite\detail\Log.hpp">
+      <Filter>Source\third_party</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
