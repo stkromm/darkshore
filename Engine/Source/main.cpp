@@ -1,4 +1,5 @@
 #include "darkshore.h"
+#include "tilemap/tilemap.h"
 
 using namespace ds;
 
@@ -54,6 +55,7 @@ int DS_MAIN(const int argc, char** argv)
 	long millis = 0;
 	// Game Loop
 	game->start();
+	scene::SceneManager::get_scene()->add_renderable(std::make_shared<graphics::TileMap>("map.tmx"));
 	while (game->is_running)
 	{
 		platform::WindowManager::get_window().poll_input();

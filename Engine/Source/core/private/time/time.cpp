@@ -38,7 +38,7 @@ void Timestamp::operator+=(const float microseconds)
 	this->ticks += (microseconds*get_frequency() / 1000000);
 }
 
-uint64_t microseconds_since_epoch()
+uint64_t ds::microseconds_since_epoch()
 {
 	LARGE_INTEGER t;
 	QueryPerformanceCounter(&t);

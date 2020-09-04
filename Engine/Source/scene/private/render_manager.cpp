@@ -29,7 +29,7 @@ bool RenderManager::init()
 	}
 
 	scene_renderer = std::make_shared<graphics::SceneRenderer>();
-	sprite_batch = std::make_shared<DynamicSpriteBatch>(scene_renderer);
+	sprite_batch = std::make_shared<DynamicSpriteBatch>();
 
 	return true;
 }

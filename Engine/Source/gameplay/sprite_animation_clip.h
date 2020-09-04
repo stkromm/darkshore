@@ -35,16 +35,16 @@ namespace ds {
 			SpriteAnimationClip::reset();
 		}
 
+		virtual void on_frame_update(const uint_fast32_t frame_id)
+		{
+			sprite->change_patch(frames[frame_id].patch);
+		}
+
 		void reset() override
 		{
 			remaining_clip_time = duration;
 			frame_id = 0;
 			on_frame_update(frame_id);
-		}
-
-		virtual void on_frame_update(const uint_fast32_t frame_id)
-		{
-			sprite->change_patch(frames[frame_id].patch);
 		}
 
 		void update(const float delta_millis) override
