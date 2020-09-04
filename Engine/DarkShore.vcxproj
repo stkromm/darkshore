@@ -55,6 +55,17 @@
     <ClCompile Include="Source\scene\private\scene_manager.cpp" />
     <ClCompile Include="Source\scene\private\sprite.cpp" />
     <ClCompile Include="Source\scene\private\standalone_sprite.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\detail\pugixml.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\FreeFuncs.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\ImageLayer.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\LayerGroup.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Map.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\miniz.c" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Object.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\ObjectGroup.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Property.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\TileLayer.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Tileset.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\animation\animation_state.h" />
@@ -140,6 +151,11 @@
     <ClInclude Include="Source\scene\sprite_vertex.h" />
     <ClInclude Include="Source\scene\standalone_sprite.h" />
     <ClInclude Include="Source\scene\texture_asset.h" />
+    <ClInclude Include="Source\third_party\tmxlite\detail\Android.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\detail\Log.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugiconfig.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugixml.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\src\miniz.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -201,7 +217,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Engine/Source;$(SolutionDir)Engine/Source/third_party;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;SFML_STATIC;DEVELOPMENT;DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);GLEW_STATIC;SFML_STATIC;DEVELOPMENT;DEBUG;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <OpenMPSupport>true</OpenMPSupport>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>

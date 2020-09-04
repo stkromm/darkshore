@@ -32,15 +32,15 @@ namespace ds {
 			std::shared_ptr<ds::graphics::Shader> shader;
 
 		public:
-			StaticSpriteBatch()
+			StaticSpriteBatch(size_t size = 1024)
 			{
 				shader_asset = AssetManager::load_asset<ShaderAsset>("batch.shader");
 				shader = shader_asset->shader;
 				vertex_array = std::make_unique<ds::graphics::VertexArray>();
 
 				vertex_buffer = std::make_unique<ds::graphics::VertexBuffer>(vertices.data(), 0);
-				indices.resize(1024 * 6);
-				for (int i = 0; i < 1024; ++i)
+				indices.resize(size * 6);
+				for (int i = 0; i < size; ++i)
 				{
 					const uint32 index = i * 6;
 					const uint32 v_index = i * 4;
@@ -156,12 +156,11 @@ namespace ds {
 			std::unique_ptr<ds::graphics::VertexBuffer> vertex_buffer;
 			std::unique_ptr<ds::graphics::VertexArray> vertex_array;
 			std::unique_ptr<ds::graphics::IndexBuffer> index_buffer;
-			std::shared_ptr<ds::graphics::SceneRenderer> renderer;
 			std::shared_ptr<ShaderAsset> shader_asset;
 			std::shared_ptr<ds::graphics::Shader> shader;
 
 		public:
-			DynamicSpriteBatch(const std::shared_ptr<ds::graphics::SceneRenderer> renderer) : renderer(renderer)
+			DynamicSpriteBatch()
 			{
 				shader_asset = AssetManager::load_asset<ShaderAsset>("batch.shader");
 				shader = shader_asset->shader;
