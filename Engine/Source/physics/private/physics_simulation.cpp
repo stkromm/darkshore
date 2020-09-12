@@ -33,7 +33,6 @@ void ds::physics::add_rigid_body(const std::shared_ptr<RigidBody> rigid_body)
 
 void ds::physics::tick(float delta)
 {
-	delta *= 0.5f;
 	for (int iteration = 0; iteration < 2; ++iteration) {
 		// Integration
 #pragma omp parallel for schedule(dynamic)

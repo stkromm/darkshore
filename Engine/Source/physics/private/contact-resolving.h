@@ -14,7 +14,7 @@ namespace ds {
 
 			if (!ds::is_nearly_zero(contact.penetration))
 			{
-				if (ds::is_nearly_zero(total_inv_mass))
+				if (total_inv_mass == 0 || ds::is_nearly_zero(total_inv_mass))
 				{
 					const float collider_speed = contact.collision_pair.first->get_velocity().length();
 					const ds::FVec2 impact_translation = contact.normal * contact.penetration;
@@ -31,13 +31,16 @@ namespace ds {
 						}
 						else
 						{
-							const float total_ispeed = 1 / (collided_with_speed + collider_speed);
+							const float total_speed = collided_with_speed + collider_speed;
+							if (total_speed != 0) {
+							const float total_ispeed = 1 / total_speed;
 
 							const ds::FVec2 collider_impact_translation = impact_translation * (-collider_speed * total_ispeed);
 							contact.collision_pair.first->move(collider_impact_translation);
 
 							const ds::FVec2 collided_with_impact_translation = impact_translation * (collided_with_speed * total_ispeed);
 							contact.collision_pair.second->move(collided_with_impact_translation);
+							}
 						}
 					}
 				}
@@ -46,7 +49,7 @@ namespace ds {
 					total_mass = 1.f / total_inv_mass;
 					const ds::FVec2 impact_translation = contact.normal * (contact.penetration * total_mass);
 
-					contact.collision_pair.first->move(impact_translation * -contact.collision_pair.first->get_inversed_mass());
+					contact.collision_pair.first->move(ds::FVec2{ -impact_translation.x, -impact_translation.y } * contact.collision_pair.first->get_inversed_mass());
 					contact.collision_pair.second->move(impact_translation * contact.collision_pair.second->get_inversed_mass());
 				}
 			}

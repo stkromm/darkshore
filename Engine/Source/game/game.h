@@ -25,7 +25,6 @@ namespace ds
 			const int TICKS_PER_SECOND = 60;
 			const float TICK_DELTA_MILLIS = 1000.0f / float(TICKS_PER_SECOND);
 			const float tick_delta_micros = 1000000.0f / float(TICKS_PER_SECOND);
-
 			bool is_running = true;
 			long ticks = 0;
 			Timestamp frame_fixed_end = Timestamp();

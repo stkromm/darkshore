@@ -59,7 +59,7 @@ namespace ds {
 
 		Mat4x4 Text::get_transformation() const
 		{
-			return Mat4x4();
+			return Mat4x4(1);
 		}
 
 		std::shared_ptr<graphics::Texture> Text::get_texture() const

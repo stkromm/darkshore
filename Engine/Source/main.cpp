@@ -1,5 +1,4 @@
 #include "darkshore.h"
-#include "tilemap/tilemap.h"
 
 using namespace ds;
 
@@ -59,27 +58,29 @@ int DS_MAIN(const int argc, char** argv)
 	long millis = 0;
 	// Game Loop
 	game->start();
-	scene::SceneManager::get_scene()->add_renderable(std::make_shared<graphics::TileMap>("map.tmx"));
+	byte game_state = 0;
+	auto text = std::make_shared<gui::Text>("");
+	auto start_button = std::reinterpret_pointer_cast<gui::GuiElement>(text);
+	gui::GuiManager::get_gui()->add_element(start_button);
+	float average_frame_duration = 0;
+	Timestamp last_frame = Timestamp();
 	while (game->is_running)
 	{
+		last_frame = Timestamp();
+		std::ostringstream ss;
+		ss << average_frame_duration;
+		text->set_text(std::string(ss.str()));
 		// glPolygonMode(GL_FRONT, GL_LINE);
 		glPolygonMode(GL_BACK, GL_LINE);
 		platform::WindowManager::get_window().poll_input();
 		game->is_running = !platform::WindowManager::get_window().should_close();
-
-		int loops = 0;
-		float escaped_time = 0;
-
-		while (loops < game->MAX_FRAME_SKIP && Timestamp() > game->frame_fixed_end)
-		{
-			physics::tick(game->TICK_DELTA_MILLIS * 0.0008f);
-			game->simulate_step();
-			escaped_time += game->TICK_DELTA_MILLIS;
-			loops++;
-		}
-		AnimationManager::update(escaped_time);
+		physics::tick(game->TICK_DELTA_MILLIS);
+		game->simulate_step();
+		AnimationManager::update(game->TICK_DELTA_MILLIS);
 		scene::SceneManager::get_scene()->render(game->get_tick_interpolation());
 		gui::GuiManager::get_gui()->render(game->get_tick_interpolation());
+		auto frame_duration = Timestamp() - last_frame;
+		average_frame_duration = average_frame_duration * 0.8f + frame_duration * 0.2f;
 		platform::WindowManager::get_window().swap_buffers();
 	}
 

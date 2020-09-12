@@ -10,12 +10,12 @@ namespace ds
 			transform)),
 			collision_bodies(bodies)
 		{
+			hull = { {0, 0}, {0, 0} };
 			for (auto& c : bodies)
 			{
 				hull.merge(c.hull);
 			}
 			aabb_offset = hull.offset;
-			//hull.offset += transform->get_position();
 		}
 
 		RigidBody::~RigidBody()
@@ -25,19 +25,26 @@ namespace ds
 		{
 			hull.merge(collider.hull);
 			aabb_offset = hull.offset;
-			//hull.offset += transform->get_position();
 			collision_bodies.push_back(collider);
 		}
 
 		void RigidBody::remove_collider(CollisionBody collider)
 		{
+			uint32 to_be_removed = -1;
 			hull = { {0, 0}, {0, 0} };
+			uint32 i = 0;
 			for (auto& c : collision_bodies)
 			{
-				hull.merge(c.hull);
+				if (to_be_removed == -1 && c.hull.to_string() == collider.hull.to_string()) {
+					to_be_removed = i;
+				}
+				else {
+					hull.merge(c.hull);
+				}
+				++i;
 			}
 			aabb_offset = hull.offset;
-			//hull.offset += transform->get_position();
+			collision_bodies.erase(collision_bodies.begin() + to_be_removed);
 		}
 
 		void RigidBody::add_force(const ds::FVec2 force)

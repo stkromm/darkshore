@@ -54,13 +54,13 @@ namespace ds {
 			void swap_buffers() const;
 			bool should_close() const;
 
-			void add_key_callback(std::function<KeyCallback> keyCallback);
+			void add_key_callback(std::function<KeyCallback> keyCallback, std::string layer = "default");
 
-			void add_mouse_button_callback(std::function<MouseButtonCallback> mouseButtonCallback);
+			void add_mouse_button_callback(std::function<MouseButtonCallback> mouseButtonCallback, std::string layer = "default");
 
-			void add_cursor_position_callback(std::function<CursorPositionCallback> cursorPositionCallback);
+			void add_cursor_position_callback(std::function<CursorPositionCallback> cursorPositionCallback, std::string layer = "default");
 
-			void add_resize_callback(std::function<WindowResizeCallback> resizeCallback);
+			void add_resize_callback(std::function<WindowResizeCallback> resizeCallback, std::string layer = "default");
 
 			void set_clipboard_content(const char* content) const;
 			const char* get_clipboard_content() const;

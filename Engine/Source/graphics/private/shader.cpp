@@ -126,7 +126,7 @@ namespace ds {
 		{
 			if (currently_bound_shader_look_up != id)
 			{
-				LOG_INFO << "Binding shader " << id << LOG_END;
+				// LOG_INFO << "Binding shader " << id << LOG_END;
 				currently_bound_shader_look_up = id;
 				GLCall(glUseProgram(id));
 			}

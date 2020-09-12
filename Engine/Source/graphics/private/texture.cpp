@@ -54,7 +54,7 @@ namespace ds {
 		{
 			if (last_bound_slot != slot || last_bound_id != id)
 			{
-				LOG_INFO << "Binding texture " << id << " on Slot " << slot << LOG_END;
+				// LOG_INFO << "Binding texture " << id << " on Slot " << slot << LOG_END;
 				last_bound_slot = slot;
 				last_bound_id = id;
 				GLCall(glActiveTexture(GL_TEXTURE0 + slot));

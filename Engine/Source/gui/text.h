@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include "gui/gui.h"
 #include "fonts/font.h"

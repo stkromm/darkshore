@@ -40,7 +40,11 @@ namespace ds {
 					height);
 				sprite = std::make_shared<scene::Sprite>(transform, ds::FVec2{ -width * 2.f, -height * 2.f },
 					ds::FVec2{ width * 4.f, height * 4.f }, tiled_texture[x][y], 255);
-				rigid_body = std::make_shared<physics::RigidBody>(transform);
+				physics::CollisionBody collider;
+				collider.hull = { {-48, -64}, { 96, 128 } };
+				std::vector<physics::CollisionBody> colliders;
+				colliders.push_back(std::move(collider));
+				rigid_body = std::make_shared<physics::RigidBody>(transform, colliders);
 			}
 
 			void self_tick() override
@@ -88,6 +92,11 @@ namespace ds {
 				add_component<MovementControllerComponent>();
 				std::shared_ptr<scene::Camera> camera = std::make_shared<scene::Camera>();
 				camera->get_transform()->set_parent(transform);
+				const platform::Screen screen = platform::WindowManager::get_window().get_screen();
+				const float aspect = float(screen.height) / screen.width;
+				const float width = 1920;
+				const float height = 1920 * aspect;
+				camera->set_bounds(width / 2, height / 2 + 16, width / 2 + 32 * 100, height / 2 + 32 * 47 + 16);
 				add_component<CameraComponent>(camera);
 				get_component<CameraComponent>()->activate();
 			}
@@ -109,28 +118,28 @@ namespace ds {
 				if (platform::is_pressed(GLFW_KEY_W))
 				{
 					moved = true;
-					rigid_body_component->get_rigid_body()->add_impuls({ 0, 300 });
+					rigid_body_component->get_rigid_body()->add_impuls({ 0, 0.16f });
 					animation_component->get_animation()->transition("up_walking", true);
 				}
 				if (platform::is_pressed(GLFW_KEY_S))
 				{
 					moved = true;
 
-					rigid_body_component->get_rigid_body()->add_impuls({ 0, -300 });
+					rigid_body_component->get_rigid_body()->add_impuls({ 0, -0.16f });
 					animation_component->get_animation()->transition("down_walking", true);
 				}
 				if (platform::is_pressed(GLFW_KEY_A))
 				{
 					moved = true;
 
-					rigid_body_component->get_rigid_body()->add_impuls({ -300, 0 });
+					rigid_body_component->get_rigid_body()->add_impuls({ -0.16f, 0 });
 					animation_component->get_animation()->transition("left_walking", true);
 				}
 				if (platform::is_pressed(GLFW_KEY_D))
 				{
 					moved = true;
 
-					rigid_body_component->get_rigid_body()->add_impuls({ 300, 0 });
+					rigid_body_component->get_rigid_body()->add_impuls({ 0.16f, 0 });
 					animation_component->get_animation()->transition("right_walking", true);
 				}
 
@@ -159,7 +168,7 @@ namespace ds {
 			{
 				if (k == GLFW_KEY_H)
 				{
-					get_component<CameraComponent>()->activate();
+					LOG_INFO << this->transform->to_string() << LOG_END;
 				}
 			}
 		};

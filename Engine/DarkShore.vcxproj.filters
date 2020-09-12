@@ -1,537 +1,160 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Ressourcendateien">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source">
-      <UniqueIdentifier>{d6fa115d-082b-48bc-98c1-287197e92076}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\animation">
-      <UniqueIdentifier>{5b95ec92-d5f3-4107-8a42-7b2bb61c042e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\animation\private">
-      <UniqueIdentifier>{dcef36b8-caf9-4e42-b2f2-8bb2111a0ec7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\physics">
-      <UniqueIdentifier>{e251c9ac-459a-4dc3-a87a-22954344d974}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\physics\private">
-      <UniqueIdentifier>{ed4c5aa2-b911-4973-a487-60a35f66a688}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\audio">
-      <UniqueIdentifier>{e260e6a5-c653-4771-95bc-65b62a23a524}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\audio\private">
-      <UniqueIdentifier>{d06ac05c-2207-41a6-a07a-0ab7faad19a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\gameplay">
-      <UniqueIdentifier>{cde978c8-bd5b-4490-80f1-ef71de61a89a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\graphics">
-      <UniqueIdentifier>{e21542a0-c273-46d6-ad4e-0c49a47fedbc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\graphics\private">
-      <UniqueIdentifier>{e5413587-4599-4cd3-ab82-4f7336bd82d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\gameplay\private">
-      <UniqueIdentifier>{0e8852af-1fa0-4e4a-b1f5-3312a2f6a19d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\dslevel">
-      <UniqueIdentifier>{d4035014-1d4b-4b8b-9008-5eb2d815f140}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core">
-      <UniqueIdentifier>{a78fb196-b98a-4674-8596-25e669a537dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\private">
-      <UniqueIdentifier>{488f2b12-af69-49ae-940f-77b7634ddb42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\time">
-      <UniqueIdentifier>{50b477cb-1772-45e6-8f2f-28ec8348a5c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\math">
-      <UniqueIdentifier>{a7e08673-fc09-45d0-988d-da5568fb13be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\logger">
-      <UniqueIdentifier>{fe078982-dd6e-47ee-8775-a40ca8230d8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\json">
-      <UniqueIdentifier>{2dfc0ea9-5057-4b28-ab13-8d4a4177cd7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\image">
-      <UniqueIdentifier>{ca8b59a3-1dbb-4871-a589-e5d717412da3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\private\time">
-      <UniqueIdentifier>{53be1be7-6537-45aa-9042-ad2ec555814c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\private\image">
-      <UniqueIdentifier>{3af5086d-702d-44e2-b103-ef5c780214cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\private\image\stb_image">
-      <UniqueIdentifier>{65e1bade-d289-41fa-9db5-72b4da86fcad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\private\logger">
-      <UniqueIdentifier>{0ed2545b-9831-4cd9-a21d-f781994851cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\core\private\json">
-      <UniqueIdentifier>{d8cddaab-8fa8-4589-bd0f-b572a0e43cea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\game">
-      <UniqueIdentifier>{4c2d6ea9-5686-4f02-ad4e-0dfcb5c34050}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\scene">
-      <UniqueIdentifier>{4d2e5607-fea3-485b-9415-114f62ef53eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\scene\private">
-      <UniqueIdentifier>{81a4bdb5-5307-46ba-b584-1730366be9a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\platform">
-      <UniqueIdentifier>{22ff6c33-adc7-44fd-8758-30f905c294e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\platform\private">
-      <UniqueIdentifier>{202507d7-dcf2-4437-aff1-292c95fdb3c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\game\private">
-      <UniqueIdentifier>{d498fad5-2cb8-4a60-bf6e-5ada9f4eceda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\particles">
-      <UniqueIdentifier>{8553b9c5-6e96-421b-98d8-f6b8bcff7fc6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\particles\private">
-      <UniqueIdentifier>{d20efc21-f633-4358-ae52-b2febbca6ede}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\gui">
-      <UniqueIdentifier>{8d38b48b-3ed2-43e0-9934-5a633964cfae}</UniqueIdentifier>
-    <Filter Include="Source\third_party">
-      <UniqueIdentifier>{df5c9b60-f9d4-4a45-8df2-ee124d8c75cc}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\animation\private\animation_manager.cpp">
-      <Filter>Source\animation\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\animation\private\animation_state_machine.cpp">
-      <Filter>Source\animation\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\physics\private\rigid_body.cpp">
-      <Filter>Source\physics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\audio\private\music.cpp">
-      <Filter>Source\audio\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\graphics.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\index_buffer.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\shader.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\texture.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\vertex_array.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\vertex_buffer.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\physics\private\aabb_hull.cpp">
-      <Filter>Source\physics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\physics\private\physics_simulation.cpp">
-      <Filter>Source\physics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\animation\private\animation_state.cpp">
-      <Filter>Source\animation\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\physics\private\intersection.cpp">
-      <Filter>Source\physics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\gameplay\sprite_animation_reader.cpp">
-      <Filter>Source\gameplay\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\image\image.cpp">
-      <Filter>Source\core\private\image</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\image\stb_image\stb_image.cpp">
-      <Filter>Source\core\private\image\stb_image</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\time\time.cpp">
-      <Filter>Source\core\private\time</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\logger\log.cpp">
-      <Filter>Source\core\private\logger</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\scene\private\render_manager.cpp">
-      <Filter>Source\scene\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\scene\private\scene.cpp">
-      <Filter>Source\scene\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\scene\private\scene_manager.cpp">
-      <Filter>Source\scene\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\scene\private\sprite.cpp">
-      <Filter>Source\scene\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\scene\private\standalone_sprite.cpp">
-      <Filter>Source\scene\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\asset_manager.cpp">
-      <Filter>Source\platform\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\input.cpp">
-      <Filter>Source\platform\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\resource_handle.cpp">
-      <Filter>Source\platform\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\window.cpp">
-      <Filter>Source\platform\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\platform\private\window_manager.cpp">
-      <Filter>Source\platform\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\game\private\component.cpp">
-      <Filter>Source\game\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\game\private\entity.cpp">
-      <Filter>Source\game\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\game\private\game.cpp">
-      <Filter>Source\game\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\renderer.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\core\private\transform.cpp">
-      <Filter>Source\core\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\framebuffer.cpp">
-      <Filter>Source\graphics\private</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graphics\private\texture_atlas.cpp" />
-    <ClCompile Include="Source\gui\private\gui_manager.cpp">
-      <Filter>Source\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\gui\private\text.cpp">
-      <Filter>Source\gui</Filter>
-    </ClCompile>
+    <ClCompile Include="Source\animation\private\animation_manager.cpp" />
+    <ClCompile Include="Source\animation\private\animation_state.cpp" />
+    <ClCompile Include="Source\animation\private\animation_state_machine.cpp" />
+    <ClCompile Include="Source\audio\private\music.cpp" />
+    <ClCompile Include="Source\core\private\image\image.cpp" />
+    <ClCompile Include="Source\core\private\image\stb_image\stb_image.cpp" />
+    <ClCompile Include="Source\core\private\logger\log.cpp" />
+    <ClCompile Include="Source\core\private\time\time.cpp" />
+    <ClCompile Include="Source\core\private\transform.cpp" />
     <ClCompile Include="Source\fonts\private\font.cpp" />
-    <ClCompile Include="Source\main.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\FreeFuncs.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\ImageLayer.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\LayerGroup.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\Map.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\miniz.c">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\Object.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\ObjectGroup.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\Property.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\TileLayer.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\Tileset.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\third_party\tmxlite\src\detail\pugixml.cpp">
-      <Filter>Source\third_party</Filter>
-    </ClCompile>
+    <ClCompile Include="Source\gameplay\sprite_animation_reader.cpp" />
+    <ClCompile Include="Source\game\private\component.cpp" />
+    <ClCompile Include="Source\game\private\entity.cpp" />
+    <ClCompile Include="Source\game\private\game.cpp" />
+    <ClCompile Include="Source\graphics\private\framebuffer.cpp" />
+    <ClCompile Include="Source\graphics\private\graphics.cpp" />
+    <ClCompile Include="Source\graphics\private\index_buffer.cpp" />
+    <ClCompile Include="Source\graphics\private\renderer.cpp" />
+    <ClCompile Include="Source\graphics\private\shader.cpp" />
+    <ClCompile Include="Source\graphics\private\texture.cpp" />
+    <ClCompile Include="Source\graphics\private\texture_atlas.cpp" />
+    <ClCompile Include="Source\graphics\private\vertex_array.cpp" />
+    <ClCompile Include="Source\graphics\private\vertex_buffer.cpp" />
+    <ClCompile Include="Source\gui\private\gui_manager.cpp" />
+    <ClCompile Include="Source\gui\private\text.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\physics\private\aabb_hull.cpp" />
+    <ClCompile Include="Source\physics\private\intersection.cpp" />
+    <ClCompile Include="Source\physics\private\physics_simulation.cpp" />
+    <ClCompile Include="Source\physics\private\rigid_body.cpp" />
+    <ClCompile Include="Source\platform\private\asset_manager.cpp" />
+    <ClCompile Include="Source\platform\private\input.cpp" />
+    <ClCompile Include="Source\platform\private\resource_handle.cpp" />
+    <ClCompile Include="Source\platform\private\window.cpp" />
+    <ClCompile Include="Source\platform\private\window_manager.cpp" />
+    <ClCompile Include="Source\scene\private\render_manager.cpp" />
+    <ClCompile Include="Source\scene\private\scene.cpp" />
+    <ClCompile Include="Source\scene\private\scene_manager.cpp" />
+    <ClCompile Include="Source\scene\private\sprite.cpp" />
+    <ClCompile Include="Source\scene\private\standalone_sprite.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\detail\pugixml.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\FreeFuncs.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\ImageLayer.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\LayerGroup.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Map.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\miniz.c" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Object.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\ObjectGroup.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Property.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\TileLayer.cpp" />
+    <ClCompile Include="Source\third_party\tmxlite\src\Tileset.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\audio\private\input_stream.h">
-      <Filter>Source\audio\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\audio\music.h">
-      <Filter>Source\audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\animation\animation_clip.h">
-      <Filter>Source\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\animation\animation_manager.h">
-      <Filter>Source\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\animation\animation_state_machine.h">
-      <Filter>Source\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\collision_body.h">
-      <Filter>Source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\physics.h">
-      <Filter>Source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\rigid_body.h">
-      <Filter>Source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\camera_component.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\movement_controller_component.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\player.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\rigid_body_component.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\sprite_animation_clip.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\sprite_animation_component.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\sprite_component.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\private\contact.h">
-      <Filter>Source\physics\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\aabb_hull.h">
-      <Filter>Source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\animation\animation_state.h">
-      <Filter>Source\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameplay\sprite_animation_reader.h">
-      <Filter>Source\gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\private\contact-resolving.h">
-      <Filter>Source\physics\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\private\intersection.h">
-      <Filter>Source\physics\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\dslevel\level_loader.h">
-      <Filter>Source\dslevel</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\dslevel\level.h">
-      <Filter>Source\dslevel</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\res.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\mat4x4.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\vec2.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\vec3.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\vine_math.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\logger\log.h">
-      <Filter>Source\core\logger</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\json\json.h">
-      <Filter>Source\core\json</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\time\time.h">
-      <Filter>Source\core\time</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\image\image.h">
-      <Filter>Source\core\image</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\private\image\stb_image\stb_image.h">
-      <Filter>Source\core\private\image\stb_image</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\private\json\json.hpp">
-      <Filter>Source\core\private\json</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\types.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\darkshore.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\index_buffer.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\shader.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\texture.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\tiled_texture.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\vertex_array.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\vertex_buffer.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\vertex_buffer_layout.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\render_manager.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\renderable.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\scene.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\scene_manager.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\sprite.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\sprite_batch.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\sprite_vertex.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\standalone_sprite.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\graphics.h">
-      <Filter>Source\graphics\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\private\shader_type.h">
-      <Filter>Source\graphics\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\asset.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\asset_manager.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\asset_types.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\cursor.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\input.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\platform.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\resource_handle.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\window.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\platform\window_manager.h">
-      <Filter>Source\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\game\component.h">
-      <Filter>Source\game</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\game\component_type.h">
-      <Filter>Source\game</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\game\entity.h">
-      <Filter>Source\game</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\game\game.h">
-      <Filter>Source\game</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\game\object.h">
-      <Filter>Source\game</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\transform.h">
-      <Filter>Source\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\renderer.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\texture_asset.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\scene\shader_asset.h">
-      <Filter>Source\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\framebuffer.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\audio\listener.h">
-      <Filter>Source\audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\audio\audio_player.h">
-      <Filter>Source\audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\audio\audio.h">
-      <Filter>Source\audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\audio\sound_effect.h">
-      <Filter>Source\audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\particles\particle_system.h">
-      <Filter>Source\particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graphics\context.h">
-      <Filter>Source\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\math.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\tracing.h">
-      <Filter>Source\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\physics\private\trace_datastructure.h">
-      <Filter>Source\physics\private</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\mat3x3.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\core\math\vec4.h">
-      <Filter>Source\core\math</Filter>
-    </ClInclude>
+    <ClInclude Include="Source\animation\animation_state.h" />
+    <ClInclude Include="Source\animation\animation_clip.h" />
+    <ClInclude Include="Source\animation\animation_manager.h" />
+    <ClInclude Include="Source\animation\animation_state_machine.h" />
+    <ClInclude Include="Source\audio\audio.h" />
+    <ClInclude Include="Source\audio\audio_player.h" />
+    <ClInclude Include="Source\audio\listener.h" />
+    <ClInclude Include="Source\audio\music.h" />
+    <ClInclude Include="Source\audio\private\input_stream.h" />
+    <ClInclude Include="Source\audio\sound_effect.h" />
+    <ClInclude Include="Source\core\image\image.h" />
+    <ClInclude Include="Source\core\json\json.h" />
+    <ClInclude Include="Source\core\logger\log.h" />
+    <ClInclude Include="Source\core\math\mat3x3.h" />
+    <ClInclude Include="Source\core\math\mat4x4.h" />
+    <ClInclude Include="Source\core\math\math.h" />
+    <ClInclude Include="Source\core\math\vec2.h" />
+    <ClInclude Include="Source\core\math\vec3.h" />
+    <ClInclude Include="Source\core\math\vec4.h" />
+    <ClInclude Include="Source\core\math\vine_math.h" />
+    <ClInclude Include="Source\core\private\image\stb_image\stb_image.h" />
+    <ClInclude Include="Source\core\private\json\json.hpp" />
+    <ClInclude Include="Source\core\time\time.h" />
+    <ClInclude Include="Source\core\transform.h" />
+    <ClInclude Include="Source\core\types.h" />
+    <ClInclude Include="Source\darkshore.h" />
+    <ClInclude Include="Source\dslevel\level.h" />
+    <ClInclude Include="Source\dslevel\level_loader.h" />
     <ClInclude Include="Source\fonts\font.h" />
+    <ClInclude Include="Source\gameplay\camera_component.h" />
+    <ClInclude Include="Source\gameplay\movement_controller_component.h" />
+    <ClInclude Include="Source\gameplay\player.h" />
+    <ClInclude Include="Source\gameplay\rigid_body_component.h" />
+    <ClInclude Include="Source\gameplay\sprite_animation_clip.h" />
+    <ClInclude Include="Source\gameplay\sprite_animation_component.h" />
+    <ClInclude Include="Source\gameplay\sprite_animation_reader.h" />
+    <ClInclude Include="Source\gameplay\sprite_component.h" />
+    <ClInclude Include="Source\game\component.h" />
+    <ClInclude Include="Source\game\component_type.h" />
+    <ClInclude Include="Source\game\entity.h" />
+    <ClInclude Include="Source\game\game.h" />
+    <ClInclude Include="Source\game\object.h" />
+    <ClInclude Include="Source\graphics\context.h" />
+    <ClInclude Include="Source\graphics\framebuffer.h" />
+    <ClInclude Include="Source\graphics\graphics.h" />
+    <ClInclude Include="Source\graphics\index_buffer.h" />
+    <ClInclude Include="Source\graphics\private\shader_type.h" />
+    <ClInclude Include="Source\graphics\renderer.h" />
+    <ClInclude Include="Source\graphics\shader.h" />
+    <ClInclude Include="Source\graphics\texture.h" />
     <ClInclude Include="Source\graphics\texture_atlas.h" />
-    <ClInclude Include="Source\gui\gui.h">
-      <Filter>Source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gui\gui_manager.h">
-      <Filter>Source\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gui\text.h">
-      <Filter>Source\gui</Filter>
-    <ClInclude Include="Source\third_party\tmxlite\src\miniz.h">
-      <Filter>Source\third_party</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugiconfig.hpp">
-      <Filter>Source\third_party</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugixml.hpp">
-      <Filter>Source\third_party</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\third_party\tmxlite\detail\Android.hpp">
-      <Filter>Source\third_party</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\third_party\tmxlite\detail\Log.hpp">
-      <Filter>Source\third_party</Filter>
-    </ClInclude>
+    <ClInclude Include="Source\graphics\tiled_texture.h" />
+    <ClInclude Include="Source\graphics\vertex_array.h" />
+    <ClInclude Include="Source\graphics\vertex_buffer.h" />
+    <ClInclude Include="Source\graphics\vertex_buffer_layout.h" />
+    <ClInclude Include="Source\gui\gui.h" />
+    <ClInclude Include="Source\gui\gui_manager.h" />
+    <ClInclude Include="Source\gui\text.h" />
+    <ClInclude Include="Source\particles\particle_system.h" />
+    <ClInclude Include="Source\physics\aabb_hull.h" />
+    <ClInclude Include="Source\physics\collision_body.h" />
+    <ClInclude Include="Source\physics\physics.h" />
+    <ClInclude Include="Source\physics\private\contact-resolving.h" />
+    <ClInclude Include="Source\physics\private\contact.h" />
+    <ClInclude Include="Source\physics\private\intersection.h" />
+    <ClInclude Include="Source\physics\private\trace_datastructure.h" />
+    <ClInclude Include="Source\physics\rigid_body.h" />
+    <ClInclude Include="Source\physics\tracing.h" />
+    <ClInclude Include="Source\platform\asset.h" />
+    <ClInclude Include="Source\platform\asset_manager.h" />
+    <ClInclude Include="Source\platform\asset_types.h" />
+    <ClInclude Include="Source\platform\cursor.h" />
+    <ClInclude Include="Source\platform\input.h" />
+    <ClInclude Include="Source\platform\platform.h" />
+    <ClInclude Include="Source\platform\resource_handle.h" />
+    <ClInclude Include="Source\platform\window.h" />
+    <ClInclude Include="Source\platform\window_manager.h" />
+    <ClInclude Include="Source\res.h" />
+    <ClInclude Include="Source\scene\renderable.h" />
+    <ClInclude Include="Source\scene\render_manager.h" />
+    <ClInclude Include="Source\scene\scene.h" />
+    <ClInclude Include="Source\scene\scene_manager.h" />
+    <ClInclude Include="Source\scene\shader_asset.h" />
+    <ClInclude Include="Source\scene\sprite.h" />
+    <ClInclude Include="Source\scene\sprite_batch.h" />
+    <ClInclude Include="Source\scene\sprite_vertex.h" />
+    <ClInclude Include="Source\scene\standalone_sprite.h" />
+    <ClInclude Include="Source\scene\texture_asset.h" />
+    <ClInclude Include="Source\third_party\tmxlite\detail\Android.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\detail\Log.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugiconfig.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\src\detail\pugixml.hpp" />
+    <ClInclude Include="Source\third_party\tmxlite\src\miniz.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DarkShore.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+    <Image Include="icon2.ico" />
+    <Image Include="icon1 (2).ico" />
   </ItemGroup>
 </Project>

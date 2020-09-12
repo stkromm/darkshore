@@ -15,70 +15,13 @@
 #include "tmxlite/Map.hpp"
 #include "tmxlite/TileLayer.hpp"
 #include "scene/sprite_batch.h"
-#include "animation/animation_manager.h"
+#include "tilemap/tile_animation_clip.h"
 
 namespace ds {
-	namespace graphics {
-		struct Frame
-		{
-			ds::graphics::TexturePatch patch;
-			float duration;
-		};
-
-		class AnimatedTile : public AnimationClip {
-		public:
-			std::vector<Frame> frames;
-			uint_fast32_t frame_id = 0;
-			TexturePatch patch;
-
-			AnimatedTile(std::vector<Frame> frames): frames(frames) {
-				duration = 0;
-				for (auto& frame : frames)
-				{
-					duration += frame.duration;
-				}
-				AnimatedTile::reset();
-			}
-
-			virtual void on_frame_update(const uint_fast32_t frame_id)
-			{
-				patch = frames[frame_id].patch;
-			}
-
-			void reset() override
-			{
-				remaining_clip_time = duration;
-				frame_id = 0;
-				on_frame_update(frame_id);
-			}
-
-			void update(const float delta_millis) override
-			{
-				remaining_clip_time -= delta_millis;
-				float frame_end_time = 0;
-				const float escaped_time = duration - remaining_clip_time;
-
-				for (uint_fast32_t i = 0; i < frames.size(); ++i)
-				{
-					Frame& frame = frames[i];
-					frame_end_time += frame.duration;
-					if (frame_end_time > escaped_time)
-					{
-						if (i != frame_id)
-						{
-							frame_id = i;
-							on_frame_update(frame_id);
-						}
-						return;
-					}
-				}
-				frame_id = 0;
-				on_frame_update(frame_id);
-			}
-		};
+	namespace tilemap {
 		struct AnimatedTilePosition {
 			ds::Vec2<float> pos;
-			std::shared_ptr<AnimatedTile> animation;
+			std::shared_ptr<TileAnimationClip> animation;
 		};
 		struct TileMapLayer {
 			unsigned int width;
@@ -88,13 +31,13 @@ namespace ds {
 
 			std::unique_ptr<scene::DynamicSpriteBatch> dynamic_sprite_batch;
 			std::unique_ptr<scene::StaticSpriteBatch> sprite_batch;
-			std::shared_ptr<TiledTexture> tiled_texture;
+			std::shared_ptr<graphics::TiledTexture> tiled_texture;
 			std::vector<std::shared_ptr<AnimationStateMachine>> active_animations;
-			std::unordered_map<uint32, std::shared_ptr<AnimatedTile>> tile_animations;
+			std::unordered_map<uint32, std::shared_ptr<TileAnimationClip>> tile_animations;
 			std::vector<AnimatedTilePosition> dynamic_tiles;
 			tmx::TileLayer* layer;
 
-			TileMapLayer(std::map<uint32, tmx::Tileset::Tile> animated_tiles, unsigned int size_x, unsigned int size_y, unsigned int tile_width, unsigned int tile_height, tmx::TileLayer* layer, std::shared_ptr<TiledTexture>& tiled_texture, unsigned int columns)
+			TileMapLayer(std::map<uint32, tmx::Tileset::Tile> animated_tiles, std::unordered_map<uint32, std::vector<physics::AABBHull>> object_groups, unsigned int size_x, unsigned int size_y, unsigned int tile_width, unsigned int tile_height, tmx::TileLayer* layer, std::shared_ptr<graphics::TiledTexture>& tiled_texture, unsigned int columns)
 			{
 				this->layer = layer;
 				this->sprite_batch = std::make_unique<scene::StaticSpriteBatch>(size_x * size_y);
@@ -111,10 +54,28 @@ namespace ds {
 					for (unsigned int j = 0; j < size_y; ++j)
 					{
 						unsigned int index = j * size_x + i;
-						auto tile = layer->getTiles()[index];
-						unsigned int color = 0x000000FF;
 						float x = (float)(tile_width * i);
 						float y = (float)(tile_height * (size_y - j));
+						auto tile = layer->getTiles()[index];
+
+						// Physics
+						auto object_group = object_groups.find(tile.ID - 1);
+						if (object_group != object_groups.end()) {
+							std::vector<physics::CollisionBody> collision_bodies;
+							for (auto collider : object_group->second) {
+								auto collision_body = physics::CollisionBody();
+								collision_body.hull = collider;
+								collision_bodies.push_back(collision_body);
+							}
+							auto transform = std::make_shared<ds::Transform>();
+							transform->set_position({ x, y });
+							auto rigid_body = std::make_shared<physics::RigidBody>(transform, collision_bodies);
+							rigid_body->set_ignore_masse(false);
+							rigid_body->set_inverse_mass(0.0f);
+							physics::add_rigid_body(rigid_body);
+						}
+						// Graphics
+						unsigned int color = 0x000000FF;
 						unsigned int id = tile.ID - 1;
 						auto animated_tile = animated_tiles.find(tile.ID);
 						if (animated_tile != animated_tiles.end()) {
@@ -125,7 +86,7 @@ namespace ds {
 								for (auto frame : animated_tile->second.animation.frames) {
 									frames.push_back({ tiled_texture->get_texture_patch(frame.tileID - 1), 1.0f * frame.duration });
 								}
-								const std::shared_ptr<AnimatedTile> clip = std::make_shared<AnimatedTile>(frames);
+								const std::shared_ptr<TileAnimationClip> clip = std::make_shared<TileAnimationClip>(frames);
 								tile_animations.emplace(tile.ID, clip);
 								std::shared_ptr<AnimationStateMachine> animation_state_machine = std::make_shared<AnimationStateMachine>();
 								animation_state_machine->add_state({ "tile", clip });
@@ -139,7 +100,7 @@ namespace ds {
 						}
 						else if (tile.ID != 0)
 						{
-							TexturePatch patch = tiled_texture->get_texture_patch(id);
+							graphics::TexturePatch patch = tiled_texture->get_texture_patch(id);
 							this->sprite_batch->push(0, patch, ds::Vec2<float>(x, y), ds::Vec2<float>(tile_width, tile_height), color);
 						}
 					}
@@ -172,7 +133,7 @@ namespace ds {
 			std::vector<std::unique_ptr<TileMapLayer>> layers;
 			std::shared_ptr<Transform> transform;
 			std::shared_ptr<TextureAsset> texture;
-			std::shared_ptr<TiledTexture> tiled_texture;
+			std::shared_ptr<graphics::TiledTexture> tiled_texture;
 			std::shared_ptr<ShaderAsset> shader;
 
 			unsigned int size_x;
@@ -224,14 +185,27 @@ namespace ds {
 					auto texture_name = tile_set.getImagePath().substr(tile_set.getImagePath().find_last_of("/") + 1);
 					texture = AssetManager::load_asset<TextureAsset>(texture_name);
 
-					tiled_texture = std::make_shared<TiledTexture>(texture->texture, tile_set.getTileSize().x, tile_set.getTileSize().y);
+					tiled_texture = std::make_shared<graphics::TiledTexture>(texture->texture, tile_set.getTileSize().x, tile_set.getTileSize().y);
 					for (auto& generic_layer : map.getLayers())
 					{
 						if (generic_layer->getType() == tmx::TileLayer::Type::Tile)
 						{
 							const auto& layer = dynamic_cast<tmx::TileLayer*> (generic_layer.get());
 							auto animated_tiles = map.getAnimatedTiles();
-							layers.push_back(std::make_unique<TileMapLayer>(std::move(animated_tiles), size_x, size_y, tile_width, tile_height, layer, tiled_texture, tile_set.getColumnCount()));
+							std::unordered_map<uint32, std::vector<physics::AABBHull>> collision_tiles;
+							for (auto& tile : map.getTilesets()[0].getTiles()) {
+								if (tile.objectGroup.getObjects().size() != 0) {
+									std::vector<physics::AABBHull> hulls;
+									for (auto& object : tile.objectGroup.getObjects()) {
+										auto aabb = physics::AABBHull();
+										aabb.offset = { object.getPosition().x * 2, object.getPosition().y * 2 };
+										aabb.extends = { object.getAABB().width * 2, object.getAABB().height * 2 };
+										hulls.push_back(aabb);
+									}
+									collision_tiles.emplace(tile.ID, hulls);
+								}
+							}
+							layers.push_back(std::make_unique<TileMapLayer>(std::move(animated_tiles), collision_tiles, size_x, size_y, tile_width, tile_height, layer, tiled_texture, tile_set.getColumnCount()));
 						}
 					}
 

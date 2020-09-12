@@ -6,6 +6,7 @@
 #include "platform/platform.h"
 #include "core/json/json.h"
 #include "platform/input.h"
+#include "core/image/image.h"
 
 using namespace ds::platform;
 
@@ -33,7 +34,7 @@ Window::Window()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-	std::ifstream config_file("config.json");
+	std::ifstream config_file("./config.json");
 	json settings;
 	if (config_file.is_open())
 		config_file >> settings;
@@ -54,15 +55,21 @@ Window::Window()
 		title_stream << settings["window"]["title"];
 		title = title_stream.str().substr(1, title_stream.str().length() - 2);
 	}
-	if (title.length() == 0) title = "No title";
+	if (title.length() == 0) title = "Anima Island";
 
-	//	Image icon = Image("res/image/icon.jpg");
-	//	icons[0] = to_GLFW(icon);
+	auto icon = ds::RGBAImage("res/image/icon.png");
+	icons[0] = GLFWimage();
+	icons[0].width = icon.get_width();
+	icons[0].height = icon.get_height();
+	icons[0].pixels = icon.get_pixels();
 
-	//	Image cursorIcon = Image("res/image/cursor.png");
-	//	icons[1] = to_GLFW(cursorIcon);
+	auto cursorIcon = ds::RGBAImage("res/image/cursor.png");
+	icons[1] = GLFWimage();
+	icons[1].width = cursorIcon.get_width();
+	icons[1].height = cursorIcon.get_height();
+	icons[1].pixels = cursorIcon.get_pixels();
 
-	//	cursor = glfwCreateCursor(&icons[1], 0, 0);
+	cursor = glfwCreateCursor(&icons[1], 0, 0);
 
 	if (settings["window"]["mode"].is_number_integer())
 	{
@@ -167,7 +174,7 @@ void glfwCursorPositionCallback(GLFWwindow* w, const float64 x, const float64 y)
 	if (!window) return;
 	for (const auto& cb : window->cursorPositionCallbacks)
 	{
-		cb(x, y);
+		cb(x / window->get_screen().width, y / window->get_screen().height);
 	}
 }
 
@@ -290,22 +297,22 @@ bool Window::should_close() const
 	return closed || glfwWindowShouldClose(window);
 }
 
-void Window::add_key_callback(const std::function<KeyCallback> keyCallback)
+void Window::add_key_callback(const std::function<KeyCallback> keyCallback, std::string layer)
 {
 	keyCallbacks.push_back(keyCallback);
 }
 
-void Window::add_mouse_button_callback(const std::function<MouseButtonCallback> mouseButtonCallback)
+void Window::add_mouse_button_callback(const std::function<MouseButtonCallback> mouseButtonCallback, std::string layer)
 {
 	mouseButtonCallbacks.push_back(mouseButtonCallback);
 }
 
-void Window::add_cursor_position_callback(const std::function<CursorPositionCallback> cursorPositionCallback)
+void Window::add_cursor_position_callback(const std::function<CursorPositionCallback> cursorPositionCallback, std::string layer)
 {
 	cursorPositionCallbacks.push_back(cursorPositionCallback);
 }
 
-void Window::add_resize_callback(const std::function<WindowResizeCallback> resizeCallback)
+void Window::add_resize_callback(const std::function<WindowResizeCallback> resizeCallback, std::string layer)
 {
 	windowResizeCallbacks.push_back(resizeCallback);
 }

@@ -14,7 +14,7 @@ namespace ds {
 		{
 		private:
 			std::shared_ptr<Transform> transform;
-			ds::FVec2 aabb_offset = { -48, -64 };
+			ds::FVec2 aabb_offset = { 0, 0 };
 			AABBHull hull = { {-48, -64}, {96, 128} };
 			std::vector<CollisionBody> collision_bodies;
 
@@ -89,6 +89,10 @@ namespace ds {
 			void set_inverse_mass(const float inversed_mass)
 			{
 				this->inversed_mass = inversed_mass;
+			}
+
+			void set_ignore_masse(const bool ignore_mass) {
+				this->ignore_mass = ignore_mass;
 			}
 
 			Transform& get_transform() const
